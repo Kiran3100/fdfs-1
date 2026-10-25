@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BankPrep Pro &middot; Modern Banking Exam Practice &amp; Advanced Analytics</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA2NCA2NCc+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSdnJyB4MT0nMCUnIHkxPScwJScgeDI9JzEwMCUnIHkyPScxMDAlJz48c3RvcCBvZmZzZXQ9JzAlJyBzdG9wLWNvbG9yPScjMjU2M2ViJy8+PHN0b3Agb2Zmc2V0PScxMDAlJyBzdG9wLWNvbG9yPScjNGY0NmU1Jy8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9J3MnIHgxPScwJScgeTE9JzAlJyB4Mj0nMTAwJScgeTI9JzEwMCUnPjxzdG9wIG9mZnNldD0nMCUnIHN0b3AtY29sb3I9JyNmYmJmMjQnLz48c3RvcCBvZmZzZXQ9JzEwMCUnIHN0b3AtY29sb3I9JyNmNTllMGInLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PScyJyB5PScyJyB3aWR0aD0nNjAnIGhlaWdodD0nNjAnIHJ4PScxNCcgZmlsbD0ndXJsKCNnKScvPjx0ZXh0IHg9JzMyJyB5PSc0MycgZm9udC1mYW1pbHk9J3N5c3RlbS11aSwtYXBwbGUtc3lzdGVtLHNhbnMtc2VyaWYnIGZvbnQtd2VpZ2h0PSc4MDAnIGZvbnQtc2l6ZT0nMjgnIGZpbGw9JyNmZmZmZmYnIHRleHQtYW5jaG9yPSdtaWRkbGUnPkJQPC90ZXh0PjxwYXRoIGQ9J000OCA5IEw1MCAxMyBMNTQgMTQgTDUxIDE3IEw1MiAyMSBMNDggMTkgTDQ0IDIxIEw0NSAxNyBMNDIgMTQgTDQ2IDEzIFonIGZpbGw9J3VybCgjcyknLz48L3N2Zz4=">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <link rel="stylesheet" href="css/modern.css?v=52">
+  <link rel="stylesheet" href="css/style.css?v=52">
+  <link rel="stylesheet" href="css/mock-tests.css?v=56">
+  <link rel="stylesheet" href="css/progress-table.css?v=1">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Desktop & Mobile Sidebar -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    <aside class="app-sidebar" id="app-sidebar">
+      <div class="sidebar-header" style="display:flex; justify-content:space-between; align-items:center;">
+        <a href="#/" class="brand-badge">
+          <div class="brand-logo-icon">BP</div>
+          <span>BankPrep Pro</span>
+        </a>
+        <div style="display:flex; align-items:center; gap:6px;">
+          <button class="btn-icon" id="theme-toggle-btn" title="Toggle Light / Dark Mode" aria-label="Toggle theme">
+            🌙
+          </button>
+          <button class="btn-icon sidebar-close-btn" id="sidebar-close-btn" title="Close Sidebar" aria-label="Close Sidebar">
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Navigation</div>
+        <a href="#/" class="nav-link" id="nav-dashboard">
+          <span>📊</span> Dashboard
+        </a>
+        <a href="#/daily-revision" class="nav-link" id="nav-daily-revision">
+          <span>📅</span> Daily Revision <span id="nav-revision-badge"></span>
+        </a>
+        <a href="#/history" class="nav-link" id="nav-history">
+          <span>📈</span> Attempt History
+        </a>
+        <a href="#/performance" class="nav-link" id="nav-performance">
+          <span>🎯</span> Performance Analytics
+        </a>
+
+        <a href="#/ibps-coach" class="nav-link" id="nav-ibps-coach" style="border-left:3px solid transparent;">
+          <span>🏦</span> IBPS RRB Coach
+        </a>
+
+        <a href="#/progress-table" class="nav-link" id="nav-progress-table">
+          <span>📋</span> Study Progress
+        </a>
+
+        <div class="nav-section-title">Curriculum Sections</div>
+        <a href="#/subject/arithmetic" class="nav-link" id="nav-arithmetic">
+          <span>🧮</span> Arithmetic (23 Chapters)
+        </a>
+        <a href="#/mock-tests/select" class="nav-link" id="nav-mock-tests">
+          <span>📝</span> Mock Tests
+        </a>
+        <a href="#/drill" class="nav-link" id="nav-drill">
+          <span>🧮</span> Basic Calculation Drill
+        </a>
+        <a href="#/subject/reasoning" class="nav-link" id="nav-reasoning">
+          <span>🧠</span> Reasoning (19 Chapters)
+        </a>
+
+        <div class="nav-section-title">Preferences</div>
+        <a href="#/settings" class="nav-link" id="nav-settings">
+          <span>⚙️</span> Settings &amp; Backup
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <span style="font-size:0.8rem; color:var(--text-muted);">Banking Exam Engine v2.0</span>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="app-main-area">
+      <!-- Mobile Floating Menu Toggle -->
+      <button class="btn-icon mobile-toggle" id="mobile-menu-btn" aria-label="Toggle navigation menu">
+        ☰
+      </button>
+
+      <main id="app" tabindex="-1"></main>
+    </div>
+  </div>
+
+  <dialog id="dlg"></dialog>
+  <dialog id="question-review-modal"></dialog>
+  <dialog id="daily-revision-modal"></dialog>
+
+  <!-- External & Module Scripts -->
+  <script src="vendor/xlsx.full.min.js"></script>
+  <script src="data/config.js?v=55"></script>
+  <script src="js/storage.js?v=55"></script>
+  <script src="js/analytics.js?v=55"></script>
+  <script src="js/charts.js?v=55"></script>
+  <script src="js/drill.js?v=55"></script>
+  <script src="js/revision.js?v=55"></script>
+  <script src="js/ibps-coach.js?v=55"></script>
+  <script src="js/mock-test-engine.js?v=57"></script>
+  <script src="js/mock-test-ui.js?v=57"></script>
+  <script src="js/progress-table.js?v=1"></script>
+  <script src="js/app.js?v=66"></script>
+</body>
+</html>

@@ -1,0 +1,2040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduPrep Pro &middot; Multi-Level Test Preparation Dashboard</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* --------------------------------------------------------------------------
+       RESET & MODERN DESIGN TOKENS
+       -------------------------------------------------------------------------- */
+    :root {
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* Primary Palette: Indigo / Slate (Coursera / Khan Academy aesthetic) */
+      --color-primary: #4f46e5;
+      --color-primary-hover: #4338ca;
+      --color-primary-light: #eef2ff;
+      --color-primary-subtle: #e0e7ff;
+
+      --color-accent: #0284c7;
+      --color-accent-light: #f0f9ff;
+      --color-success: #10b981;
+      --color-success-light: #ecfdf5;
+      --color-amber: #f59e0b;
+      --color-amber-light: #fffbeb;
+
+      /* Neutral Palette */
+      --bg-canvas: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-surface-hover: #f1f5f9;
+      --bg-subtle: #f1f5f9;
+
+      --border-color: #e2e8f0;
+      --border-color-hover: #cbd5e1;
+      --border-color-active: #818cf8;
+
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-subtle: #94a3b8;
+      --text-inverse: #ffffff;
+
+      /* Shadows */
+      --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+      --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+      --shadow-card-hover: 0 12px 24px -8px rgba(79, 70, 229, 0.15), 0 4px 8px -2px rgba(15, 23, 42, 0.06);
+
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --radius-full: 9999px;
+
+      --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-smooth: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* --------------------------------------------------------------------------
+       TOP NAVIGATION BAR & HEADER
+       -------------------------------------------------------------------------- */
+    .app-header {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(8px);
+      background-color: rgba(255, 255, 255, 0.94);
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-main);
+      cursor: pointer;
+    }
+
+    .brand-icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.15rem;
+      box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+    }
+
+    .brand-tagline {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    /* Breadcrumbs navigation */
+    .breadcrumb-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .breadcrumb-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: color var(--transition-fast);
+      border-radius: var(--radius-sm);
+      padding: 0.2rem 0.4rem;
+    }
+
+    .breadcrumb-link:hover {
+      color: var(--color-primary);
+      background-color: var(--color-primary-light);
+    }
+
+    .breadcrumb-sep {
+      color: var(--text-subtle);
+      font-size: 0.8rem;
+    }
+
+    .breadcrumb-current {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .header-badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-full);
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary-subtle);
+    }
+
+    /* --------------------------------------------------------------------------
+       MAIN CONTAINER & VIEW ANIMATIONS
+       -------------------------------------------------------------------------- */
+    .app-main {
+      flex: 1;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3.5rem;
+    }
+
+    .level-view {
+      display: none;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity var(--transition-smooth), transform var(--transition-smooth);
+    }
+
+    .level-view.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+      animation: viewFadeIn 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes viewFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Common Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.65rem 1.25rem;
+      border-radius: var(--radius-md);
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all var(--transition-fast);
+      outline: none;
+    }
+
+    .btn:focus-visible {
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+    }
+
+    .btn-back {
+      background: var(--bg-surface);
+      border-color: var(--border-color);
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-back:hover {
+      background: var(--bg-surface-hover);
+      color: var(--color-primary);
+      border-color: var(--color-primary-subtle);
+      transform: translateX(-2px);
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: var(--text-inverse);
+      box-shadow: 0 4px 10px rgba(79, 70, 229, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-primary-hover);
+      box-shadow: 0 6px 14px rgba(79, 70, 229, 0.35);
+    }
+
+    .btn-outline {
+      background: var(--bg-surface);
+      border-color: var(--border-color);
+      color: var(--text-main);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      background: var(--color-primary-light);
+    }
+
+    /* --------------------------------------------------------------------------
+       LEVEL 1: MAIN DASHBOARD (SUBJECT SELECTION)
+       -------------------------------------------------------------------------- */
+    .hero-banner {
+      text-align: center;
+      max-width: 680px;
+      margin: 1rem auto 2.75rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.35rem 0.9rem;
+      border-radius: var(--radius-full);
+      margin-bottom: 1rem;
+      border: 1px solid var(--color-primary-subtle);
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #4f46e5 0%, #2563eb 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Subject Selection Cards */
+    .subject-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 950px;
+      margin: 0 auto;
+    }
+
+    .subject-card {
+      background: var(--bg-surface);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 2.25rem 2rem;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 380px;
+      transition: all var(--transition-smooth);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      text-align: left;
+    }
+
+    .subject-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: transparent;
+      transition: background var(--transition-fast);
+    }
+
+    .subject-card.primary-card {
+      border-color: #cbd5e1;
+    }
+
+    .subject-card.primary-card::before {
+      background: linear-gradient(90deg, #4f46e5, #3b82f6);
+    }
+
+    .subject-card.primary-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--color-primary);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .subject-card.placeholder-card {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      border: 2px dashed #cbd5e1;
+      opacity: 0.85;
+    }
+
+    .subject-card.placeholder-card:hover {
+      transform: translateY(-4px);
+      border-color: #94a3b8;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .card-top {
+      margin-bottom: 1.5rem;
+    }
+
+    .card-badge-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    .status-pill {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .status-pill.active {
+      background: #ecfdf5;
+      color: #059669;
+      border: 1px solid #a7f3d0;
+    }
+
+    .status-pill.coming-soon {
+      background: #f1f5f9;
+      color: #64748b;
+      border: 1px solid #e2e8f0;
+    }
+
+    .subject-icon-box {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      transition: transform var(--transition-smooth);
+    }
+
+    .primary-card .subject-icon-box {
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      box-shadow: 0 8px 16px rgba(79, 70, 229, 0.12);
+    }
+
+    .subject-card:hover .subject-icon-box {
+      transform: scale(1.08) rotate(2deg);
+    }
+
+    .placeholder-card .subject-icon-box {
+      background: #f1f5f9;
+      color: #64748b;
+    }
+
+    .subject-icon-box svg {
+      width: 34px;
+      height: 34px;
+    }
+
+    .subject-title {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.02em;
+    }
+
+    .subject-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .subject-meta-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .meta-tag {
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.3rem 0.7rem;
+      border-radius: var(--radius-sm);
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .primary-card .meta-tag.highlight {
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+    }
+
+    .card-footer-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border-color);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .primary-card .card-footer-cta {
+      color: var(--color-primary);
+    }
+
+    .placeholder-card .card-footer-cta {
+      color: var(--text-muted);
+    }
+
+    .cta-arrow {
+      transition: transform var(--transition-fast);
+      display: inline-block;
+    }
+
+    .subject-card:hover .cta-arrow {
+      transform: translateX(6px);
+    }
+
+    /* --------------------------------------------------------------------------
+       LEVEL 2: ARITHMETIC SYLLABUS PAGE (CHAPTER SELECTION)
+       -------------------------------------------------------------------------- */
+    .view-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .header-titles {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .view-heading {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+    }
+
+    .view-subheading {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* Filter & Search Bar */
+    .syllabus-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      background: var(--bg-surface);
+      padding: 0.85rem 1.25rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .search-input-wrapper {
+      flex: 1;
+      min-width: 240px;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-input-wrapper svg {
+      position: absolute;
+      left: 12px;
+      width: 18px;
+      height: 18px;
+      color: var(--text-subtle);
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 0.6rem 0.85rem 0.6rem 2.4rem;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: var(--bg-canvas);
+      color: var(--text-main);
+      outline: none;
+      transition: all var(--transition-fast);
+    }
+
+    .search-input:focus {
+      border-color: var(--color-primary);
+      background: var(--bg-surface);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+    }
+
+    .chapter-counter-pill {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg-subtle);
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius-full);
+      white-space: nowrap;
+    }
+
+    /* Chapter Cards Grid */
+    .chapter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .chapter-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 175px;
+      position: relative;
+      transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .chapter-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-card-hover);
+      border-color: var(--border-color-active);
+    }
+
+    .chapter-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .chapter-num-badge {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      padding: 0.3rem 0.65rem;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      border: 1px solid var(--color-primary-subtle);
+    }
+
+    .chapter-meta-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-subtle);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .chapter-card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+    }
+
+    .chapter-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--border-color);
+      margin-top: 0.5rem;
+    }
+
+    .resource-preview-indicators {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .res-dot-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .res-dot-indicator::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-primary);
+    }
+
+    .chapter-action-cta {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .chapter-card:hover .chapter-action-cta .cta-arrow {
+      transform: translateX(4px);
+    }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 3.5rem 1.5rem;
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      border: 1px dashed var(--border-color);
+      grid-column: 1 / -1;
+    }
+
+    .empty-state p {
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    /* --------------------------------------------------------------------------
+       LEVEL 3: CHAPTER RESOURCE PAGE (STUDY MATERIALS)
+       -------------------------------------------------------------------------- */
+    .resource-header-banner {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 60%, #4338ca 100%);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem 2.25rem;
+      color: white;
+      margin-bottom: 2.25rem;
+      box-shadow: 0 10px 25px -5px rgba(49, 46, 129, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .resource-header-banner::after {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+      pointer-events: none;
+    }
+
+    .res-nav-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-white-back {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(4px);
+    }
+
+    .btn-white-back:hover {
+      background: rgba(255, 255, 255, 0.25);
+      color: white;
+      transform: translateX(-2px);
+    }
+
+    .chapter-badge-white {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 0.35rem 0.8rem;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.05em;
+    }
+
+    .resource-title {
+      font-size: clamp(1.85rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    .resource-subtitle {
+      font-size: 1rem;
+      color: #e0e7ff;
+      max-width: 650px;
+      line-height: 1.5;
+    }
+
+    /* Study Material Action Cards Grid */
+    .resources-action-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .resource-card {
+      background: var(--bg-surface);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 280px;
+      transition: all var(--transition-smooth);
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .resource-card.book-card:hover {
+      border-color: #6366f1;
+    }
+
+    .resource-card.hands-card:hover {
+      border-color: #0284c7;
+    }
+
+    .res-card-top {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .res-icon-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    .res-icon-container {
+      width: 58px;
+      height: 58px;
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform var(--transition-smooth);
+    }
+
+    .resource-card:hover .res-icon-container {
+      transform: scale(1.1);
+    }
+
+    .book-card .res-icon-container {
+      background: #eef2ff;
+      color: #4f46e5;
+    }
+
+    .hands-card .res-icon-container {
+      background: #f0fdf4;
+      color: #16a34a;
+    }
+
+    .res-icon-container svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    .res-type-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .book-card .res-type-badge {
+      background: #eef2ff;
+      color: #4f46e5;
+    }
+
+    .hands-card .res-type-badge {
+      background: #f0fdf4;
+      color: #16a34a;
+    }
+
+    .res-card-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .res-card-desc {
+      font-size: 0.925rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .res-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border-color);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .book-card .res-card-footer {
+      color: var(--color-primary);
+    }
+
+    .hands-card .res-card-footer {
+      color: #16a34a;
+    }
+
+    /* --------------------------------------------------------------------------
+       QUESTION BOOK STATE: MOCK PDF VIEWER / DOCUMENT VIEWER
+       -------------------------------------------------------------------------- */
+    .document-viewer-container {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+      overflow: hidden;
+      margin-top: 1.5rem;
+      display: none;
+      animation: viewerSlideUp 350ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .document-viewer-container.active {
+      display: block;
+    }
+
+    @keyframes viewerSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* PDF Toolbar */
+    .doc-toolbar {
+      background: #1e293b;
+      color: #f8fafc;
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-bottom: 1px solid #334155;
+    }
+
+    .doc-info-group {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .doc-pdf-icon-badge {
+      background: #ef4444;
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 0.25rem 0.5rem;
+      border-radius: var(--radius-sm);
+      letter-spacing: 0.05em;
+    }
+
+    .doc-filename {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #f1f5f9;
+    }
+
+    .doc-toolbar-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .doc-page-counter {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      background: #0f172a;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-sm);
+      color: #cbd5e1;
+      border: 1px solid #334155;
+    }
+
+    .btn-doc-control {
+      background: #334155;
+      color: #f1f5f9;
+      border: none;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: background var(--transition-fast);
+    }
+
+    .btn-doc-control:hover {
+      background: #475569;
+    }
+
+    .btn-doc-close {
+      background: #ef4444;
+      color: white;
+    }
+
+    .btn-doc-close:hover {
+      background: #dc2626;
+    }
+
+    /* Document Canvas / Mock PDF Body */
+    .doc-canvas {
+      background: #f1f5f9;
+      padding: 2.5rem 1.5rem;
+      min-height: 480px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .doc-page-sheet {
+      background: #ffffff;
+      width: 100%;
+      max-width: 820px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+      border-radius: var(--radius-sm);
+      padding: 3rem 3.5rem;
+      border: 1px solid #e2e8f0;
+      position: relative;
+    }
+
+    .doc-sheet-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #0f172a;
+      padding-bottom: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .doc-sheet-brand {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+    }
+
+    .doc-sheet-ref {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .doc-sheet-heading {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .doc-sheet-lead {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .doc-mock-section {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .doc-mock-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-primary);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .doc-question-preview {
+      font-size: 0.925rem;
+      color: #1e293b;
+      margin-bottom: 0.85rem;
+      line-height: 1.6;
+    }
+
+    .doc-options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.6rem;
+      font-size: 0.875rem;
+      color: #475569;
+    }
+
+    .doc-opt-item {
+      background: white;
+      border: 1px solid #cbd5e1;
+      padding: 0.5rem 0.85rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .doc-watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-30deg);
+      font-size: 5rem;
+      font-weight: 900;
+      color: rgba(15, 23, 42, 0.025);
+      letter-spacing: 0.2em;
+      pointer-events: none;
+      user-select: none;
+      text-transform: uppercase;
+    }
+
+    /* --------------------------------------------------------------------------
+       MODAL / TOAST FOR HANDS-ON INTERACTION
+       -------------------------------------------------------------------------- */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      animation: modalFadeIn 200ms ease-out;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+      max-width: 480px;
+      width: 100%;
+      padding: 2.25rem 2rem;
+      text-align: center;
+      animation: modalScaleUp 250ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes modalScaleUp {
+      from { transform: scale(0.92); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-icon-badge {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-full);
+      background: #ecfdf5;
+      color: #059669;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+    }
+
+    .modal-icon-badge svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    .modal-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .modal-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.75rem;
+    }
+
+    /* Toast Notification */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 120;
+      pointer-events: none;
+    }
+
+    .toast-item {
+      background: #1e293b;
+      color: white;
+      padding: 0.85rem 1.25rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-xl);
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      pointer-events: auto;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all var(--transition-smooth);
+    }
+
+    .toast-item.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* --------------------------------------------------------------------------
+       FOOTER
+       -------------------------------------------------------------------------- */
+    .app-footer {
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-color);
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: auto;
+    }
+
+    /* --------------------------------------------------------------------------
+       RESPONSIVE BREAKPOINTS
+       -------------------------------------------------------------------------- */
+    @media (max-width: 768px) {
+      .header-inner {
+        padding: 0.75rem 1rem;
+      }
+
+      .app-main {
+        padding: 1.25rem 1rem 2.5rem;
+      }
+
+      .hero-title {
+        font-size: 1.85rem;
+      }
+
+      .subject-card {
+        min-height: auto;
+        padding: 1.75rem 1.5rem;
+      }
+
+      .resource-header-banner {
+        padding: 1.75rem 1.25rem;
+      }
+
+      .doc-page-sheet {
+        padding: 1.75rem 1.25rem;
+      }
+
+      .doc-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .doc-toolbar-controls {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation & Global Header -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand-logo" onclick="appNavigation.goHome()" title="Return to Dashboard Home">
+        <div class="brand-icon-box">EP</div>
+        <div class="brand-text">
+          <span class="brand-title">EduPrep Pro</span>
+          <span class="brand-tagline">Test Preparation &amp; Syllabus Portal</span>
+        </div>
+      </div>
+
+      <!-- Dynamic Breadcrumb Navigation -->
+      <nav class="breadcrumb-nav" id="breadcrumb-bar" aria-label="Breadcrumb"></nav>
+
+      <div class="header-badge">Bank PO &middot; Clerk 2026</div>
+    </div>
+  </header>
+
+  <!-- Main Multi-Level Content Canvas -->
+  <main class="app-main">
+
+    <!-- ======================================================================
+         LEVEL 1: MAIN DASHBOARD (SUBJECT SELECTION)
+         ====================================================================== -->
+    <section id="level-1" class="level-view active">
+      <div class="hero-banner">
+        <div class="hero-badge">
+          <span>🎯</span> Modular Test Prep Architecture
+        </div>
+        <h1 class="hero-title">Prepare for Exams with <span>Structured Mastery</span></h1>
+        <p class="hero-subtitle">
+          Select your target subject category below to browse syllabus chapters, access official question books, and test your speed.
+        </p>
+      </div>
+
+      <div class="subject-grid">
+        <!-- ARITHMETIC CARD (Primary Focus) -->
+        <article class="subject-card primary-card" id="card-arithmetic" tabindex="0" role="button" aria-label="Select Arithmetic subject">
+          <div class="card-top">
+            <div class="card-badge-row">
+              <span class="status-pill active">● Active Syllabus</span>
+              <span class="meta-tag highlight">23 Chapters</span>
+            </div>
+
+            <div class="subject-icon-box">
+              <!-- Math / Arithmetic SVG Icon -->
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10H9m-4-5h14M7 3l10 18M17 3L7 21" />
+              </svg>
+            </div>
+
+            <h2 class="subject-title">Arithmetic</h2>
+            <p class="subject-desc">
+              Foundational quantitative aptitude covering commercial mathematics, arithmetic mechanics, percentages, speed distance, and counting principles.
+            </p>
+
+            <div class="subject-meta-list">
+              <span class="meta-tag">📘 Full Syllabus</span>
+              <span class="meta-tag">📄 PDF Question Banks</span>
+              <span class="meta-tag">⚡ Interactive Drills</span>
+            </div>
+          </div>
+
+          <div class="card-footer-cta">
+            <span>Explore 23 Chapters</span>
+            <span class="cta-arrow">&rarr;</span>
+          </div>
+        </article>
+
+        <!-- REASONING CARD (Placeholder for Future Content) -->
+        <article class="subject-card placeholder-card" id="card-reasoning" tabindex="0" role="button" aria-label="Reasoning subject, coming soon">
+          <div class="card-top">
+            <div class="card-badge-row">
+              <span class="status-pill coming-soon">🕒 Coming Soon</span>
+              <span class="meta-tag">Future Content</span>
+            </div>
+
+            <div class="subject-icon-box">
+              <!-- Logic / Brain SVG Icon -->
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+            </div>
+
+            <h2 class="subject-title">Reasoning</h2>
+            <p class="subject-desc">
+              Logical reasoning, verbal deduction, analytical puzzles, coded inequalities, direction sense, and critical thinking frameworks.
+            </p>
+
+            <div class="subject-meta-list">
+              <span class="meta-tag">🧩 Logic Puzzles</span>
+              <span class="meta-tag">⚖️ Inequalities</span>
+              <span class="meta-tag">🔒 Coding-Decoding</span>
+            </div>
+          </div>
+
+          <div class="card-footer-cta">
+            <span>In Course Roadmap</span>
+            <span class="cta-arrow">&rarr;</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         LEVEL 2: ARITHMETIC SYLLABUS PAGE (CHAPTER SELECTION)
+         ====================================================================== -->
+    <section id="level-2" class="level-view">
+      <div class="view-header-row">
+        <div class="header-titles">
+          <button class="btn btn-back" onclick="appNavigation.navigateToLevel(1)">
+            &larr; Back to Subjects
+          </button>
+          <h1 class="view-heading" style="margin-top: 0.75rem;">Arithmetic Syllabus</h1>
+          <p class="view-subheading">Select any chapter below to access question books and hands-on preparation tools.</p>
+        </div>
+      </div>
+
+      <!-- Real-time Filter & Search Bar -->
+      <div class="syllabus-controls">
+        <div class="search-input-wrapper">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+          <input type="text" id="chapter-search-box" class="search-input" placeholder="Filter chapters (e.g., Percentages, Time and Work, Probability)..." autocomplete="off">
+        </div>
+        <div class="chapter-counter-pill" id="chapter-count-badge">Showing 23 of 23 Chapters</div>
+      </div>
+
+      <!-- Responsive Grid Layout of Chapters -->
+      <div class="chapter-grid" id="chapters-grid-container">
+        <!-- Injected via JavaScript based on exact data array -->
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         LEVEL 3: CHAPTER RESOURCE PAGE (STUDY MATERIALS)
+         ====================================================================== -->
+    <section id="level-3" class="level-view">
+      <!-- Chapter Hero Banner -->
+      <div class="resource-header-banner">
+        <div class="res-nav-row">
+          <button class="btn btn-white-back" onclick="appNavigation.navigateToLevel(2)">
+            &larr; Back to Syllabus
+          </button>
+          <span class="chapter-badge-white" id="res-banner-chapter-badge">Chapter 02</span>
+        </div>
+        <h1 class="resource-title" id="res-banner-title">Percentages</h1>
+        <p class="resource-subtitle" id="res-banner-desc">
+          Official study materials, downloadable question books, and hands-on interactive speed practice drills.
+        </p>
+      </div>
+
+      <!-- Two Core Action Resource Cards -->
+      <div class="resources-action-grid">
+        <!-- QUESTION BOOK CARD -->
+        <article class="resource-card book-card" id="btn-resource-qbook" tabindex="0" role="button" aria-label="View Question Book">
+          <div class="res-card-top">
+            <div class="res-icon-header-row">
+              <div class="res-icon-container">
+                <!-- Book / Document SVG -->
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </div>
+              <span class="res-type-badge">PDF Question Book</span>
+            </div>
+
+            <h3 class="res-card-title">Question Book</h3>
+            <p class="res-card-desc">
+              Access the chapter PDF with structured concept summaries, categorized problem sets, and verified answer keys.
+            </p>
+          </div>
+
+          <div class="res-card-footer">
+            <span id="qbook-cta-label">Open Document &rarr;</span>
+            <span class="cta-arrow">📄</span>
+          </div>
+        </article>
+
+        <!-- HANDS-ON PRACTICE CARD -->
+        <article class="resource-card hands-card" id="btn-resource-handson" tabindex="0" role="button" aria-label="Open Hands-on Practice">
+          <div class="res-card-top">
+            <div class="res-icon-header-row">
+              <div class="res-icon-container">
+                <!-- Interactive / Practice SVG -->
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <span class="res-type-badge">Interactive Practice</span>
+            </div>
+
+            <h3 class="res-card-title">Hands-on</h3>
+            <p class="res-card-desc">
+              Live timed problem-solving simulator with millisecond speed benchmarks, attempt revisit tracking, and accuracy diagnosis.
+            </p>
+          </div>
+
+          <div class="res-card-footer">
+            <span>Launch Interactive Drill &rarr;</span>
+            <span class="cta-arrow">⚡</span>
+          </div>
+        </article>
+      </div>
+
+      <!-- DOCUMENT VIEWER STATE (Triggered when user clicks Question Book) -->
+      <section class="document-viewer-container" id="pdf-viewer-container" aria-label="PDF Document Viewer">
+        <!-- Viewer Toolbar -->
+        <div class="doc-toolbar">
+          <div class="doc-info-group">
+            <span class="doc-pdf-icon-badge">PDF</span>
+            <span class="doc-filename" id="doc-active-filename">2.percentages.pdf</span>
+          </div>
+          <div class="doc-toolbar-controls">
+            <span class="doc-page-counter">Page 1 / 18</span>
+            <button class="btn-doc-control" onclick="appNavigation.showToast('Downloading file...')">
+              ⬇ Download
+            </button>
+            <button class="btn-doc-control btn-doc-close" onclick="appNavigation.closePdfViewer()">
+              ✕ Close Preview
+            </button>
+          </div>
+        </div>
+
+        <!-- Canvas Body of the Mock PDF -->
+        <div class="doc-canvas">
+          <div class="doc-page-sheet">
+            <div class="doc-watermark">BANKPREP PRO</div>
+
+            <div class="doc-sheet-header">
+              <span class="doc-sheet-brand">EDUPREP ACADEMY &middot; OFFICIAL QUESTION BOOK</span>
+              <span class="doc-sheet-ref" id="doc-meta-sheet-id">CH-02 &middot; 2026 EDITION</span>
+            </div>
+
+            <h2 class="doc-sheet-heading" id="doc-sheet-chapter-title">2. Percentages</h2>
+            <p class="doc-sheet-lead">
+              Standard Examination Question Bank with detailed solutions, speed tricks, and fractional equivalents table.
+            </p>
+
+            <div class="doc-mock-section">
+              <div class="doc-mock-title">
+                <span>📌</span> Problem Preview &middot; Question 01
+              </div>
+              <p class="doc-question-preview">
+                If the price of a commodity increases by 25%, by what percentage must a household reduce its consumption so that the total expenditure remains constant?
+              </p>
+              <div class="doc-options-grid">
+                <div class="doc-opt-item"><strong>(A)</strong> 15%</div>
+                <div class="doc-opt-item" style="border-color: #10b981; background: #ecfdf5; font-weight: 600;"><strong>(B)</strong> 20% &check;</div>
+                <div class="doc-opt-item"><strong>(C)</strong> 22.5%</div>
+                <div class="doc-opt-item"><strong>(D)</strong> 25%</div>
+              </div>
+            </div>
+
+            <div class="doc-mock-section">
+              <div class="doc-mock-title">
+                <span>💡</span> Key Concept &amp; Shortcut Formula
+              </div>
+              <p class="doc-question-preview" style="margin-bottom: 0;">
+                For an increase of \(r\%\), reduction required in consumption = \(\left(\frac{r}{100 + r}\right) \times 100\%\) = \(\left(\frac{25}{125}\right) \times 100\% = 20\%\).
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+  </main>
+
+  <!-- Interactive Hands-on Modal Dialog -->
+  <div class="modal-overlay" id="handson-modal" onclick="appNavigation.closeModal(event)">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-icon-badge">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      </div>
+      <h3 class="modal-title" id="modal-title">Interactive Module Notice</h3>
+      <p class="modal-desc" id="modal-desc-text">
+        Hands-on practice drills for this chapter are queued for release in the upcoming simulator update. In the meantime, you can explore the complete Question Book!
+      </p>
+      <button class="btn btn-primary" onclick="appNavigation.closeModalDirect()">
+        Got It, Thanks!
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-container">
+    <div class="toast-item" id="global-toast">
+      <span id="toast-icon">✨</span>
+      <span id="toast-message">Notification</span>
+    </div>
+  </div>
+
+  <!-- Global Footer -->
+  <footer class="app-footer">
+    EduPrep Pro Learning Management System &middot; Clean Responsive Card-Based Architecture
+  </footer>
+
+  <!-- ======================================================================
+       APPLICATION JAVASCRIPT: DATA & INTERACTIVE STATE MACHINE
+       ====================================================================== -->
+  <script>
+    /**
+     * Exact Arithmetic Syllabus Data specified by requirement.
+     * Contains 23 chapters numbered in sequential order.
+     */
+    const ARITHMETIC_CHAPTERS = [
+      { id: 1, title: 'Basic Mathematics', category: 'Foundation' },
+      { id: 2, title: 'Percentages', category: 'Commercial' },
+      { id: 3, title: 'Profit and Loss', category: 'Commercial' },
+      { id: 4, title: 'Simple Interest', category: 'Commercial' },
+      { id: 5, title: 'Compound Interest', category: 'Commercial' },
+      { id: 6, title: 'Ratio and Proportion', category: 'Foundation' },
+      { id: 7, title: 'Partnership', category: 'Commercial' },
+      { id: 8, title: 'Problems on Ages', category: 'Foundation' },
+      { id: 9, title: 'Averages', category: 'Foundation' },
+      { id: 10, title: 'Mixtures and Allegations', category: 'Commercial' },
+      { id: 11, title: 'Time and Distance', category: 'Motion & Work' },
+      { id: 12, title: 'Trains', category: 'Motion & Work' },
+      { id: 13, title: 'Boats and Streams', category: 'Motion & Work' },
+      { id: 14, title: 'Time and Work', category: 'Motion & Work' },
+      { id: 15, title: 'Pipes and Cisterns', category: 'Motion & Work' },
+      { id: 16, title: 'Inequalities Comparison', category: 'Algebraic' },
+      { id: 17, title: 'Areas', category: 'Mensuration' },
+      { id: 18, title: 'Volumes', category: 'Mensuration' },
+      { id: 19, title: 'LCM and HCF', category: 'Foundation' },
+      { id: 20, title: 'Problems on Numbers', category: 'Foundation' },
+      { id: 21, title: 'Approximation', category: 'Calculation' },
+      { id: 22, title: 'Permutations and Combinations', category: 'Modern Math' },
+      { id: 23, title: 'Probability', category: 'Modern Math' }
+    ];
+
+    /**
+     * Helper to compute the exact PDF file name according to user specification:
+     * e.g., Chapter 2: Percentages -> '2.percentages.pdf'
+     */
+    function getChapterFileName(chapter) {
+      if (!chapter) return '';
+      // Format: {id}.{clean_slug}.pdf
+      const slug = chapter.title.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+      return `${chapter.id}.${slug}.pdf`;
+    }
+
+    /**
+     * Application State & Navigation Controller
+     */
+    const appState = {
+      level: 1, // 1: Main Dashboard, 2: Syllabus, 3: Chapter Resources
+      selectedSubject: 'arithmetic',
+      selectedChapter: ARITHMETIC_CHAPTERS[1], // Default to Chapter 2 (Percentages)
+      pdfViewerOpen: false,
+      searchQuery: ''
+    };
+
+    const appNavigation = {
+      /**
+       * Initialize listeners and render views
+       */
+      init() {
+        this.renderChapterGrid(ARITHMETIC_CHAPTERS);
+        this.bindEvents();
+        this.handleHashChange();
+        window.addEventListener('hashchange', () => this.handleHashChange());
+      },
+
+      /**
+       * Bind click events and search filter
+       */
+      bindEvents() {
+        // Level 1 Subject Card: Arithmetic
+        const arithCard = document.getElementById('card-arithmetic');
+        if (arithCard) {
+          arithCard.addEventListener('click', () => {
+            this.navigateToLevel(2);
+          });
+          arithCard.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.navigateToLevel(2);
+            }
+          });
+        }
+
+        // Level 1 Subject Card: Reasoning (Placeholder)
+        const reasonCard = document.getElementById('card-reasoning');
+        if (reasonCard) {
+          reasonCard.addEventListener('click', () => {
+            this.openModal(
+              'Reasoning Syllabus Coming Soon',
+              'The Reasoning section (Inequalities, Syllogisms, Puzzles, Coding-Decoding) is currently under active development and will be available in the next curriculum phase.'
+            );
+          });
+          reasonCard.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              reasonCard.click();
+            }
+          });
+        }
+
+        // Search box filter in Level 2
+        const searchBox = document.getElementById('chapter-search-box');
+        if (searchBox) {
+          searchBox.addEventListener('input', (e) => {
+            appState.searchQuery = e.target.value.trim().toLowerCase();
+            this.filterChapters();
+          });
+        }
+
+        // Level 3 Question Book Card
+        const qbookCard = document.getElementById('btn-resource-qbook');
+        if (qbookCard) {
+          qbookCard.addEventListener('click', () => {
+            this.openPdfViewer();
+          });
+          qbookCard.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.openPdfViewer();
+            }
+          });
+        }
+
+        // Level 3 Hands-on Card
+        const handsonCard = document.getElementById('btn-resource-handson');
+        if (handsonCard) {
+          handsonCard.addEventListener('click', () => {
+            const ch = appState.selectedChapter;
+            this.openModal(
+              `Hands-on Practice: ${ch ? ch.title : 'Chapter'}`,
+              `Interactive problem-solving drills with millisecond question timers and analytics for "${ch ? ch.title : 'this chapter'}" will be available soon!`
+            );
+          });
+          handsonCard.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              handsonCard.click();
+            }
+          });
+        }
+      },
+
+      /**
+       * Filter chapters in Level 2
+       */
+      filterChapters() {
+        const query = appState.searchQuery;
+        const filtered = ARITHMETIC_CHAPTERS.filter(ch => {
+          return ch.title.toLowerCase().includes(query) ||
+                 String(ch.id).includes(query) ||
+                 ch.category.toLowerCase().includes(query);
+        });
+        this.renderChapterGrid(filtered);
+
+        const badge = document.getElementById('chapter-count-badge');
+        if (badge) {
+          badge.textContent = `Showing ${filtered.length} of ${ARITHMETIC_CHAPTERS.length} Chapters`;
+        }
+      },
+
+      /**
+       * Render the dynamic grid of chapters for Level 2
+       */
+      renderChapterGrid(chapters) {
+        const container = document.getElementById('chapters-grid-container');
+        if (!container) return;
+
+        if (chapters.length === 0) {
+          container.innerHTML = `
+            <div class="empty-state">
+              <h3>No matching chapters found</h3>
+              <p>Try searching for a different keyword or chapter number.</p>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = chapters.map(ch => {
+          const numPadded = String(ch.id).padStart(2, '0');
+          return `
+            <div class="chapter-card" tabindex="0" role="button" onclick="appNavigation.selectChapter(${ch.id})" onkeydown="if(event.key==='Enter'||event.key===' ') { event.preventDefault(); appNavigation.selectChapter(${ch.id}); }" aria-label="Chapter ${ch.id}: ${ch.title}">
+              <div>
+                <div class="chapter-card-header">
+                  <span class="chapter-num-badge">CH-${numPadded}</span>
+                  <span class="chapter-meta-tag">${ch.category}</span>
+                </div>
+                <h3 class="chapter-card-title">${ch.id}. ${ch.title}</h3>
+              </div>
+              <div class="chapter-card-footer">
+                <div class="resource-preview-indicators">
+                  <span class="res-dot-indicator">Question Book</span>
+                </div>
+                <div class="chapter-action-cta">
+                  <span>Open</span>
+                  <span class="cta-arrow">&rarr;</span>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      },
+
+      /**
+       * Select a specific chapter and navigate to Level 3
+       */
+      selectChapter(chapterId) {
+        const chapter = ARITHMETIC_CHAPTERS.find(c => c.id === chapterId);
+        if (!chapter) return;
+
+        appState.selectedChapter = chapter;
+        appState.pdfViewerOpen = false;
+
+        // Update Level 3 Header UI
+        const bannerBadge = document.getElementById('res-banner-chapter-badge');
+        const bannerTitle = document.getElementById('res-banner-title');
+        const bannerDesc = document.getElementById('res-banner-desc');
+        const qbookLabel = document.getElementById('qbook-cta-label');
+
+        const fileName = getChapterFileName(chapter);
+
+        if (bannerBadge) bannerBadge.textContent = `Chapter ${String(chapter.id).padStart(2, '0')} · Arithmetic`;
+        if (bannerTitle) bannerTitle.textContent = `${chapter.id}. ${chapter.title}`;
+        if (bannerDesc) bannerDesc.textContent = `Access official question book (${fileName}) and hands-on preparation modules.`;
+        if (qbookLabel) qbookLabel.textContent = `Open ${fileName} →`;
+
+        // Update PDF Preview state if opened later
+        const docFilename = document.getElementById('doc-active-filename');
+        const docSheetTitle = document.getElementById('doc-sheet-chapter-title');
+        const docSheetRef = document.getElementById('doc-meta-sheet-id');
+
+        if (docFilename) docFilename.textContent = fileName;
+        if (docSheetTitle) docSheetTitle.textContent = `${chapter.id}. ${chapter.title}`;
+        if (docSheetRef) docSheetRef.textContent = `CH-${String(chapter.id).padStart(2, '0')} · 2026 EDITION`;
+
+        // Close viewer if it was open from a previous chapter
+        const viewer = document.getElementById('pdf-viewer-container');
+        if (viewer) viewer.classList.remove('active');
+
+        // Navigate to Level 3
+        this.navigateToLevel(3);
+      },
+
+      /**
+       * Central level transition router
+       */
+      navigateToLevel(levelNumber) {
+        appState.level = levelNumber;
+
+        // Update view classes
+        document.querySelectorAll('.level-view').forEach(view => {
+          view.classList.remove('active');
+        });
+
+        const targetView = document.getElementById(`level-${levelNumber}`);
+        if (targetView) {
+          targetView.classList.add('active');
+        }
+
+        // Update Breadcrumb UI
+        this.updateBreadcrumbs();
+
+        // Update hash in URL for smooth back/forward browser support
+        if (levelNumber === 1) {
+          location.hash = '#/';
+        } else if (levelNumber === 2) {
+          location.hash = '#/syllabus';
+        } else if (levelNumber === 3) {
+          location.hash = `#/chapter/${appState.selectedChapter.id}`;
+        }
+
+        // Scroll to top of content smoothly
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      },
+
+      /**
+       * Synchronize Breadcrumb trail
+       */
+      updateBreadcrumbs() {
+        const bar = document.getElementById('breadcrumb-bar');
+        if (!bar) return;
+
+        if (appState.level === 1) {
+          bar.innerHTML = `
+            <span class="breadcrumb-current">Dashboard</span>
+          `;
+        } else if (appState.level === 2) {
+          bar.innerHTML = `
+            <a class="breadcrumb-link" onclick="appNavigation.navigateToLevel(1)">Dashboard</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Arithmetic Syllabus</span>
+          `;
+        } else if (appState.level === 3) {
+          bar.innerHTML = `
+            <a class="breadcrumb-link" onclick="appNavigation.navigateToLevel(1)">Dashboard</a>
+            <span class="breadcrumb-sep">/</span>
+            <a class="breadcrumb-link" onclick="appNavigation.navigateToLevel(2)">Arithmetic</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">${appState.selectedChapter.title}</span>
+          `;
+        }
+      },
+
+      /**
+       * Hash change router (handles direct links and browser back/forward buttons)
+       */
+      handleHashChange() {
+        const hash = location.hash.replace(/^#\/?/, '');
+        const parts = hash.split('/');
+
+        if (!parts[0] || parts[0] === '') {
+          this.navigateToLevel(1);
+        } else if (parts[0] === 'syllabus') {
+          this.navigateToLevel(2);
+        } else if (parts[0] === 'chapter' && parts[1]) {
+          const chId = parseInt(parts[1], 10);
+          const found = ARITHMETIC_CHAPTERS.find(c => c.id === chId);
+          if (found) {
+            this.selectChapter(chId);
+          } else {
+            this.navigateToLevel(2);
+          }
+        }
+      },
+
+      /**
+       * Return home shortcut
+       */
+      goHome() {
+        this.navigateToLevel(1);
+      },
+
+      /**
+       * Open Mock PDF Viewer State (Level 3)
+       */
+      openPdfViewer() {
+        const viewer = document.getElementById('pdf-viewer-container');
+        if (!viewer) return;
+
+        viewer.classList.add('active');
+        appState.pdfViewerOpen = true;
+
+        // Smooth scroll to viewer
+        viewer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        this.showToast(`Opened Question Book: ${getChapterFileName(appState.selectedChapter)}`);
+      },
+
+      /**
+       * Close Mock PDF Viewer State
+       */
+      closePdfViewer() {
+        const viewer = document.getElementById('pdf-viewer-container');
+        if (viewer) {
+          viewer.classList.remove('active');
+        }
+        appState.pdfViewerOpen = false;
+      },
+
+      /**
+       * Modal Dialog Controls
+       */
+      openModal(title, message) {
+        const modal = document.getElementById('handson-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc-text');
+
+        if (modalTitle) modalTitle.textContent = title;
+        if (modalDesc) modalDesc.textContent = message;
+        if (modal) modal.classList.add('active');
+      },
+
+      closeModal(event) {
+        if (event.target.id === 'handson-modal') {
+          this.closeModalDirect();
+        }
+      },
+
+      closeModalDirect() {
+        const modal = document.getElementById('handson-modal');
+        if (modal) modal.classList.remove('active');
+      },
+
+      /**
+       * Toast Notification System
+       */
+      showToast(message, icon = '📄') {
+        const toast = document.getElementById('global-toast');
+        const toastMsg = document.getElementById('toast-message');
+        const toastIco = document.getElementById('toast-icon');
+
+        if (!toast) return;
+
+        toastMsg.textContent = message;
+        toastIco.textContent = icon;
+        toast.classList.add('show');
+
+        clearTimeout(this._toastTimeout);
+        this._toastTimeout = setTimeout(() => {
+          toast.classList.remove('show');
+        }, 3200);
+      }
+    };
+
+    // Initialize application when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      appNavigation.init();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+/* BankPrep Pro – Chapter Progress Table styles */
+
+.pt-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+/* ── Page header ──────────────────────────────────────────────────────────── */
+.pt-header { margin-bottom: 1.5rem; }
+.pt-title  { font-size: 1.6rem; font-weight: 800; color: var(--text-primary, #0f172a); margin: 0 0 .35rem; }
+.pt-sub    { font-size: .9rem; color: var(--text-muted, #64748b); margin: 0; }
+
+/* ── Summary cards row ────────────────────────────────────────────────────── */
+.pt-summary-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.pt-sc {
+  display: flex; align-items: center; gap: 1rem;
+  background: var(--bg-surface, #fff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: var(--radius-lg, 12px);
+  padding: 1.1rem 1.2rem;
+  box-shadow: var(--shadow-sm);
+}
+.pt-sc-icon { font-size: 1.75rem; line-height: 1; flex-shrink: 0; }
+.pt-sc-body { flex: 1; min-width: 0; }
+.pt-sc-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted, #64748b); letter-spacing: .04em; }
+.pt-sc-value { font-size: 1.7rem; font-weight: 800; color: var(--text-primary, #0f172a); line-height: 1.1; }
+.pt-sc-sub   { font-size: .78rem; color: var(--text-muted, #64748b); margin-top: .1rem; }
+.pt-sc-bar-wrap { height: 5px; background: var(--bg-tertiary, #e2e8f0); border-radius: 9999px; overflow: hidden; margin-top: .5rem; }
+.pt-sc-bar      { height: 100%; border-radius: 9999px; transition: width .3s ease; }
+
+/* ── Subject progress bars ────────────────────────────────────────────────── */
+.pt-subject-bars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.pt-sbar {
+  background: var(--bg-surface, #fff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: var(--radius-lg, 12px);
+  padding: 1.1rem 1.3rem;
+  box-shadow: var(--shadow-sm);
+}
+.pt-sbar-top { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; margin-bottom: .6rem; }
+.pt-sbar-label { font-size: 1rem; font-weight: 700; color: var(--text-primary, #0f172a); flex: 1; }
+.pt-sbar-nums  { font-size: .8rem; color: var(--text-muted, #64748b); }
+.pt-sbar-pct   { font-size: 1.2rem; font-weight: 800; }
+.pt-bar-track  { height: 10px; background: var(--bg-tertiary, #e2e8f0); border-radius: 9999px; overflow: hidden; }
+.pt-bar-fill   { height: 100%; border-radius: 9999px; transition: width .4s ease; }
+.pt-sbar-bot   { display: flex; justify-content: space-between; font-size: .78rem; color: var(--text-muted, #64748b); margin-top: .45rem; }
+
+/* ── Table section ────────────────────────────────────────────────────────── */
+.pt-table-section {
+  margin-bottom: 2rem;
+  background: var(--bg-surface, #fff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: var(--radius-lg, 12px);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.pt-table-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--bg-secondary, #f1f5f9);
+  border-bottom: 1px solid var(--border-color, #e2e8f0);
+  flex-wrap: wrap;
+}
+.pt-table-title {
+  font-size: 1.05rem; font-weight: 700; color: var(--text-primary, #0f172a);
+  flex: 1;
+}
+.pt-table-summary { display: flex; gap: .5rem; flex-wrap: wrap; }
+.pt-tsumm-pill {
+  font-size: .75rem; font-weight: 600;
+  padding: .2rem .6rem; border-radius: 9999px;
+  background: var(--bg-surface, #fff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  color: var(--text-primary, #0f172a);
+}
+.pt-tsumm-pct { background: #eff6ff; border-color: #bfdbfe; color: #1d4ed8; }
+
+/* Select-all button */
+.pt-select-all {
+  font-size: .8rem; padding: .35rem .85rem;
+  background: var(--bg-surface, #fff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  color: var(--text-primary, #0f172a);
+  border-radius: 6px; cursor: pointer; white-space: nowrap;
+  font-weight: 600;
+}
+.pt-select-all:hover { background: var(--bg-tertiary, #e2e8f0); }
+
+/* ── Table itself ─────────────────────────────────────────────────────────── */
+.pt-table-wrap { overflow-x: auto; }
+.pt-table {
+  width: 100%; border-collapse: collapse;
+  font-size: .9rem;
+}
+
+.pt-table thead th {
+  background: var(--bg-secondary, #f8fafc);
+  color: var(--text-muted, #64748b);
+  font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+  padding: .65rem 1rem;
+  text-align: left;
+  border-bottom: 2px solid var(--border-color, #e2e8f0);
+  white-space: nowrap;
+}
+
+.pt-table tbody tr {
+  border-bottom: 1px solid var(--border-color, #e2e8f0);
+  transition: background .12s ease;
+}
+.pt-table tbody tr:last-child { border-bottom: none; }
+.pt-table tbody tr:hover { background: var(--bg-secondary, #f8fafc); }
+
+/* Completed row gets a subtle green tint */
+.pt-table tbody .pt-row-done {
+  background: linear-gradient(90deg, rgba(16,185,129,.04) 0%, transparent 100%);
+}
+.pt-table tbody .pt-row-done:hover {
+  background: linear-gradient(90deg, rgba(16,185,129,.08) 0%, var(--bg-secondary, #f8fafc) 100%);
+}
+
+.pt-table td { padding: .7rem 1rem; vertical-align: middle; }
+
+/* Column widths */
+.pt-th-num, .pt-td-num { width: 44px; text-align: center; color: var(--text-muted, #64748b); font-size: .82rem; }
+.pt-th-check, .pt-td-check { width: 56px; text-align: center; }
+.pt-th-q, .pt-td-q { width: 140px; text-align: center; font-weight: 600; }
+.pt-th-pct, .pt-td-pct { width: 160px; }
+.pt-th-status, .pt-td-status { width: 130px; }
+
+.pt-td-name { font-weight: 600; color: var(--text-primary, #0f172a); }
+
+/* Checkbox styling */
+.pt-chk {
+  width: 18px; height: 18px;
+  cursor: pointer; accent-color: #10b981;
+}
+
+/* Mini progress bar inside table cell */
+.pt-mini-bar-wrap {
+  height: 6px; background: var(--bg-tertiary, #e2e8f0);
+  border-radius: 9999px; overflow: hidden; margin-bottom: 3px;
+}
+.pt-mini-bar {
+  height: 100%; background: #10b981;
+  border-radius: 9999px; transition: width .3s ease;
+}
+.pt-pct-label { font-size: .78rem; font-weight: 700; color: var(--text-primary, #0f172a); }
+
+/* Status badges */
+.pt-status-badge {
+  display: inline-block; font-size: .75rem; font-weight: 700;
+  padding: .2rem .6rem; border-radius: 9999px; white-space: nowrap;
+}
+.pt-badge-done { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+.pt-badge-pend { background: var(--bg-secondary, #f1f5f9); color: var(--text-muted, #64748b); border: 1px solid var(--border-color, #e2e8f0); }
+
+/* Tfoot total row */
+.pt-tfoot-row { background: var(--bg-secondary, #f1f5f9) !important; border-top: 2px solid var(--border-color, #e2e8f0) !important; }
+.pt-tfoot-row td { padding: .75rem 1rem; font-size: .88rem; }
+
+/* Reset button */
+.pt-reset-btn {
+  background: var(--bg-secondary, #f1f5f9);
+  border: 1px solid var(--border-color, #e2e8f0);
+  color: var(--text-muted, #64748b);
+  border-radius: 8px; padding: .55rem 1.5rem;
+  font-size: .88rem; font-weight: 600; cursor: pointer;
+}
+.pt-reset-btn:hover { background: #fee2e2; border-color: #fca5a5; color: #b91c1c; }
+
+/* ── Dark mode ────────────────────────────────────────────────────────────── */
+[data-theme="dark"] .pt-badge-done { background: #064e3b; color: #6ee7b7; border-color: #065f46; }
+[data-theme="dark"] .pt-tsumm-pct  { background: #1e3a5f; border-color: #1d4ed8; color: #93c5fd; }
+[data-theme="dark"] .pt-table tbody .pt-row-done {
+  background: linear-gradient(90deg, rgba(16,185,129,.08) 0%, transparent 100%);
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .pt-wrap { padding: 1rem .5rem 2.5rem; }
+  .pt-th-q, .pt-td-q   { display: none; }   /* hide questions col on mobile */
+  .pt-th-num, .pt-td-num { display: none; } /* hide # col on mobile */
+}
