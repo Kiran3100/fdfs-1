@@ -528,6 +528,7 @@ window.MockTestUI = (function() {
         elapsedSeconds: 0,
         remainingSeconds: durationMinutes * 60,
         isPaused: false,
+        showElapsed: true,
         startTime: Date.now()
       };
 
@@ -561,11 +562,16 @@ window.MockTestUI = (function() {
     }
 
     // Update timer display
-    const timerBadge = document.getElementById('mock-timer-display');
-    if (timerBadge) {
-      timerBadge.textContent = fmtTime(mockState.remainingSeconds);
-      if (mockState.remainingSeconds <= 300) { // last 5 mins warning
+    const timerBadge = document.getElementById('test-overall-timer') || document.getElementById('mock-timer-display');
+    if (timerBadge && !mockState.isPaused) {
+      const timeStr = mockState.showElapsed !== false
+        ? `Elapsed: ${fmtTime(mockState.elapsedSeconds)}`
+        : `Time Left: ${fmtTime(mockState.remainingSeconds)}`;
+      timerBadge.textContent = timeStr;
+      if (mockState.remainingSeconds <= 300 && mockState.showElapsed === false) {
         timerBadge.classList.add('urgent');
+      } else {
+        timerBadge.classList.remove('urgent');
       }
     }
 
@@ -577,6 +583,57 @@ window.MockTestUI = (function() {
     }
   }
 
+  function toggleMockPause(forceState) {
+    if (!mockState) return;
+    const shouldPause = forceState !== undefined ? forceState : !mockState.isPaused;
+    mockState.isPaused = shouldPause;
+
+    const pauseBtn = document.getElementById('btn-pause-test');
+    const timerBadge = document.getElementById('test-overall-timer');
+    const qPane = document.querySelector('.mock-question-pane');
+
+    if (mockState.isPaused) {
+      if (pauseBtn) {
+        pauseBtn.innerHTML = '▶️ Resume';
+        pauseBtn.classList.remove('alt');
+        pauseBtn.style.background = '#10b981';
+        pauseBtn.style.borderColor = '#059669';
+        pauseBtn.style.color = '#ffffff';
+        pauseBtn.style.fontWeight = '700';
+      }
+      if (timerBadge) {
+        timerBadge.classList.add('paused');
+        const curVal = mockState.showElapsed !== false ? fmtTime(mockState.elapsedSeconds) : fmtTime(mockState.remainingSeconds);
+        timerBadge.innerHTML = `⏸️ PAUSED &middot; ${curVal}`;
+      }
+      if (qPane) {
+        qPane.style.filter = 'blur(5px)';
+        qPane.style.pointerEvents = 'none';
+        qPane.style.userSelect = 'none';
+      }
+    } else {
+      if (pauseBtn) {
+        pauseBtn.innerHTML = '⏸️ Pause';
+        pauseBtn.classList.add('alt');
+        pauseBtn.style.background = '';
+        pauseBtn.style.borderColor = '';
+        pauseBtn.style.color = '';
+        pauseBtn.style.fontWeight = '';
+      }
+      if (timerBadge) {
+        timerBadge.classList.remove('paused');
+        const curVal = mockState.showElapsed !== false ? `Elapsed: ${fmtTime(mockState.elapsedSeconds)}` : `Time Left: ${fmtTime(mockState.remainingSeconds)}`;
+        timerBadge.textContent = curVal;
+      }
+      if (qPane) {
+        qPane.style.filter = '';
+        qPane.style.pointerEvents = '';
+        qPane.style.userSelect = '';
+      }
+    }
+    saveSessionState();
+  }
+
   function saveSessionState() {
     try {
       if (mockState && mockState.attempt) {
@@ -584,7 +641,9 @@ window.MockTestUI = (function() {
           attempt: mockState.attempt,
           currentIndex: mockState.currentIndex,
           elapsedSeconds: mockState.elapsedSeconds,
-          remainingSeconds: mockState.remainingSeconds
+          remainingSeconds: mockState.remainingSeconds,
+          isPaused: !!mockState.isPaused,
+          showElapsed: mockState.showElapsed !== false
         }));
       }
     } catch (e) {}
@@ -597,6 +656,8 @@ window.MockTestUI = (function() {
         const parsed = JSON.parse(data);
         if (parsed && parsed.attempt && parsed.remainingSeconds > 0) {
           mockState = parsed;
+          if (mockState.isPaused == null) mockState.isPaused = false;
+          if (mockState.showElapsed == null) mockState.showElapsed = true;
           clearInterval(mockTimerInterval);
           mockTimerInterval = setInterval(mockTick, 1000);
           return true;
@@ -645,47 +706,52 @@ window.MockTestUI = (function() {
     const isFirstQ = curIdx === 0;
     const isLastQ = curIdx === questions.length - 1;
 
-    app.innerHTML = `
-      <!-- Top Banking Examination Bar -->
-      <div class="mock-exam-topbar">
-        <div class="mock-exam-brand">
-          <span style="font-weight:800; font-size:1.1rem; color:var(--brand-primary,#4f46e5);">BankPrep Pro</span>
-          <span style="color:var(--text-muted);">&middot;</span>
-          <span style="font-weight:600; color:var(--text-primary); font-size:0.95rem;">Arithmetic Mock Test</span>
-          <span class="badge" style="background:var(--bg-subtle,#e2e8f0); color:var(--text-secondary); font-size:0.75rem;">
-            ${questions.length} Questions
-          </span>
-        </div>
+    const testTitle = (attempt.selectedChapterNames && attempt.selectedChapterNames.length === 1)
+      ? `${attempt.selectedChapterNames[0]} - Mock Test`
+      : `${q.chapterName || 'Arithmetic'} - Mock Test`;
 
-        <div style="display:flex; align-items:center; gap:16px;">
-          <div class="mock-timer-box">
-            <span style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.04em; color:var(--text-muted);">Time Left</span>
-            <span class="mock-timer-digits" id="mock-timer-display">${fmtTime(mockState.remainingSeconds)}</span>
+    const timerText = mockState.isPaused
+      ? `⏸️ PAUSED &middot; ${fmtTime(mockState.showElapsed !== false ? mockState.elapsedSeconds : mockState.remainingSeconds)}`
+      : (mockState.showElapsed !== false ? `Elapsed: ${fmtTime(mockState.elapsedSeconds)}` : `Time Left: ${fmtTime(mockState.remainingSeconds)}`);
+
+    app.innerHTML = `
+      <!-- Top Test Bar (Exact Question Book Pattern: Title, Q# · Item X of Y, Elapsed/Time Left, Pause, Exit, Submit Test) -->
+      <div style="max-width:1400px; margin:0 auto; padding:16px 20px 0;">
+        <div class="test-top-bar" style="margin-bottom:0;">
+          <div>
+            <span style="font-weight:700; font-size:1.1rem; color:var(--text-primary);">${esc(testTitle)}</span>
+            <span class="text-muted" style="margin-left:8px; font-size:0.9rem;">(Q${esc(q.displayLabel || (curIdx + 1))} &middot; Item ${curIdx + 1} of ${questions.length})</span>
           </div>
 
-          <button class="btn sm danger" id="btn-submit-mock-exam" style="font-weight:700; padding:8px 18px;">
-            Submit Test
-          </button>
+          <div style="display:flex; align-items:center; gap:14px;">
+            <div class="test-timer-badge ${mockState.isPaused ? 'paused' : ''}" id="test-overall-timer" title="Click to toggle Elapsed / Time Left" style="cursor:pointer; user-select:none;">
+              ${timerText}
+            </div>
+            <button class="btn ${mockState.isPaused ? '' : 'alt'} sm" id="btn-pause-test" style="${mockState.isPaused ? 'background:#10b981; border-color:#059669; color:#ffffff; font-weight:700;' : ''}>
+              ${mockState.isPaused ? '▶️ Resume' : '⏸️ Pause'}
+            </button>
+            <button class="btn alt sm" id="btn-exit-test">Exit</button>
+            <button class="btn sm" id="btn-submit-test">Submit Test</button>
+          </div>
         </div>
       </div>
 
       <!-- Main Examination Area -->
-      <div class="mock-exam-layout">
+      <div class="mock-exam-layout" style="padding-top:16px;">
         <!-- Center Left: Question Section -->
-        <div class="mock-question-pane">
+        <div class="mock-question-pane" style="${mockState.isPaused ? 'filter:blur(5px); pointer-events:none; user-select:none;' : ''}">
           <!-- Question Header info -->
           <div class="mock-question-header">
             <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-              <span class="mock-q-badge">Question ${curIdx + 1} of ${questions.length}</span>
+              <span class="badge badge-primary" style="font-weight:700;">Q${esc(q.displayLabel || (curIdx + 1))}</span>
               <span class="mock-chapter-tag">${esc(q.chapterName)}</span>
+              <span class="mock-q-badge">Item ${curIdx + 1} of ${questions.length}</span>
               <span class="badge" style="font-size:0.75rem; color:var(--text-muted);">Model: ${esc(q.modelGroupId)}</span>
             </div>
             <div style="font-size:0.85rem; color:var(--text-muted);">
               Marks: <b style="color:var(--color-success,#10b981);">+1.00</b> &middot; <span style="color:var(--text-muted);">0.00</span>
             </div>
           </div>
-
-          <!-- Question Body -->
           <div class="mock-question-body">
             <div class="mock-q-text">${esc(q.questionText)}</div>
 
@@ -844,8 +910,46 @@ window.MockTestUI = (function() {
       };
     });
 
+    // Pause button
+    const pauseBtn = document.getElementById('btn-pause-test');
+    if (pauseBtn) {
+      pauseBtn.onclick = (e) => {
+        e.preventDefault();
+        toggleMockPause();
+      };
+    }
+
+    // Timer badge toggle between Elapsed and Time Left
+    const timerBadge = document.getElementById('test-overall-timer');
+    if (timerBadge) {
+      timerBadge.onclick = () => {
+        mockState.showElapsed = (mockState.showElapsed === false) ? true : false;
+        if (!mockState.isPaused) {
+          timerBadge.textContent = mockState.showElapsed !== false ? `Elapsed: ${fmtTime(mockState.elapsedSeconds)}` : `Time Left: ${fmtTime(mockState.remainingSeconds)}`;
+        }
+        saveSessionState();
+      };
+    }
+
+    // Exit test
+    const exitBtn = document.getElementById('btn-exit-test');
+    if (exitBtn) {
+      exitBtn.onclick = () => {
+        showConfirmModal('Are you sure you want to exit? Your ongoing mock test progress will not be saved.', 'Exit Mock Test?')
+          .then(ok => {
+            if (ok) {
+              clearInterval(mockTimerInterval);
+              try { sessionStorage.removeItem('bankprep.active_mock_test'); } catch (e) {}
+              document.body.classList.remove('exam-mode');
+              mockState = null;
+              location.hash = '#/mock-tests/select';
+            }
+          });
+      };
+    }
+
     // Submit button in top bar
-    const submitBtn = document.getElementById('btn-submit-mock-exam');
+    const submitBtn = document.getElementById('btn-submit-test') || document.getElementById('btn-submit-mock-exam');
     if (submitBtn) {
       submitBtn.onclick = () => confirmAndSubmit();
     }

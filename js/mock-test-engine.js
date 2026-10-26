@@ -62,7 +62,7 @@ window.MockTestEngine = (function() {
   function getTestsForTopic(topicId) {
     const C = window.APP_CONFIG;
     if (!C || !C.tests) return [];
-    return C.tests.filter(t => t.subject === 'arithmetic' && t.topic === topicId);
+    return C.tests.filter(t => t.subject === 'arithmetic' && t.topic === topicId && !t.isHandout);
   }
 
   // Load a test data file into window.QBANK if not already loaded

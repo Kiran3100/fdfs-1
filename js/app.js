@@ -1,4 +1,4 @@
-// Main Application Controller for Modern Banking Exam Practice Platform
+﻿// Main Application Controller for Modern Banking Exam Practice Platform
 (function() {
   const C = window.APP_CONFIG;
   const Storage = window.BankStorage;
@@ -1287,7 +1287,7 @@
             </p>
           </div>
           <div style="font-size:0.82rem; font-weight:700; color:#8b5cf6; padding-top:10px; border-top:1px solid var(--border-color); display:flex; justify-content:space-between;">
-            <span>Test Suite: Test 1 &ndash; 25</span>
+            <span>Source: Question Book PDF</span>
             <span>&rarr;</span>
           </div>
         </div>
@@ -1509,7 +1509,7 @@
           <div class="flex-between mb-3">
             <div>
               <h3>🎲 Random Mock Test Generator (${esc(tn)})</h3>
-              <p class="text-muted" style="font-size:0.88rem;">Generate a customized mock test with random questions sampled from <b>${esc(tn)}</b></p>
+              <p class="text-muted" style="font-size:0.88rem;">Generate a customized mock test with random questions sampled strictly from Question Book (<b>${esc(tn)}</b>)</p>
             </div>
             <span class="badge badge-warning">Random Speed Drill</span>
           </div>
@@ -1585,7 +1585,7 @@
                 <span style="font-size:0.88rem; font-weight:600; color:var(--text-muted);">(Test 1 &ndash; 25)</span>
               </h3>
               <p class="text-muted" style="font-size:0.88rem; margin:2px 0 0;">
-                Curated 25 Mock Tests for <b>${esc(tn)}</b> &middot; Detailed performance reports &amp; analytics generated for every attempt
+                Curated 25 Mock Tests for <b>${esc(tn)}</b> &middot; Sourced exclusively from Question Book PDF
               </p>
             </div>
             <span class="badge" style="background:rgba(139,92,246,0.15); color:#7c3aed; font-weight:700;">25 Tests Suite</span>
@@ -1597,7 +1597,7 @@
               <span style="font-size:0.88rem; font-weight:700; color:var(--text-primary);">Test Setting:</span>
               <span style="font-size:0.84rem; color:var(--text-secondary);">⏱️ <b>20 Qs per test</b></span>
               <span style="font-size:0.84rem; color:var(--text-secondary);">⏳ <b>20 mins target timer</b></span>
-              <span style="font-size:0.84rem; color:var(--text-secondary);">📊 <b>Analysis &amp; Report enabled</b></span>
+              <span style="font-size:0.84rem; color:var(--text-secondary);">📖 <b>Source: Question Book PDF</b></span>
             </div>
             <div style="display:flex; align-items:center; gap:8px;">
               <label style="font-size:0.82rem; font-weight:600; display:flex; align-items:center; gap:6px; cursor:pointer;">
@@ -1766,7 +1766,7 @@
       btn.onclick = () => {
         const testNum = +btn.dataset.testnum;
         if (!testNum) return;
-        const testConfig = tests[0] || (handoutTests.length ? handoutTests[0] : null);
+        const testConfig = tests[0];
         if (!testConfig) {
           alert('No question bank available for this topic.');
           return;
