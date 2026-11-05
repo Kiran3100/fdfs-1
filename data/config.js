@@ -146,7 +146,7 @@ window.APP_CONFIG = {
       topic: 'averages',
       name: 'Averages - Practice Test 1',
       source: '9.Averages_Coded_Full_Question_Per_Page.pdf',
-      file: 'data/arithmetic/averages-1.js',
+      file: 'data/arithmetic/averages-1.js?v=2',
       count: 100,
       marking: { correct: 1, wrong: 0 }
     },
@@ -156,7 +156,7 @@ window.APP_CONFIG = {
       topic: 'mixtures-allegations',
       name: 'Mixtures and Allegations - Practice Test 1',
       source: '10.Mixtures_and_Allegations_Full_Question_Per_Page.pdf',
-      file: 'data/arithmetic/mixtures-allegations-1.js',
+      file: 'data/arithmetic/mixtures-allegations-1.js?v=2',
       count: 120,
       marking: { correct: 1, wrong: 0 }
     },
@@ -166,7 +166,7 @@ window.APP_CONFIG = {
       topic: 'time-distance',
       name: 'Time and Distance - Practice Test 1',
       source: '11.Time_and_Distance_Coded_Full_Question_Per_Page.pdf',
-      file: 'data/arithmetic/time-distance-1.js',
+      file: 'data/arithmetic/time-distance-1.js?v=2',
       count: 100,
       marking: { correct: 1, wrong: 0 }
     },
@@ -176,7 +176,7 @@ window.APP_CONFIG = {
       topic: 'trains',
       name: 'Trains - Practice Test 1',
       source: '12.Trains_Full_Question_Per_Page.pdf',
-      file: 'data/arithmetic/trains-1.js',
+      file: 'data/arithmetic/trains-1.js?v=2',
       count: 100,
       marking: { correct: 1, wrong: 0 }
     },
@@ -186,7 +186,7 @@ window.APP_CONFIG = {
       topic: 'boats-streams',
       name: 'Boats and Streams - Practice Test 1',
       source: '13._Boats_and_Streams_Coded_Full_Question_Per_Page.pdf',
-      file: 'data/arithmetic/boats-streams-1.js',
+      file: 'data/arithmetic/boats-streams-1.js?v=2',
       count: 80,
       marking: { correct: 1, wrong: 0 }
     },
@@ -196,7 +196,7 @@ window.APP_CONFIG = {
       topic: 'time-work',
       name: 'Time and Work - Practice Test 1',
       source: '14.Time_and_Work_Full_Question_Per_Page.pdf',
-      file: 'data/arithmetic/time-work-1.js',
+      file: 'data/arithmetic/time-work-1.js?v=2',
       count: 140,
       marking: { correct: 1, wrong: 0 }
     },
@@ -206,7 +206,7 @@ window.APP_CONFIG = {
       topic: 'pipes-cisterns',
       name: 'Pipes and Cisterns - Practice Test 1',
       source: '15.Pipes_and_Cisterns_Coded_Full_Question_Per_Page.pdf',
-      file: 'data/arithmetic/pipes-cisterns-1.js',
+      file: 'data/arithmetic/pipes-cisterns-1.js?v=2',
       count: 60,
       marking: { correct: 1, wrong: 0 }
     },
@@ -462,6 +462,66 @@ window.APP_CONFIG = {
       count: 20,
       marking: { correct: 1, wrong: 0 },
       isHandout: true
+    },
+    {
+      id: 'pct-set1',
+      subject: 'arithmetic',
+      topic: 'percentages',
+      name: 'Percentages - Set 1',
+      source: 'Percentages - Set 1 (30 Qs)',
+      file: 'data/arithmetic/percentages-set1.js',
+      count: 30,
+      marking: { correct: 1, wrong: 0.25 },
+      isChapterSet: true,
+      setName: 'Set 1 (30 Qs)'
+    },
+    {
+      id: 'pct-set2',
+      subject: 'arithmetic',
+      topic: 'percentages',
+      name: 'Percentages - Set 2',
+      source: 'Percentages - Set 2 (40 Qs)',
+      file: 'data/arithmetic/percentages-set2.js',
+      count: 40,
+      marking: { correct: 1, wrong: 0.25 },
+      isChapterSet: true,
+      setName: 'Set 2 (40 Qs)'
+    },
+    {
+      id: 'pct-set3',
+      subject: 'arithmetic',
+      topic: 'percentages',
+      name: 'Percentages - Set 3',
+      source: 'Percentages - Set 3 (40 Qs)',
+      file: 'data/arithmetic/percentages-set3.js',
+      count: 40,
+      marking: { correct: 1, wrong: 0.25 },
+      isChapterSet: true,
+      setName: 'Set 3 (40 Qs)'
+    },
+    {
+      id: 'pct-set5',
+      subject: 'arithmetic',
+      topic: 'percentages',
+      name: 'Percentages - Set 5',
+      source: 'Percentages - Set 5 (40 Qs)',
+      file: 'data/arithmetic/percentages-set5.js',
+      count: 40,
+      marking: { correct: 1, wrong: 0.25 },
+      isChapterSet: true,
+      setName: 'Set 5 (40 Qs)'
+    },
+    {
+      id: 'pct-set6',
+      subject: 'arithmetic',
+      topic: 'percentages',
+      name: 'Percentages - Set 6',
+      source: 'Percentages - Set 6 (40 Qs)',
+      file: 'data/arithmetic/percentages-set6.js',
+      count: 40,
+      marking: { correct: 1, wrong: 0.25 },
+      isChapterSet: true,
+      setName: 'Set 6 (40 Qs)'
     },
     {
       id: 'pl-h1',

@@ -1,4 +1,4 @@
-// ============================================================================
+﻿// ============================================================================
 // BANKING EXAM ENGINE - BASIC CALCULATION DRILL MODULE
 // Speed Arithmetic: Addition, Subtraction, Tables, Division, Squares, Cubes
 // ============================================================================
@@ -14,7 +14,11 @@ window.BankDrill = (function() {
       upTo: 10,
       customUpTo: 10,
       order: 'seq', // 'seq' | 'shuffled'
-      sideBySideCount: 4
+      sideBySideCount: 4,
+      mode: 'single', // 'single' | 'range' | 'sequence'
+      rangeFrom: 1,
+      rangeTo: 5,
+      direction: 'forward' // 'forward' | 'division' | 'both'
     },
     squares: {
       from: 1,
@@ -462,24 +466,76 @@ window.BankDrill = (function() {
     let qs = [];
 
     if (tab === 'tables') {
-      const num = Math.max(1, Math.min(100, +set.num || 1));
+      const mode = set.mode || 'single';
+      const direction = set.direction || 'forward';
       const upTo = Math.max(1, Math.min(100, +set.upTo || 10));
-      for (let i = 1; i <= upTo; i++) {
-        qs.push({
-          id: `tbl_${num}x${i}`,
-          prompt: `${num} × ${i} =`,
-          ans: String(num * i),
-          val: num * i
-        });
+
+      function makeQsForTable(tNum) {
+        const list = [];
+        for (let i = 1; i <= upTo; i++) {
+          const product = tNum * i;
+          if (direction === 'forward') {
+            list.push({
+              id: 'tbl_' + tNum + 'x' + i,
+              prompt: tNum + ' \u00d7 ' + i + ' =',
+              ans: String(product),
+              val: product
+            });
+          } else if (direction === 'division') {
+            list.push({
+              id: 'tbl_div_' + product + '_' + tNum,
+              prompt: product + ' \u00f7 ' + tNum + ' =',
+              ans: String(i),
+              val: i
+            });
+          } else {
+            list.push({
+              id: 'tbl_' + tNum + 'x' + i,
+              prompt: tNum + ' \u00d7 ' + i + ' =',
+              ans: String(product),
+              val: product
+            });
+            list.push({
+              id: 'tbl_div_' + product + '_' + tNum,
+              prompt: product + ' \u00f7 ' + tNum + ' =',
+              ans: String(i),
+              val: i
+            });
+          }
+        }
+        return list;
       }
-      if (set.order === 'shuffled') {
-        qs = shuffle(qs);
+
+      let title = '';
+      if (mode === 'single') {
+        const num = Math.max(1, Math.min(100, +set.num || 1));
+        qs = makeQsForTable(num);
+        if (set.order === 'shuffled') qs = shuffle(qs);
+        title = 'Table of ' + num + ' (Up to ' + upTo + ')';
+      } else if (mode === 'range') {
+        const rFrom = Math.max(1, Math.min(100, +set.rangeFrom || 1));
+        const rTo = Math.max(rFrom, Math.min(100, +set.rangeTo || 5));
+        for (let n = rFrom; n <= rTo; n++) {
+          qs = qs.concat(makeQsForTable(n));
+        }
+        if (set.order === 'shuffled') qs = shuffle(qs);
+        title = 'Tables Range ' + rFrom + ' to ' + rTo + ' (Up to ' + upTo + ')';
+      } else if (mode === 'sequence') {
+        const rFrom = Math.max(1, Math.min(100, +set.rangeFrom || 1));
+        const rTo = Math.max(rFrom, Math.min(100, +set.rangeTo || 5));
+        for (let n = rFrom; n <= rTo; n++) {
+          let oneTableQs = makeQsForTable(n);
+          if (set.order === 'shuffled') oneTableQs = shuffle(oneTableQs);
+          qs = qs.concat(oneTableQs);
+        }
+        title = 'Tables ' + rFrom + ' to ' + rTo + ' (One by One)';
       }
+
       return {
         tab: 'tables',
-        title: `Multiplication Table of ${num} (Up to ${upTo})`,
+        title: title,
         questions: qs,
-        style: 'sheet'
+        style: (mode === 'sequence' || set.style === 'one') ? 'one' : 'sheet'
       };
     }
 
@@ -805,7 +861,7 @@ window.BankDrill = (function() {
     const html = `
       <nav class="crumb">
         <a href="#/">Dashboard</a> &rsaquo;
-        <span><b>🧮 Basic Calculation Drill</b></span>
+        <span><b>&#129518; Basic Calculation Drill</b></span>
       </nav>
 
       <div class="flex-between mb-4" style="flex-wrap:wrap; gap:12px;">
@@ -816,10 +872,10 @@ window.BankDrill = (function() {
         <div style="display:flex; gap:10px; align-items:center;">
           <div class="drill-sub-tabs">
             <button class="drill-sub-tab ${currentSubTab === 'reading' ? 'active' : ''}" data-subtab="reading">
-              📖 Reading
+              &#128214; Reading
             </button>
             <button class="drill-sub-tab ${currentSubTab === 'practice' ? 'active' : ''}" data-subtab="practice">
-              ✍️ Practice
+              &#9997;&#65039; Practice
             </button>
           </div>
         </div>
@@ -828,25 +884,25 @@ window.BankDrill = (function() {
       <!-- Top-Level Horizontal Tabs -->
       <div class="drill-nav-tabs mb-4">
         <button class="drill-nav-tab ${currentTab === 'addition' ? 'active' : ''}" data-tab="addition">
-          ➕ Addition
+          &#10010; Addition
         </button>
         <button class="drill-nav-tab ${currentTab === 'subtraction' ? 'active' : ''}" data-tab="subtraction">
-          ➖ Subtraction
+          &#10134; Subtraction
         </button>
         <button class="drill-nav-tab ${currentTab === 'tables' ? 'active' : ''}" data-tab="tables">
-          ✖️ Tables
+          &#10006; Tables
         </button>
         <button class="drill-nav-tab ${currentTab === 'division' ? 'active' : ''}" data-tab="division">
-          ➗ Division
+          &#10135; Division
         </button>
         <button class="drill-nav-tab ${currentTab === 'percentages' ? 'active' : ''}" data-tab="percentages">
           % Percentages
         </button>
         <button class="drill-nav-tab ${currentTab === 'squares' ? 'active' : ''}" data-tab="squares">
-          ² Squares
+          &#178; Squares
         </button>
         <button class="drill-nav-tab ${currentTab === 'cubes' ? 'active' : ''}" data-tab="cubes">
-          ³ Cubes
+          &#179; Cubes
         </button>
       </div>
 
@@ -952,22 +1008,52 @@ window.BankDrill = (function() {
     const set = state.settings[tab];
 
     if (tab === 'tables') {
+      const mode = set.mode || 'single';
+      const dir = set.direction || 'forward';
+      const curFrom = +set.rangeFrom || 1;
+      const curTo = +set.rangeTo || 5;
+
+      const presets = [
+        { from: 1, to: 5, label: '1 to 5', desc: 'Set 1-5' },
+        { from: 6, to: 10, label: '6 to 10', desc: 'Set 6-10' },
+        { from: 1, to: 10, label: '1 to 10', desc: 'Set 1-10' },
+        { from: 11, to: 15, label: '11 to 15', desc: 'Set 11-15' },
+        { from: 16, to: 20, label: '16 to 20', desc: 'Set 16-20' },
+        { from: 11, to: 20, label: '11 to 20', desc: 'Set 11-20' }
+      ];
+
       return `
         <div class="drill-setup-box">
           <div class="flex-between mb-4">
             <div>
-              <h2 style="margin:0 0 4px; font-size:1.35rem;">✖️ Multiplication Tables Practice Setup</h2>
-              <p class="text-muted text-sm" style="margin:0;">Speed drill one table at a time with instant keyboard navigation.</p>
+              <h2 style="margin:0 0 4px; font-size:1.35rem;">&#10006; Multiplication Tables Practice Setup</h2>
+              <p class="text-muted text-sm" style="margin:0;">Speed drill single table, range sets (1 to 5, 6 to 10, 11 to 20), one-by-one revision, and multiplication/division.</p>
             </div>
             <span class="badge badge-primary">Tables Drill</span>
           </div>
 
-          <!-- STEP 1: Table Number -->
+          <!-- STEP 1: Practice Mode Selection -->
           <div class="drill-step-card">
             <div class="drill-step-header">
               <div class="drill-step-title">
                 <span class="drill-step-badge">Step 1</span>
-                <span>🔢 Which Table? (1 to 100)</span>
+                <span>Practice Mode</span>
+              </div>
+              <span class="text-muted text-sm">Choose Single Table, Range Set, or One by One</span>
+            </div>
+            <div class="drill-pill-options" style="margin-top:10px;">
+              <button type="button" class="drill-pill-btn btn-tbl-mode ${mode === 'single' ? 'active' : ''}" data-mode="single">Single Table</button>
+              <button type="button" class="drill-pill-btn btn-tbl-mode ${mode === 'range' ? 'active' : ''}" data-mode="range">Range Set (Mixed)</button>
+              <button type="button" class="drill-pill-btn btn-tbl-mode ${mode === 'sequence' ? 'active' : ''}" data-mode="sequence">One by One</button>
+            </div>
+          </div>
+
+          <!-- STEP 2: Table Selection or Range Sets -->
+          <div class="drill-step-card" id="tbl-single-config" style="${mode !== 'single' ? 'display:none;' : ''}">
+            <div class="drill-step-header">
+              <div class="drill-step-title">
+                <span class="drill-step-badge">Step 2</span>
+                <span>Which Table? (1 to 100)</span>
               </div>
               <span class="text-muted text-sm">Enter table number or click quick pill</span>
             </div>
@@ -989,12 +1075,61 @@ window.BankDrill = (function() {
             </div>
           </div>
 
-          <!-- STEP 2: Limit & Question Order -->
-          <div class="drill-step-card">
+          <div class="drill-step-card" id="tbl-range-config" style="${mode === 'single' ? 'display:none;' : ''}">
             <div class="drill-step-header">
               <div class="drill-step-title">
                 <span class="drill-step-badge">Step 2</span>
-                <span>📐 Range &amp; Question Order</span>
+                <span>Select Table Revision Set</span>
+              </div>
+              <span class="text-muted text-sm">Pick quick range preset or set custom range</span>
+            </div>
+
+            <div style="margin-top:10px; margin-bottom:14px;">
+              <span class="drill-subrow-label" style="display:block; margin-bottom:8px;">Quick Range Sets:</span>
+              <div class="drill-pill-options">
+                ${presets.map(p => {
+                  const isActive = curFrom === p.from && curTo === p.to;
+                  return `<button type="button" class="drill-pill-btn btn-tbl-range-preset ${isActive ? 'active' : ''}" data-from="${p.from}" data-to="${p.to}">${p.label} Set</button>`;
+                }).join('')}
+              </div>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:12px; background:var(--bg-secondary); border-radius:var(--radius-sm);">
+              <span class="text-muted text-sm font-semibold">Custom Range:</span>
+              <label style="display:flex; align-items:center; gap:6px; font-size:0.88rem;">
+                From:
+                <input type="number" id="tbl-range-from" min="1" max="100" value="${curFrom}" style="width:70px; height:36px; text-align:center; font-weight:700; border:1px solid var(--border-color); border-radius:var(--radius-sm);">
+              </label>
+              <label style="display:flex; align-items:center; gap:6px; font-size:0.88rem;">
+                To:
+                <input type="number" id="tbl-range-to" min="1" max="100" value="${curTo}" style="width:70px; height:36px; text-align:center; font-weight:700; border:1px solid var(--border-color); border-radius:var(--radius-sm);">
+              </label>
+              <button type="button" class="btn alt sm" id="btn-apply-custom-range">Apply Range</button>
+            </div>
+          </div>
+
+          <!-- STEP 3: Question Type (Multiplication / Division) -->
+          <div class="drill-step-card">
+            <div class="drill-step-header">
+              <div class="drill-step-title">
+                <span class="drill-step-badge">Step 3</span>
+                <span>Question Type</span>
+              </div>
+              <span class="text-muted text-sm">Test multiplication, division (e.g. 8 / 2 = 4), or both</span>
+            </div>
+            <div class="drill-pill-options" style="margin-top:10px;">
+              <button type="button" class="drill-pill-btn btn-tbl-dir ${dir === 'forward' ? 'active' : ''}" data-dir="forward">Multiplication (2 &times; 4 = ?)</button>
+              <button type="button" class="drill-pill-btn btn-tbl-dir ${dir === 'division' ? 'active' : ''}" data-dir="division">Division (8 &divide; 2 = ?)</button>
+              <button type="button" class="drill-pill-btn btn-tbl-dir ${dir === 'both' ? 'active' : ''}" data-dir="both">Both (&times; and &divide; Mixed)</button>
+            </div>
+          </div>
+
+          <!-- STEP 4: Limit & Question Order -->
+          <div class="drill-step-card">
+            <div class="drill-step-header">
+              <div class="drill-step-title">
+                <span class="drill-step-badge">Step 4</span>
+                <span>Multiply Up To &amp; Question Order</span>
               </div>
               <span class="text-muted text-sm">Set multiplication limit and shuffling</span>
             </div>
@@ -1021,7 +1156,7 @@ window.BankDrill = (function() {
                     Sequential (1 to N)
                   </button>
                   <button type="button" class="drill-pill-btn btn-tbl-order ${set.order === 'shuffled' ? 'active' : ''}" data-val="shuffled">
-                    🎲 Shuffled (Random)
+                    Shuffled (Random)
                   </button>
                 </div>
               </div>
@@ -1031,18 +1166,20 @@ window.BankDrill = (function() {
           <!-- Action Bar -->
           <div class="drill-action-bar">
             <div style="display:flex; align-items:center; gap:10px;">
-              <span class="badge badge-primary" style="font-size:0.9rem; padding:6px 14px;">
-                Ready: Table of ${set.num || 1} &middot; 1 to ${set.upTo || 10} &middot; ${set.order === 'shuffled' ? '🎲 Shuffled' : 'Sequential'}
+              <span class="badge badge-primary" id="tbl-ready-summary" style="font-size:0.9rem; padding:6px 14px;">
+                ${mode === 'single'
+                  ? `Ready: Table of ${set.num || 1} &middot; 1 to ${set.upTo || 10} &middot; ${set.order === 'shuffled' ? 'Shuffled' : 'Sequential'} &middot; ${dir}`
+                  : `Ready: Tables ${curFrom} to ${curTo} (${mode === 'sequence' ? 'One by One' : 'Range Set'}) &middot; Up to ${set.upTo || 10} &middot; ${dir}`
+                }
               </span>
             </div>
             <button class="btn" id="btn-start-drill" style="padding:12px 32px; font-size:1.1rem; font-weight:700;">
-              🚀 Start Table Drill
+              Start Table Drill
             </button>
           </div>
         </div>
       `;
     }
-
     if (tab === 'squares' || tab === 'cubes') {
       const isSq = tab === 'squares';
       const presets = isSq ? [25, 30, 40, 50, 60, 100] : [10, 15, 20, 25, 30, 50];
@@ -1632,10 +1769,14 @@ window.BankDrill = (function() {
         if (tab === 'tables') {
           const numEl = document.getElementById('tbl-input-num');
           const customUpToEl = document.getElementById('tbl-input-custom-upto');
+          const rfEl = document.getElementById('tbl-range-from');
+          const rtEl = document.getElementById('tbl-range-to');
           if (numEl) set.num = Math.max(1, Math.min(100, +numEl.value || 1));
           if (customUpToEl && document.querySelector('.btn-tbl-upto.active') == null) {
             set.upTo = Math.max(1, Math.min(100, +customUpToEl.value || 10));
           }
+          if (rfEl) set.rangeFrom = Math.max(1, Math.min(100, +rfEl.value || 1));
+          if (rtEl) set.rangeTo = Math.max(set.rangeFrom || 1, Math.min(100, +rtEl.value || 5));
         } else if (tab === 'squares' || tab === 'cubes') {
           const fromEl = document.getElementById('pow-input-from');
           const customUpToEl = document.getElementById('pow-input-custom-upto');
@@ -1676,6 +1817,83 @@ window.BankDrill = (function() {
     }
 
     // Tables Events
+    function updateTablesReadySummary() {
+      const summaryEl = document.getElementById('tbl-ready-summary');
+      if (!summaryEl) return;
+      const m = set.mode || 'single';
+      const d = set.direction || 'forward';
+      const dirText = d === 'forward' ? 'Multiplication' : (d === 'division' ? 'Division' : 'Both (x and /)');
+      const cFrom = +set.rangeFrom || 1;
+      const cTo = +set.rangeTo || 5;
+      if (m === 'single') {
+        summaryEl.innerHTML = `Ready: Table of ${set.num || 1} &middot; 1 to ${set.upTo || 10} &middot; ${set.order === 'shuffled' ? 'Shuffled' : 'Sequential'} &middot; ${dirText}`;
+      } else {
+        summaryEl.innerHTML = `Ready: Tables ${cFrom} to ${cTo} (${m === 'sequence' ? 'One by One' : 'Range Set'}) &middot; Up to ${set.upTo || 10} &middot; ${dirText}`;
+      }
+    }
+
+    // Mode selection
+    document.querySelectorAll('.btn-tbl-mode').forEach(b => {
+      b.onclick = () => {
+        document.querySelectorAll('.btn-tbl-mode').forEach(x => x.classList.remove('active'));
+        b.classList.add('active');
+        set.mode = b.dataset.mode;
+        const singleBox = document.getElementById('tbl-single-config');
+        const rangeBox = document.getElementById('tbl-range-config');
+        if (singleBox) singleBox.style.display = set.mode === 'single' ? '' : 'none';
+        if (rangeBox) rangeBox.style.display = set.mode !== 'single' ? '' : 'none';
+        saveSettings();
+        updateTablesReadySummary();
+      };
+    });
+
+    // Range presets
+    document.querySelectorAll('.btn-tbl-range-preset').forEach(b => {
+      b.onclick = () => {
+        document.querySelectorAll('.btn-tbl-range-preset').forEach(x => x.classList.remove('active'));
+        b.classList.add('active');
+        set.rangeFrom = +b.dataset.from;
+        set.rangeTo = +b.dataset.to;
+        const fInput = document.getElementById('tbl-range-from');
+        const tInput = document.getElementById('tbl-range-to');
+        if (fInput) fInput.value = set.rangeFrom;
+        if (tInput) tInput.value = set.rangeTo;
+        saveSettings();
+        updateTablesReadySummary();
+      };
+    });
+
+    // Custom range apply
+    const btnApplyRange = document.getElementById('btn-apply-custom-range');
+    if (btnApplyRange) {
+      btnApplyRange.onclick = () => {
+        const fInput = document.getElementById('tbl-range-from');
+        const tInput = document.getElementById('tbl-range-to');
+        if (fInput && tInput) {
+          const rf = Math.max(1, Math.min(100, +fInput.value || 1));
+          const rt = Math.max(rf, Math.min(100, +tInput.value || 5));
+          set.rangeFrom = rf;
+          set.rangeTo = rt;
+          document.querySelectorAll('.btn-tbl-range-preset').forEach(x => {
+            x.classList.toggle('active', +x.dataset.from === rf && +x.dataset.to === rt);
+          });
+          saveSettings();
+          updateTablesReadySummary();
+        }
+      };
+    }
+
+    // Question direction (forward, division, both)
+    document.querySelectorAll('.btn-tbl-dir').forEach(b => {
+      b.onclick = () => {
+        document.querySelectorAll('.btn-tbl-dir').forEach(x => x.classList.remove('active'));
+        b.classList.add('active');
+        set.direction = b.dataset.dir;
+        saveSettings();
+        updateTablesReadySummary();
+      };
+    });
+
     document.querySelectorAll('.btn-tbl-quick-pick').forEach(b => {
       b.onclick = () => {
         document.querySelectorAll('.btn-tbl-quick-pick').forEach(x => x.classList.remove('active'));
@@ -1686,6 +1904,7 @@ window.BankDrill = (function() {
         set.num = n;
         set._custom = true;
         saveSettings();
+        updateTablesReadySummary();
       };
     });
     const tblInput = document.getElementById('tbl-input-num');
@@ -1697,6 +1916,7 @@ window.BankDrill = (function() {
         document.querySelectorAll('.btn-tbl-quick-pick').forEach(x => {
           x.classList.toggle('active', +x.dataset.val === val);
         });
+        updateTablesReadySummary();
       };
     }
     document.querySelectorAll('.btn-tbl-upto').forEach(b => {
@@ -1705,17 +1925,28 @@ window.BankDrill = (function() {
         b.classList.add('active');
         set.upTo = +b.dataset.val;
         saveSettings();
+        updateTablesReadySummary();
       };
     });
+    const tblCustomUpTo = document.getElementById('tbl-input-custom-upto');
+    if (tblCustomUpTo) {
+      tblCustomUpTo.oninput = () => {
+        document.querySelectorAll('.btn-tbl-upto').forEach(x => x.classList.remove('active'));
+        set.upTo = Math.max(1, Math.min(100, +tblCustomUpTo.value || 10));
+        set.customUpTo = set.upTo;
+        saveSettings();
+        updateTablesReadySummary();
+      };
+    }
     document.querySelectorAll('.btn-tbl-order').forEach(b => {
       b.onclick = () => {
         document.querySelectorAll('.btn-tbl-order').forEach(x => x.classList.remove('active'));
         b.classList.add('active');
         set.order = b.dataset.val;
         saveSettings();
+        updateTablesReadySummary();
       };
     });
-
     // Squares/Cubes Events
     document.querySelectorAll('.btn-pow-upto').forEach(b => {
       b.onclick = () => {
@@ -3501,3 +3732,4 @@ window.BankDrill = (function() {
     getSettings: () => state.settings
   };
 })();
+

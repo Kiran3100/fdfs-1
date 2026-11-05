@@ -85,11 +85,24 @@
       const endParsed = parseLabel(lastRow?.n);
 
       if (startParsed && endParsed) {
+        if (att.isChapterTest || (att.testName && att.testName.includes('Chapter Test'))) {
+          return `Chapter Test (${att.total || att.rows.length} Qs)`;
+        }
         if (att.isRandom || (att.testName && att.testName.includes('Random Mock'))) {
           return `Q ${startParsed.main}&ndash;${endParsed.main} (Random)`;
         }
         if (att.isMistakes) {
           return `Mistakes (${att.total || att.rows.length} Qs)`;
+        }
+        const sMode = att.subpartMode || att.opts?.subpartMode;
+        if (sMode && sMode !== 'all') {
+          if (sMode === 'jumbled') {
+            return `Q ${startParsed.main}&ndash;${endParsed.main} (Jumbled 1/Q)`;
+          }
+          if (sMode === 'custom' && att.opts?.selectedSubParts?.length) {
+            return `Q ${startParsed.main}&ndash;${endParsed.main} (${att.opts.selectedSubParts.join(', ')})`;
+          }
+          return `Q ${startParsed.main}&ndash;${endParsed.main} (Part ${sMode})`;
         }
         if (startParsed.main === endParsed.main) {
           if (startParsed.letter && endParsed.letter && startParsed.letter !== endParsed.letter) {
@@ -120,6 +133,9 @@
         }
       }
 
+      if (att.isChapterTest || (att.testName && att.testName.includes('Chapter Test'))) {
+        return `Chapter Test (${att.total || (to - from + 1)} Qs)`;
+      }
       if (att.isRandom || (att.testName && att.testName.includes('Random Mock'))) {
         return `Q ${from}&ndash;${to} (Random)`;
       }
@@ -808,9 +824,27 @@
     }
 
     if (page === 'drill') {
-      if (window.BankDrill) return window.BankDrill.render(h);
+      console.log('ROUTE: drill requested, BankDrill exists:', typeof window.BankDrill);
+      if (window.BankDrill) {
+        try {
+          window.BankDrill.render(h);
+          return;
+        } catch (err) {
+          console.error('Error inside BankDrill.render:', err);
+          const appEl = document.getElementById('app');
+          if (appEl) {
+            appEl.innerHTML = '<div style="padding:40px;color:red;font-family:monospace;background:#fff0f0;margin:20px;border:1px solid red;border-radius:8px;"><h2>Drill Render Error</h2><p><b>Message:</b> ' + esc(err.message) + '</p><pre>' + esc(err.stack) + '</pre></div>';
+          }
+          return;
+        }
+      } else {
+        const appEl = document.getElementById('app');
+        if (appEl) {
+          appEl.innerHTML = '<div style="padding:40px;color:#b45309;font-family:monospace;background:#fef3c7;margin:20px;border:1px solid #f59e0b;border-radius:8px;"><h2>BankDrill module is not loaded yet or failed to initialize</h2><p>Please check the browser console (F12) to see why drill.js did not execute.</p></div>';
+        }
+        return;
+      }
     }
-
     if (page === 'daily-revision') {
       if (window.DailyRevision) return window.DailyRevision.render();
     }
@@ -1192,8 +1226,9 @@
   function renderTopic(sid, tid) {
     const [sn, tn] = names(sid, tid);
     const allTests = testsOf(sid, tid);
-    const tests = allTests.filter(t => !t.isHandout);
+    const tests = allTests.filter(t => !t.isHandout && !t.isChapterSet);
     const handoutTests = allTests.filter(t => !!t.isHandout);
+    const chapterSets = allTests.filter(t => !!t.isChapterSet);
     const topicDiags = Analytics.computeTopicDiagnostics(attemptsCache, C.subjects);
     const diag = topicDiags.find(d => d.topicId === tid) || {};
     const topicAttempts = attemptsCache.filter(a => a.subject === sid && a.topic === tid).slice().reverse();
@@ -1228,7 +1263,7 @@
         </div>
       </div>
 
-      <!-- 3 Test Source & Mode Selection Tabs -->
+      <!-- Test Source & Mode Selection Tabs -->
       <div class="chapter-mode-tabs">
         <!-- Mode 1: Question Book -->
         <div class="chapter-mode-card active" id="tab-mode-qbook" role="button" tabindex="0">
@@ -1274,38 +1309,20 @@
           </div>
         </div>
 
-        <!-- Mode 3: Mock Tests Grid (Test 1 to 25) -->
-        <div class="chapter-mode-card" id="tab-mode-mocksgrid" role="button" tabindex="0">
+        <!-- Mode 3: Chapter Based Test -->
+        <div class="chapter-mode-card" id="tab-mode-chaptertest" role="button" tabindex="0">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-              <div class="subject-select-icon" style="width:44px; height:44px; font-size:1.3rem; background:rgba(139,92,246,0.1); color:#8b5cf6;">🎯</div>
-              <span class="badge" style="background:rgba(139,92,246,0.15); color:#7c3aed; font-weight:700;">25 Mock Tests</span>
+              <div class="subject-select-icon" style="width:44px; height:44px; font-size:1.3rem; background:rgba(139,92,246,0.12); color:#8b5cf6;">🎯</div>
+              <span class="badge" style="background:rgba(139,92,246,0.15); color:#7c3aed; font-weight:700;">Timed Test</span>
             </div>
-            <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:4px;">Mock Tests</h3>
+            <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:4px;">Chapter Based Test</h3>
             <p style="color:var(--text-muted); font-size:0.86rem; line-height:1.5;">
-              Topic-wise test suite (Test 1 &ndash; 25) with detailed reports &amp; question performance analytics.
+              Take a focused, timed assessment strictly on <b>${esc(tn)}</b> with exam-standard scoring &amp; speed analytics.
             </p>
           </div>
           <div style="font-size:0.82rem; font-weight:700; color:#8b5cf6; padding-top:10px; border-top:1px solid var(--border-color); display:flex; justify-content:space-between;">
-            <span>Source: Question Book PDF</span>
-            <span>&rarr;</span>
-          </div>
-        </div>
-
-        <!-- Mode 4: Random Mock Drill -->
-        <div class="chapter-mode-card" id="tab-mode-mock" role="button" tabindex="0">
-          <div>
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-              <div class="subject-select-icon" style="width:44px; height:44px; font-size:1.3rem; background:rgba(245,158,11,0.1); color:var(--color-warning);">🎲</div>
-              <span class="badge badge-warning">Random Questions</span>
-            </div>
-            <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:4px;">Random Mock Drill</h3>
-            <p style="color:var(--text-muted); font-size:0.86rem; line-height:1.5;">
-              Generate a custom mock test with randomly sampled questions and a targeted countdown timer.
-            </p>
-          </div>
-          <div style="font-size:0.82rem; font-weight:700; color:var(--color-warning); padding-top:10px; border-top:1px solid var(--border-color); display:flex; justify-content:space-between;">
-            <span>Random Mock Generator</span>
+            <span>Chapter Assessment</span>
             <span>&rarr;</span>
           </div>
         </div>
@@ -1337,6 +1354,67 @@
                   <span class="badge badge-primary">Question Book PDF</span>
                 </div>
               </div>
+
+              ${qInfo.isGrouped ? `
+                <div class="test-subparts-card" style="margin-top:16px;">
+                  <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
+                    <div>
+                      <div style="font-weight:700; font-size:0.92rem; color:var(--text-primary); display:flex; align-items:center; gap:6px;">
+                        <span>🎯</span> Sub-part Selection &middot; Knowledge Test Mode
+                      </div>
+                      <div style="font-size:0.8rem; color:var(--text-muted); margin-top:2px;">
+                        Practice all 4 variations (A&ndash;D), test specific parts (Only A, Only B...), or attempt 1 random variant per question in sequential order (1st, 2nd, 3rd...):
+                      </div>
+                    </div>
+                    <span class="badge badge-primary qcount-badge" id="qcount-badge-${esc(t.id)}" style="font-weight:700; font-size:0.82rem; padding:4px 10px;">
+                      ${maxQ * 4} Questions Selected
+                    </span>
+                  </div>
+
+                  <div class="subpart-pill-group">
+                    <label class="subpart-pill" title="Test all variations A, B, C, D for complete practice">
+                      <input type="radio" name="subpart_mode_${esc(t.id)}" value="all" checked>
+                      <span class="pill-btn">All (A, B, C, D)</span>
+                    </label>
+                    <label class="subpart-pill" title="Test only sub-part A in sequential order (1st question, 2nd question...)">
+                      <input type="radio" name="subpart_mode_${esc(t.id)}" value="A">
+                      <span class="pill-btn">Only Part A</span>
+                    </label>
+                    <label class="subpart-pill" title="Test only sub-part B in sequential order (1st question, 2nd question...)">
+                      <input type="radio" name="subpart_mode_${esc(t.id)}" value="B">
+                      <span class="pill-btn">Only Part B</span>
+                    </label>
+                    <label class="subpart-pill" title="Test only sub-part C in sequential order (1st question, 2nd question...)">
+                      <input type="radio" name="subpart_mode_${esc(t.id)}" value="C">
+                      <span class="pill-btn">Only Part C</span>
+                    </label>
+                    <label class="subpart-pill" title="Test only sub-part D in sequential order (1st question, 2nd question...)">
+                      <input type="radio" name="subpart_mode_${esc(t.id)}" value="D">
+                      <span class="pill-btn">Only Part D</span>
+                    </label>
+                    <label class="subpart-pill special-jumble" title="Picks 1 random sub-part per question in sequential order (1st question, 2nd question, 3rd question...)">
+                      <input type="radio" name="subpart_mode_${esc(t.id)}" value="jumbled">
+                      <span class="pill-btn">🎲 1 Random per Q (In Order 1st, 2nd...)</span>
+                    </label>
+                    <label class="subpart-pill" title="Choose specific combination of parts">
+                      <input type="radio" name="subpart_mode_${esc(t.id)}" value="custom">
+                      <span class="pill-btn">Custom Parts...</span>
+                    </label>
+                  </div>
+
+                  <div class="custom-subparts-row" style="display:none;">
+                    <span style="font-size:0.82rem; font-weight:700; color:var(--text-muted);">Include:</span>
+                    <label class="custom-sub-check"><input type="checkbox" name="sub_A_${esc(t.id)}" value="A" checked> Part A</label>
+                    <label class="custom-sub-check"><input type="checkbox" name="sub_B_${esc(t.id)}" value="B" checked> Part B</label>
+                    <label class="custom-sub-check"><input type="checkbox" name="sub_C_${esc(t.id)}" value="C" checked> Part C</label>
+                    <label class="custom-sub-check"><input type="checkbox" name="sub_D_${esc(t.id)}" value="D" checked> Part D</label>
+                  </div>
+
+                  <div class="subpart-mode-info" style="margin-top:8px; font-size:0.8rem; color:var(--text-muted); font-style:italic;">
+                    Practicing all 4 sub-parts (A, B, C, D) for each question (Total: ${maxQ * 4} Questions).
+                  </div>
+                </div>
+              ` : ''}
 
               <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin: 18px 0; padding: 14px; background: var(--bg-secondary); border-radius: var(--radius-md); align-items: stretch;">
                 <div class="test-input-card">
@@ -1403,11 +1481,10 @@
             <div style="background:var(--bg-secondary); padding:20px; border-radius:var(--radius-md); border:1px dashed var(--border-color); margin-bottom:16px;">
               <div style="font-weight:700; color:var(--text-primary); font-size:1.02rem; margin-bottom:8px;">📁 Handout Test Papers Not Yet Added For This Topic</div>
               <p style="font-size:0.92rem; color:var(--text-secondary); line-height:1.6; margin-bottom:14px;">
-                Handout test papers have not yet been configured for this topic. Use the Question Book or Random Mock Generator in the meantime.
+                Handout test papers have not yet been configured for this topic. Use the Question Book in the meantime.
               </p>
               <div style="display:flex; gap:10px; flex-wrap:wrap;">
                 <button type="button" class="btn sm" id="btn-goto-qbook">Switch to Question Book (${tests.length ? tests[0].count : 0} Qs Ready)</button>
-                <button type="button" class="btn sm alt" id="btn-goto-mock">Launch Random Mock Drill</button>
               </div>
             </div>
           </div>
@@ -1503,153 +1580,141 @@
         `}
       </div>
 
-      <!-- PANEL 3: Random Mock Drill Generator -->
-      <div id="panel-mode-mock" class="mode-panel" style="display:none;">
-        <div class="card mb-4">
-          <div class="flex-between mb-3">
-            <div>
-              <h3>🎲 Random Mock Test Generator (${esc(tn)})</h3>
-              <p class="text-muted" style="font-size:0.88rem;">Generate a customized mock test with random questions sampled strictly from Question Book (<b>${esc(tn)}</b>)</p>
-            </div>
-            <span class="badge badge-warning">Random Speed Drill</span>
-          </div>
-
-          <form id="random-mock-form" style="display:flex; flex-direction:column; gap:18px;">
-            <div>
-              <label style="font-weight:700; font-size:0.92rem; display:block; margin-bottom:10px;">
-                Select Number of Random Questions:
-              </label>
-              <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;">
-                <button type="button" class="btn alt sm btn-mock-count" data-count="10">10 Questions (Quick 10m Drill)</button>
-                <button type="button" class="btn alt sm btn-mock-count active" data-count="20" style="border-color:var(--brand-primary); color:var(--brand-primary); font-weight:700;">20 Questions (Standard Mock)</button>
-                <button type="button" class="btn alt sm btn-mock-count" data-count="30">30 Questions (Deep Mock)</button>
-                <button type="button" class="btn alt sm btn-mock-count" data-count="50">50 Questions (Mega Drill)</button>
-              </div>
-              <div style="display:flex; align-items:center; gap:10px;">
-                <span style="font-size:0.85rem; color:var(--text-muted);">Custom count:</span>
-                <input type="number" id="mock-qcount-input" min="5" max="${tests.length ? tests[0].count : 180}" value="20" style="width:90px; padding:6px 10px; border:1px solid var(--border-color); border-radius:var(--radius-sm); font-weight:700;">
-                <span style="font-size:0.85rem; color:var(--text-muted);">(Max ${tests.length ? tests[0].count : 180} questions)</span>
-              </div>
-            </div>
-
-            <div style="padding:14px; background:var(--bg-secondary); border-radius:var(--radius-md);">
-              <label style="font-weight:700; font-size:0.92rem; display:block; margin-bottom:10px;">
-                Time Limit:
-              </label>
-              <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px;">
-                <label style="display:flex; align-items:center; gap:6px; background:var(--bg-surface); padding:8px 14px; border-radius:var(--radius-sm); border:1px solid var(--border-color); cursor:pointer;">
-                  <input type="radio" name="mock_time_limit" value="10">
-                  <span style="font-size:0.88rem; font-weight:600;">10 Minutes</span>
-                </label>
-                <label style="display:flex; align-items:center; gap:6px; background:var(--bg-surface); padding:8px 14px; border-radius:var(--radius-sm); border:1px solid var(--border-color); cursor:pointer;">
-                  <input type="radio" name="mock_time_limit" value="15">
-                  <span style="font-size:0.88rem; font-weight:600;">15 Minutes</span>
-                </label>
-                <label style="display:flex; align-items:center; gap:6px; background:var(--bg-surface); padding:8px 14px; border-radius:var(--radius-sm); border:1px solid var(--border-color); cursor:pointer;">
-                  <input type="radio" name="mock_time_limit" value="20" checked>
-                  <span style="font-size:0.88rem; font-weight:600;">20 Minutes</span>
-                </label>
-                <label style="display:flex; align-items:center; gap:6px; background:var(--bg-surface); padding:8px 14px; border-radius:var(--radius-sm); border:1px solid var(--border-color); cursor:pointer;">
-                  <input type="radio" name="mock_time_limit" value="0">
-                  <span style="font-size:0.88rem; font-weight:600;">Untimed</span>
-                </label>
-              </div>
-
-              <div style="margin-top:12px;">
-                <label class="test-toggle-label" style="display:inline-flex;" title="Randomize choices on every attempt">
-                  <input type="checkbox" id="mock-shuffle-opts" checked>
-                  <div>
-                    <span class="test-toggle-title">🎲 Shuffle Options for Every Attempt</span>
-                    <span class="test-toggle-sub">Randomize answer positions A&ndash;E</span>
-                  </div>
-                </label>
-              </div>
-            </div>
-
-            <div>
-              <button type="submit" class="btn" id="btn-submit-random-mock" style="min-width:280px; padding:12px 24px; font-size:1.05rem;">
-                🎲 Start Random Mock Test (20 Qs) 🚀
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-
-      <!-- PANEL 4: Mock Tests Grid (Test 1 - 25) -->
-      <div id="panel-mode-mocksgrid" class="mode-panel" style="display:none;">
+      <!-- PANEL 3: Chapter Based Test Card & Configuration -->
+      <div id="panel-mode-chaptertest" class="mode-panel" style="display:none;">
         <div class="card mb-4">
           <div class="flex-between mb-3">
             <div>
               <h3 style="display:flex; align-items:center; gap:8px;">
-                <span>🎯 Mock Tests</span>
-                <span style="font-size:0.88rem; font-weight:600; color:var(--text-muted);">(Test 1 &ndash; 25)</span>
+                <span>🎯 Chapter Based Test</span>
+                <span style="font-size:0.9rem; font-weight:600; color:var(--text-muted);">&middot; ${esc(tn)}</span>
               </h3>
               <p class="text-muted" style="font-size:0.88rem; margin:2px 0 0;">
-                Curated 25 Mock Tests for <b>${esc(tn)}</b> &middot; Sourced exclusively from Question Book PDF
+                Comprehensive timed assessment covering questions across <b>${esc(tn)}</b>. Select a specific practice set or test across the whole chapter.
               </p>
             </div>
-            <span class="badge" style="background:rgba(139,92,246,0.15); color:#7c3aed; font-weight:700;">25 Tests Suite</span>
+            <span class="badge" style="background:rgba(139,92,246,0.15); color:#7c3aed; font-weight:700;">Chapter Exam</span>
           </div>
 
-          <!-- Quick Test Launcher Info -->
-          <div style="background:var(--bg-secondary); border-radius:var(--radius-md); padding:16px 20px; border:1px solid var(--border-color); margin-bottom:24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
-            <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
-              <span style="font-size:0.88rem; font-weight:700; color:var(--text-primary);">Test Setting:</span>
-              <span style="font-size:0.84rem; color:var(--text-secondary);">⏱️ <b>20 Qs per test</b></span>
-              <span style="font-size:0.84rem; color:var(--text-secondary);">⏳ <b>20 mins target timer</b></span>
-              <span style="font-size:0.84rem; color:var(--text-secondary);">📖 <b>Source: Question Book PDF</b></span>
+          ${!allTests.length ? `
+            <div style="background:var(--bg-secondary); padding:20px; border-radius:var(--radius-md); border:1px dashed var(--border-color); text-align:center;">
+              <p class="text-muted" style="margin:0;">No test questions configured for this chapter yet.</p>
             </div>
-            <div style="display:flex; align-items:center; gap:8px;">
-              <label style="font-size:0.82rem; font-weight:600; display:flex; align-items:center; gap:6px; cursor:pointer;">
-                <input type="checkbox" id="grid-mock-shuffle-opt" checked>
-                <span>Shuffle Options</span>
-              </label>
-            </div>
-          </div>
-
-          <div style="text-align:center; font-size:0.86rem; font-weight:700; color:var(--text-muted); margin-bottom:14px; letter-spacing:0.04em; text-transform:uppercase;">
-            Test 1 &ndash; 25
-          </div>
-
-          <!-- 25 Test Buttons Grid styled matching the requested design -->
-          <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-bottom:20px;">
-            ${Array.from({ length: 25 }, (_, i) => {
-              const testNum = i + 1;
-              const testTitle = `${tn} - Mock Test ${testNum}`;
-              const pastAtt = topicAttempts.find(a => a.testName === testTitle);
-              const isCompleted = !!pastAtt;
-              const statusText = isCompleted ? (pastAtt.accuracy != null ? `${pastAtt.accuracy.toFixed(0)}% Done` : 'Completed') : 'Pending';
-              const bgColor = isCompleted ? 'rgba(16,185,129,0.12)' : '#ede9fe';
-              const borderColor = isCompleted ? 'var(--color-success)' : '#ddd6fe';
-              const titleColor = isCompleted ? 'var(--color-success)' : '#1e1b4b';
-              const subColor = isCompleted ? 'var(--color-success)' : '#6b7280';
-
-              return `
-                <div class="mock-grid-btn"
-                     data-testnum="${testNum}"
-                     role="button"
-                     tabindex="0"
-                     title="Click to take Mock Test ${testNum}"
-                     style="width:105px; min-height:56px; background:${bgColor}; border:1px solid ${borderColor}; border-radius:12px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:6px 10px; cursor:pointer; transition:all 0.18s ease; box-shadow:0 1px 3px rgba(0,0,0,0.04); user-select:none;">
-                  <span style="font-weight:700; font-size:0.92rem; color:${titleColor}; line-height:1.2;">Test ${testNum}</span>
-                  <span style="font-size:0.75rem; color:${subColor}; margin-top:2px; font-weight:${isCompleted ? '700' : '500'};">${statusText}</span>
+          ` : `
+            <form id="chapter-test-form" style="display:flex; flex-direction:column; gap:18px;">
+              <!-- Set Selection Cards -->
+              <div style="padding:16px; background:var(--bg-secondary); border-radius:var(--radius-md); border:1px solid var(--border-color);">
+                <div style="font-weight:700; font-size:0.92rem; margin-bottom:10px;">ðŸ§ª Select Test Set:</div>
+                <div class="chapter-test-cards-grid">
+                  ${chapterSets.map((cs, idx) => `
+                    <div class="ch-test-card ${idx === 0 ? 'active' : ''}"
+                         data-setid="${esc(cs.id)}"
+                         data-count="${cs.count}"
+                         data-name="${esc(cs.name)}"
+                         role="button" tabindex="0"
+                         title="${esc(cs.name)} â€” ${cs.count} Questions with Solutions">
+                      <div class="ch-test-card-top">
+                        <span class="ch-test-card-badge">Set ${idx + 1}</span>
+                        <span class="ch-test-card-check">âœ“</span>
+                      </div>
+                      <div class="ch-test-card-name">${esc(cs.setName || cs.name)}</div>
+                      <div class="ch-test-card-count">${cs.count} Qs</div>
+                    </div>
+                  `).join('')}
+                  ${tests.map((t, idx) => `
+                    <div class="ch-test-card ${!chapterSets.length && idx === 0 ? 'active' : ''}"
+                         data-setid="${esc(t.id)}"
+                         data-count="${t.count}"
+                         data-name="${esc(t.name)}"
+                         role="button" tabindex="0"
+                         title="${esc(t.name)} â€” ${t.count} Questions">
+                      <div class="ch-test-card-top">
+                        <span class="ch-test-card-badge" style="background:rgba(37,99,235,0.12); color:#2563eb;">Q-Book</span>
+                        <span class="ch-test-card-check">âœ“</span>
+                      </div>
+                      <div class="ch-test-card-name">${esc(t.name)}</div>
+                      <div class="ch-test-card-count">${t.count} Qs</div>
+                    </div>
+                  `).join('')}
                 </div>
-              `;
-            }).join('')}
-          </div>
+                <input type="hidden" id="ch-test-set-select" value="${chapterSets.length ? chapterSets[0].id : (tests.length ? tests[0].id : '')}">
+                <div id="ch-test-set-desc" style="font-size:0.82rem; color:var(--text-muted); margin-top:8px;">
+                  ${chapterSets.length
+                    ? `Selected Set has <b>${chapterSets[0].count} questions</b> complete with step-by-step solutions and verified answer key.`
+                    : tests.length
+                    ? `Selected Question Book Bank has <b>${tests[0].count} questions</b>.`
+                    : ''}
+                </div>
+              </div>
+              <div>
+                <label style="font-weight:700; font-size:0.92rem; display:block; margin-bottom:10px;">
+                  Select Number of Questions:
+                </label>
+                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;">
+                  <button type="button" class="btn alt sm btn-ch-count" data-count="15">15 Questions (Quick Test)</button>
+                  <button type="button" class="btn alt sm btn-ch-count active" data-count="20" style="border-color:var(--brand-primary); color:var(--brand-primary); font-weight:700;">20 Questions (Standard Test)</button>
+                  <button type="button" class="btn alt sm btn-ch-count" data-count="25">25 Questions (Full Test)</button>
+                  <button type="button" class="btn alt sm btn-ch-count" data-count="30">30 Questions (Exam Level)</button>
+                  <button type="button" class="btn alt sm btn-ch-count" data-count="all">All Questions in Set</button>
+                </div>
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <span style="font-size:0.85rem; color:var(--text-muted);">Question Count:</span>
+                  <input type="number" id="ch-test-qcount-input" min="5" max="${chapterSets.length ? chapterSets[0].count : (tests.length ? tests[0].count : 40)}" value="20" style="width:90px; padding:6px 10px; border:1px solid var(--border-color); border-radius:var(--radius-sm); font-weight:700;">
+                  <span id="ch-test-max-hint" style="font-size:0.85rem; color:var(--text-muted);">(Max ${chapterSets.length ? chapterSets[0].count : (tests.length ? tests[0].count : 40)} questions available in this set)</span>
+                </div>
+              </div>
 
-          <div style="display:flex; justify-content:center; align-items:center; gap:20px; font-size:0.8rem; color:var(--text-muted); padding-top:12px; border-top:1px solid var(--border-color);">
-            <div style="display:flex; align-items:center; gap:6px;">
-              <span style="width:12px; height:12px; border-radius:3px; background:#ede9fe; border:1px solid #ddd6fe; display:inline-block;"></span>
-              <span>Pending</span>
-            </div>
-            <div style="display:flex; align-items:center; gap:6px;">
-              <span style="width:12px; height:12px; border-radius:3px; background:rgba(16,185,129,0.12); border:1px solid var(--color-success); display:inline-block;"></span>
-              <span>Completed (Score Shown)</span>
-            </div>
-          </div>
+              <div style="padding:16px; background:var(--bg-secondary); border-radius:var(--radius-md); border:1px solid var(--border-color);">
+                <label style="font-weight:700; font-size:0.92rem; display:block; margin-bottom:10px;">
+                  ⏱️ Exam Timer Limit:
+                </label>
+                <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px;">
+                  <label style="display:flex; align-items:center; gap:6px; background:var(--bg-surface); padding:8px 14px; border-radius:var(--radius-sm); border:1px solid var(--border-color); cursor:pointer;">
+                    <input type="radio" name="ch_time_limit" value="15">
+                    <span style="font-size:0.88rem; font-weight:600;">15 Minutes (Fast Pace)</span>
+                  </label>
+                  <label style="display:flex; align-items:center; gap:6px; background:var(--bg-surface); padding:8px 14px; border-radius:var(--radius-sm); border:1px solid var(--border-color); cursor:pointer;">
+                    <input type="radio" name="ch_time_limit" value="20" checked>
+                    <span style="font-size:0.88rem; font-weight:600;">20 Minutes (Standard Benchmark)</span>
+                  </label>
+                  <label style="display:flex; align-items:center; gap:6px; background:var(--bg-surface); padding:8px 14px; border-radius:var(--radius-sm); border:1px solid var(--border-color); cursor:pointer;">
+                    <input type="radio" name="ch_time_limit" value="25">
+                    <span style="font-size:0.88rem; font-weight:600;">25 Minutes</span>
+                  </label>
+                  <label style="display:flex; align-items:center; gap:6px; background:var(--bg-surface); padding:8px 14px; border-radius:var(--radius-sm); border:1px solid var(--border-color); cursor:pointer;">
+                    <input type="radio" name="ch_time_limit" value="0">
+                    <span style="font-size:0.88rem; font-weight:600;">Untimed</span>
+                  </label>
+                </div>
+
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:12px;">
+                  <label class="test-toggle-label" title="Randomize question sequence across set">
+                    <input type="checkbox" id="ch-shuffle-qs">
+                    <div>
+                      <span class="test-toggle-title">🔀 Shuffle Questions</span>
+                      <span class="test-toggle-sub">Randomize order across set</span>
+                    </div>
+                  </label>
+                  <label class="test-toggle-label" title="Randomize option order">
+                    <input type="checkbox" id="ch-shuffle-opts" checked>
+                    <div>
+                      <span class="test-toggle-title">🎲 Shuffle Options</span>
+                      <span class="test-toggle-sub">Randomize choices (A&ndash;E)</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <button type="submit" class="btn" id="btn-submit-chapter-test" style="min-width:300px; padding:12px 24px; font-size:1.05rem; background:#7c3aed; border-color:#7c3aed;">
+                  🚀 Start ${chapterSets.length ? esc(chapterSets[0].name) : esc(tn)} Chapter Test (20 Qs)
+                </button>
+              </div>
+            </form>
+          `}
         </div>
       </div>
+
 
       <!-- Topic Performance Summary Card -->
       <div class="metrics-grid">
@@ -1730,69 +1795,70 @@
     // Tab Mode Switching Events
     const tabQbook = app.querySelector('#tab-mode-qbook');
     const tabHandson = app.querySelector('#tab-mode-handson');
-    const tabMocksGrid = app.querySelector('#tab-mode-mocksgrid');
-    const tabMock = app.querySelector('#tab-mode-mock');
+    const tabChapterTest = app.querySelector('#tab-mode-chaptertest');
 
     const panelQbook = app.querySelector('#panel-mode-qbook');
     const panelHandson = app.querySelector('#panel-mode-handson');
-    const panelMocksGrid = app.querySelector('#panel-mode-mocksgrid');
-    const panelMock = app.querySelector('#panel-mode-mock');
+    const panelChapterTest = app.querySelector('#panel-mode-chaptertest');
 
     function selectMode(mode) {
       if (tabQbook) tabQbook.classList.toggle('active', mode === 'qbook');
       if (tabHandson) tabHandson.classList.toggle('active', mode === 'handson');
-      if (tabMocksGrid) tabMocksGrid.classList.toggle('active', mode === 'mocksgrid');
-      if (tabMock) tabMock.classList.toggle('active', mode === 'mock');
+      if (tabChapterTest) tabChapterTest.classList.toggle('active', mode === 'chaptertest');
 
       if (panelQbook) panelQbook.style.display = mode === 'qbook' ? 'block' : 'none';
       if (panelHandson) panelHandson.style.display = mode === 'handson' ? 'block' : 'none';
-      if (panelMocksGrid) panelMocksGrid.style.display = mode === 'mocksgrid' ? 'block' : 'none';
-      if (panelMock) panelMock.style.display = mode === 'mock' ? 'block' : 'none';
+      if (panelChapterTest) panelChapterTest.style.display = mode === 'chaptertest' ? 'block' : 'none';
     }
 
     if (tabQbook) tabQbook.onclick = () => selectMode('qbook');
     if (tabHandson) tabHandson.onclick = () => selectMode('handson');
-    if (tabMocksGrid) tabMocksGrid.onclick = () => selectMode('mocksgrid');
-    if (tabMock) tabMock.onclick = () => selectMode('mock');
+    if (tabChapterTest) tabChapterTest.onclick = () => selectMode('chaptertest');
 
     const btnGotoQbook = app.querySelector('#btn-goto-qbook');
     if (btnGotoQbook) btnGotoQbook.onclick = () => selectMode('qbook');
 
-    const btnGotoMock = app.querySelector('#btn-goto-mock');
-    if (btnGotoMock) btnGotoMock.onclick = () => selectMode('mock');
+    // Chapter Based Test Form Logic
+    const chForm = app.querySelector('#chapter-test-form');
+    const chSetSelect = app.querySelector('#ch-test-set-select');
+    const chSetDesc = app.querySelector('#ch-test-set-desc');
+    const chQInput = app.querySelector('#ch-test-qcount-input');
+    const chMaxHint = app.querySelector('#ch-test-max-hint');
+    const btnSubmitChTest = app.querySelector('#btn-submit-chapter-test');
 
-    // Mock Tests Grid (Test 1 - 25) Launch Handler
-    app.querySelectorAll('.mock-grid-btn').forEach(btn => {
-      btn.onclick = () => {
-        const testNum = +btn.dataset.testnum;
-        if (!testNum) return;
-        const testConfig = tests[0];
-        if (!testConfig) {
-          alert('No question bank available for this topic.');
-          return;
+    function updateChTestButtonText() {
+      if (!btnSubmitChTest) return;
+      const activeCard = app.querySelector('.ch-test-card.active');
+      const setName = activeCard ? (activeCard.dataset.name || tn) : tn;
+      const count = chQInput ? (+chQInput.value || 20) : 20;
+      btnSubmitChTest.textContent = `🚀 Start ${setName} (${count} Qs)`;
+    }
+
+    // Card-based set selection
+    app.querySelectorAll('.ch-test-card').forEach(card => {
+      const activate = () => {
+        app.querySelectorAll('.ch-test-card').forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        const setId = card.dataset.setid;
+        const setTotal = +card.dataset.count || 40;
+        const setName = card.dataset.name || '';
+        const hiddenSel = app.querySelector('#ch-test-set-select');
+        if (hiddenSel) hiddenSel.value = setId;
+        if (chQInput) {
+          chQInput.max = setTotal;
+          if (+chQInput.value > setTotal) chQInput.value = setTotal;
         }
-
-        const so = !!app.querySelector('#grid-mock-shuffle-opt')?.checked;
-        const testTitle = `${tn} - Mock Test ${testNum}`;
-
-        startTest(testConfig, {
-          randomCount: Math.min(20, testConfig.count || 20),
-          lim: 20,
-          sq: true,
-          so: so,
-          customTitle: testTitle
-        });
+        if (chMaxHint) chMaxHint.textContent = `(Max ${setTotal} questions available in this set)`;
+        if (chSetDesc) chSetDesc.innerHTML = `Selected <b>${esc(setName)}</b> has <b>${setTotal} questions</b> with verified answer key &amp; solutions.`;
+        updateChTestButtonText();
       };
+      card.addEventListener('click', activate);
+      card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); } });
     });
 
-    // Random Mock Generator Logic
-    const mockForm = app.querySelector('#random-mock-form');
-    const mockQInput = app.querySelector('#mock-qcount-input');
-    const btnSubmitMock = app.querySelector('#btn-submit-random-mock');
-
-    app.querySelectorAll('.btn-mock-count').forEach(btn => {
+    app.querySelectorAll('.btn-ch-count').forEach(btn => {
       btn.onclick = () => {
-        app.querySelectorAll('.btn-mock-count').forEach(b => {
+        app.querySelectorAll('.btn-ch-count').forEach(b => {
           b.classList.remove('active');
           b.style.borderColor = '';
           b.style.color = '';
@@ -1800,34 +1866,46 @@
         btn.classList.add('active');
         btn.style.borderColor = 'var(--brand-primary)';
         btn.style.color = 'var(--brand-primary)';
-        const count = +btn.dataset.count;
-        if (mockQInput) mockQInput.value = count;
-        if (btnSubmitMock) btnSubmitMock.textContent = `🎲 Start Random Mock Test (${count} Qs) 🚀`;
+
+        const activeCard2 = app.querySelector('.ch-test-card.active');
+        const setTotal = activeCard2 ? (+activeCard2.dataset.count || 40) : 40;
+        let count = btn.dataset.count === 'all' ? setTotal : +btn.dataset.count;
+        if (count > setTotal) count = setTotal;
+
+        if (chQInput) chQInput.value = count;
+        updateChTestButtonText();
       };
     });
 
-    if (mockQInput) {
-      mockQInput.oninput = () => {
-        const c = Math.max(1, +mockQInput.value || 1);
-        if (btnSubmitMock) btnSubmitMock.textContent = `🎲 Start Random Mock Test (${c} Qs) 🚀`;
+    if (chQInput) {
+      chQInput.oninput = () => {
+        updateChTestButtonText();
       };
     }
 
-    if (mockForm && tests.length) {
-      mockForm.onsubmit = e => {
+    if (chForm) {
+      chForm.onsubmit = e => {
         e.preventDefault();
-        const testConfig = tests[0];
-        const count = Math.max(1, Math.min(testConfig.count, +mockQInput.value || 20));
-        const selectedTimeRadio = mockForm.querySelector('[name=mock_time_limit]:checked');
+        const selectedSetId = chSetSelect ? chSetSelect.value : (tests.length ? tests[0].id : null);
+        const testConfig = C.tests.find(x => x.id === selectedSetId) || tests[0];
+        if (!testConfig) {
+          alert('No question set found for this chapter.');
+          return;
+        }
+
+        const count = Math.max(1, Math.min(testConfig.count, +chQInput.value || 20));
+        const selectedTimeRadio = chForm.querySelector('[name=ch_time_limit]:checked');
         const lim = selectedTimeRadio ? +selectedTimeRadio.value : 20;
-        const so = !!mockForm.querySelector('#mock-shuffle-opts')?.checked;
+        const sq = !!chForm.querySelector('#ch-shuffle-qs')?.checked;
+        const so = !!chForm.querySelector('#ch-shuffle-opts')?.checked;
 
         startTest(testConfig, {
           randomCount: count,
           lim: lim,
-          sq: true,
+          sq: sq,
           so: so,
-          customTitle: `${tn} - ${count} Qs Random Mock Drill`
+          isChapterTest: true,
+          customTitle: `${testConfig.name} - Chapter Test (${count} Qs)`
         });
       };
     }
@@ -1836,18 +1914,83 @@
     app.querySelectorAll('.test-config-form').forEach(form => {
       const testId = form.dataset.testid;
       const testConfig = C.tests.find(x => x.id === testId);
+      const isGrouped = form.dataset.grouped === '1';
+
+      function updateFormSummary() {
+        if (!isGrouped) return;
+        const fromVal = Math.max(1, +form.querySelector('[name=from]')?.value || 1);
+        const toVal = Math.max(fromVal, +form.querySelector('[name=to]')?.value || fromVal);
+        const qCount = toVal - fromVal + 1;
+        const subMode = form.querySelector(`[name="subpart_mode_${testId}"]:checked`)?.value || 'all';
+        const customRow = form.querySelector('.custom-subparts-row');
+        const infoEl = form.querySelector('.subpart-mode-info');
+        const badgeEl = form.querySelector('.qcount-badge');
+        const fromHint = form.querySelector(`#from-q-hint-${testId}`);
+        const toHint = form.querySelector(`#to-q-hint-${testId}`);
+
+        if (customRow) {
+          customRow.style.display = subMode === 'custom' ? 'flex' : 'none';
+        }
+
+        let totalSelected = qCount;
+        let infoText = '';
+
+        if (subMode === 'all') {
+          totalSelected = qCount * 4;
+          infoText = `Practicing all 4 sub-parts (A, B, C, D) for each question (Total: ${totalSelected} Questions).`;
+          if (fromHint) fromHint.textContent = `Question ${fromVal} (includes A–D)`;
+          if (toHint) toHint.textContent = `Question ${toVal} (includes A–D)`;
+        } else if (subMode === 'A' || subMode === 'B' || subMode === 'C' || subMode === 'D') {
+          totalSelected = qCount;
+          infoText = `Testing Part ${subMode} only: Question ${fromVal}(${subMode}) to ${toVal}(${subMode}) in sequential order (1st question, 2nd question...). Total: ${totalSelected} Questions.`;
+          if (fromHint) fromHint.textContent = `Question ${fromVal}(${subMode})`;
+          if (toHint) toHint.textContent = `Question ${toVal}(${subMode})`;
+        } else if (subMode === 'jumbled') {
+          totalSelected = qCount;
+          infoText = `Testing 1 random sub-part per question in order (Question ${fromVal}, ${fromVal + 1}... ${toVal}). Real exam knowledge test! Total: ${totalSelected} Questions.`;
+          if (fromHint) fromHint.textContent = `Question ${fromVal} (1 random part)`;
+          if (toHint) toHint.textContent = `Question ${toVal} (1 random part)`;
+        } else if (subMode === 'custom') {
+          let checkedCount = 0;
+          ['A', 'B', 'C', 'D'].forEach(p => {
+            if (form.querySelector(`[name="sub_${p}_${testId}"]`)?.checked) checkedCount++;
+          });
+          totalSelected = qCount * checkedCount;
+          infoText = `Testing selected parts (${checkedCount} per question): Total: ${totalSelected} Questions.`;
+          if (fromHint) fromHint.textContent = `Question ${fromVal} (${checkedCount} parts)`;
+          if (toHint) toHint.textContent = `Question ${toVal} (${checkedCount} parts)`;
+        }
+
+        if (badgeEl) {
+          badgeEl.textContent = `${totalSelected} Questions Selected`;
+        }
+        if (infoEl) {
+          infoEl.textContent = infoText;
+        }
+      }
+
+      form.addEventListener('change', updateFormSummary);
+      form.addEventListener('input', updateFormSummary);
+      updateFormSummary();
 
       form.onsubmit = e => {
         e.preventDefault();
         const d = new FormData(form);
-        const isGrouped = form.dataset.grouped === '1';
+        const subMode = form.querySelector(`[name="subpart_mode_${testId}"]:checked`)?.value || 'all';
+        const customParts = [];
+        ['A', 'B', 'C', 'D'].forEach(p => {
+          if (form.querySelector(`[name="sub_${p}_${testId}"]`)?.checked) customParts.push(p);
+        });
+
         startTest(testConfig, {
           from: Math.max(1, +d.get('from') || 1),
           to: Math.max(1, +d.get('to') || 1),
           lim: Math.max(0, +d.get('lim') || 0),
           sq: !!d.get('sq'),
           so: !!d.get('so'),
-          isGrouped: isGrouped
+          isGrouped: isGrouped,
+          subpartMode: subMode,
+          selectedSubParts: customParts
         });
       };
 
@@ -1966,15 +2109,15 @@
       let qs = bank.map((q, idx) => {
         let displayN = q.n;
         let groupNum = idx + 1;
-        if (hasNaturalSub) {
-          // Has natural sub-letters like "1(a)", "1(b)": use the main number as group
-          const m = String(q.n || '').match(/^(\d+)/);
-          groupNum = m ? parseInt(m[1], 10) : idx + 1;
-          displayN = q.n; // keep as-is: "1(a)", "1(b)", etc.
+        let subPart = '';
+        const m = String(q.n || '').match(/^(\d+)(?:\(([A-Za-z])\))?/);
+        if (m) {
+          groupNum = parseInt(m[1], 10);
+          subPart = (m[2] || '').toUpperCase();
+          displayN = q.n;
         } else {
-          // Plain sequential: keep n as-is (e.g. "1", "2", "3" ...)
-          const m = String(q.n || '').match(/^(\d+)/);
-          groupNum = m ? parseInt(m[1], 10) : idx + 1;
+          const m2 = String(q.n || '').match(/^(\d+)/);
+          groupNum = m2 ? parseInt(m2[1], 10) : idx + 1;
           displayN = q.n;
         }
         return Object.assign({}, q, {
@@ -1982,6 +2125,7 @@
           n: displayN,
           rawN: q.n,
           groupNum: groupNum,
+          subPart: subPart,
           bankIndex: idx + 1
         });
       });
@@ -1989,11 +2133,36 @@
       if (opts.only) {
         qs = qs.filter(q => opts.only.includes(q.id));
       } else if (opts.randomCount) {
-        qs = shuffle(qs).slice(0, Math.min(opts.randomCount, qs.length));
+        if (opts.sq) qs = shuffle(qs);
+        qs = qs.slice(0, Math.min(opts.randomCount, qs.length));
       } else if (opts.isGrouped) {
         const fromGroup = Math.max(1, opts.from || 1);
         const toGroup = Math.max(fromGroup, opts.to || fromGroup);
+        // Filter by main question range (e.g. 1 to 45)
         qs = qs.filter(q => q.groupNum >= fromGroup && q.groupNum <= toGroup);
+
+        const subMode = opts.subpartMode || 'all';
+        if (subMode === 'A' || subMode === 'B' || subMode === 'C' || subMode === 'D') {
+          qs = qs.filter(q => q.subPart === subMode);
+        } else if (subMode === 'custom' && opts.selectedSubParts && opts.selectedSubParts.length) {
+          qs = qs.filter(q => opts.selectedSubParts.includes(q.subPart));
+        } else if (subMode === 'jumbled' || subMode === 'random_one') {
+          // For each groupNum in order (fromGroup..toGroup), pick exactly 1 random sub-part
+          const groupedByNum = {};
+          qs.forEach(q => {
+            if (!groupedByNum[q.groupNum]) groupedByNum[q.groupNum] = [];
+            groupedByNum[q.groupNum].push(q);
+          });
+          const jumbledQs = [];
+          for (let g = fromGroup; g <= toGroup; g++) {
+            const list = groupedByNum[g];
+            if (list && list.length) {
+              const pick = list[Math.floor(Math.random() * list.length)];
+              jumbledQs.push(pick);
+            }
+          }
+          qs = jumbledQs;
+        }
       } else {
         const fromIdx = Math.max(0, (opts.from || 1) - 1);
         const toIdx = Math.min(qs.length, opts.to || qs.length);
@@ -2013,6 +2182,7 @@
           bankIndex: q.bankIndex,
           q: q.q,
           f: q.f,
+          sol: q.sol || '',
           oi: op.map(z => z.i),
           opts: op.map(z => z.x),
           ci: q.a == null ? null : op.findIndex(z => z.i === q.a),
@@ -2247,7 +2417,7 @@
           </div>
 
           <div class="palette-grid ${isGroupedTest ? 'palette-grouped' : ''}"
-              style="${isGroupedTest ? `grid-template-columns: repeat(${maxSubsPerGroup}, 1fr)` : ''}">
+              style="${(isGroupedTest && maxSubsPerGroup > 1) ? `grid-template-columns: repeat(${maxSubsPerGroup}, 1fr)` : `grid-template-columns: repeat(auto-fill, minmax(42px, 1fr))`}"">
             ${S.qs.map((item, idx) => {
               // For grouped: "1(a)" -> "1A", for plain: "1" -> "1"
               const rawLabel = String(item.n || (idx + 1));
@@ -2472,6 +2642,7 @@
           speedTrendText,
           fastestHistorical: qHist.fastestTime || q.time,
           f: q.f,
+          sol: q.sol || '',
           st,
           speedClass: classification.speedClass,
           speedLabel: classification.label,
@@ -2507,6 +2678,7 @@
         from:      qFrom,
         to:        qTo,
         isRandom:  !!S.o?.randomCount,
+        isChapterTest: !!S.o?.isChapterTest,
         isMistakes: !!S.o?.only,
         total:     rows.length,
         correct:   correctCount,
@@ -2523,7 +2695,8 @@
         qt:    Object.fromEntries(rows.filter(r => r.time > 0).map(r => [r.id, r.time])),
         wrong: rows.filter(r => r.st === 'Incorrect' || r.st === 'Unanswered').map(r => r.id),
         ok:    rows.filter(r => r.st === 'Correct').map(r => r.id),
-        opts:  S.o ? Object.assign({}, S.o) : null
+        opts:  S.o ? Object.assign({}, S.o) : null,
+        subpartMode: S.o?.subpartMode || 'all'
       };
 
       // localStorage is written synchronously inside saveAttempt — no await needed.
@@ -2879,6 +3052,7 @@
     }).join('');
 
     var noteHTML = row.f ? '<div class="rec-box mb-4" style="padding:10px;"><b class="text-warning">Note:</b> ' + esc(row.f) + '</div>' : '';
+    var solHTML = row.sol ? '<div class="rec-box mb-4" style="padding:14px; background:rgba(16,185,129,0.08); border-left:4px solid var(--color-success);"><b style="color:var(--color-success); font-size:0.95rem; display:block; margin-bottom:6px;">💡 Step-by-Step Solution:</b><div style="font-size:0.92rem; line-height:1.6; color:var(--text-primary); font-family:var(--font-mono, monospace);">' + esc(row.sol) + '</div></div>' : '';
     var historyBlock = attemptsRowsHTML
       ? '<div class="table-container" style="max-height:200px;overflow:auto;margin-top:8px;"><table class="data-table" style="width:100%;font-size:0.85rem;"><thead><tr><th>Date &amp; Time</th><th>Test Name</th><th>Time (s)</th><th>Status</th></tr></thead><tbody>' + attemptsRowsHTML + '</tbody></table></div>'
       : '<div class="text-muted mt-2" style="font-size:0.85rem;">No prior attempts recorded yet.</div>';
@@ -2894,6 +3068,7 @@
       '<div class="question-text mb-4" style="font-size:1.05rem;">' + renderFormattedQuestion(row.q) + '</div>' +
       noteHTML +
       '<div class="options-list mb-4">' + optionsHTML + '</div>' +
+      solHTML +
       '<div style="background:var(--bg-secondary);padding:16px;border-radius:var(--radius-md);font-size:0.9rem;margin-bottom:20px;">' +
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;margin-bottom:12px;">' +
           '<div><b>Time this attempt:</b> ' + row.time + 's</div>' +
@@ -4140,13 +4315,105 @@
 
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const sidebar = document.getElementById('app-sidebar');
-    if (mobileMenuBtn && sidebar) {
-      mobileMenuBtn.onclick = () => {
-        sidebar.classList.toggle('open');
+    const sidebarCloseBtn = document.getElementById('sidebar-close-btn');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+    function isSidebarMinimized() {
+      return window.innerWidth <= 768 || document.body.classList.contains('sidebar-collapsed');
+    }
+
+    function openSidebar() {
+      if (!sidebar) return;
+      sidebar.classList.add('open');
+      if (sidebarOverlay) sidebarOverlay.classList.add('active');
+      if (mobileMenuBtn) {
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        mobileMenuBtn.innerHTML = '✕';
+        mobileMenuBtn.setAttribute('title', 'Close side navbar');
+        mobileMenuBtn.setAttribute('aria-label', 'Close side navbar');
+      }
+    }
+
+    function closeSidebar() {
+      if (!sidebar) return;
+      sidebar.classList.remove('open');
+      if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+      if (mobileMenuBtn) {
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenuBtn.innerHTML = '☰';
+        mobileMenuBtn.setAttribute('title', 'Open side navbar');
+        mobileMenuBtn.setAttribute('aria-label', 'Open side navbar');
+      }
+    }
+
+    function toggleSidebar() {
+      if (!sidebar) return;
+      if (sidebar.classList.contains('open')) {
+        closeSidebar();
+      } else {
+        openSidebar();
+      }
+    }
+
+    if (mobileMenuBtn) {
+      mobileMenuBtn.onclick = (e) => {
+        e.stopPropagation();
+        toggleSidebar();
       };
     }
 
-    window.addEventListener('hashchange', route);
+    if (sidebarCloseBtn) {
+      sidebarCloseBtn.onclick = (e) => {
+        e.stopPropagation();
+        if (window.innerWidth > 768 && !document.body.classList.contains('sidebar-collapsed')) {
+          // On desktop, clicking close minimizes/collapses the sidebar
+          document.body.classList.add('sidebar-collapsed');
+          closeSidebar();
+          try { localStorage.setItem('bp_sidebar_collapsed', '1'); } catch (err) {}
+        } else {
+          closeSidebar();
+        }
+      };
+    }
+
+    if (sidebarOverlay) {
+      sidebarOverlay.onclick = () => {
+        closeSidebar();
+      };
+    }
+
+    // Close sidebar on link navigation when minimized / mobile
+    if (sidebar) {
+      sidebar.addEventListener('click', (e) => {
+        const targetLink = e.target.closest('a');
+        if (targetLink && isSidebarMinimized()) {
+          closeSidebar();
+        }
+      });
+    }
+
+    // Close on Escape key press
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && sidebar && sidebar.classList.contains('open')) {
+        closeSidebar();
+      }
+    });
+
+    // Restore desktop collapsed preference
+    if (window.innerWidth > 768) {
+      try {
+        if (localStorage.getItem('bp_sidebar_collapsed') === '1') {
+          document.body.classList.add('sidebar-collapsed');
+        }
+      } catch (err) {}
+    }
+
+    window.addEventListener('hashchange', () => {
+      if (isSidebarMinimized()) {
+        closeSidebar();
+      }
+      route();
+    });
 
     // Initialize Daily Revision global UI (sidebar badge)
     if (window.DailyRevision) {

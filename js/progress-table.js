@@ -8,7 +8,7 @@ window.ProgressTable = (function () {
   // ── Syllabus data (real question counts from config.js tests) ─────────────
   const ARITHMETIC = [
     { id: 'basic-maths',              name: 'Basic Mathematics',           questions: 100  },
-    { id: 'percentages',              name: 'Percentages',                 questions: 223  },
+    { id: 'percentages',              name: 'Percentages',                 questions: 413  },
     { id: 'profit-loss',              name: 'Profit and Loss',             questions: 204  },
     { id: 'simple-interest',          name: 'Simple Interest',             questions: 80   },
     { id: 'compound-interest',        name: 'Compound Interest',           questions: 80   },
