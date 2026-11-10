@@ -102,6 +102,17 @@ window.APP_CONFIG = {
       marking: { correct: 1, wrong: 0 }
     },
     {
+      id: 'pl-part-a',
+      subject: 'arithmetic',
+      topic: 'profit-loss',
+      name: 'Profit and Loss Part-A Answers (Q 1(A) to 40(A))',
+      source: 'Profit and Loss part-A answers (Visual Solutions)',
+      file: 'data/arithmetic/profit-loss-part-a.js',
+      count: 40,
+      marking: { correct: 1, wrong: 0 },
+      isAnswerViewer: true
+    },
+    {
       id: 'si-1',
       subject: 'arithmetic',
       topic: 'simple-interest',
@@ -110,6 +121,17 @@ window.APP_CONFIG = {
       file: 'data/arithmetic/simple-interest-1.js',
       count: 80,
       marking: { correct: 1, wrong: 0 }
+    },
+    {
+      id: 'si-part-a',
+      subject: 'arithmetic',
+      topic: 'simple-interest',
+      name: 'Simple Interest Part-A Answers (Q 1(A) to 20(A))',
+      source: 'Simple Interest part-A answers (Visual Solutions)',
+      file: 'data/arithmetic/simple-interest-part-a.js',
+      count: 20,
+      marking: { correct: 1, wrong: 0 },
+      isAnswerViewer: true
     },
     {
       id: 'ci-1',
