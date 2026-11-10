@@ -96,6 +96,9 @@
         }
         const sMode = att.subpartMode || att.opts?.subpartMode;
         if (sMode && sMode !== 'all') {
+          if (sMode === 'AB') {
+            return `Q ${startParsed.main}&ndash;${endParsed.main} (Parts A & B)`;
+          }
           if (sMode === 'jumbled') {
             return `Q ${startParsed.main}&ndash;${endParsed.main} (Jumbled 1/Q)`;
           }
@@ -173,7 +176,8 @@
     'volumes-1': { raw: 159, main: 40 },
     'lcm-hcf-1': { raw: 100, main: 25 },
     'problems-on-numbers-1': { raw: 140, main: 35 },
-    // Reasoning
+    'di-1': { raw: 540, main: 135 },
+        // Reasoning
     'seating-arrangement-1': { raw: 367, main: 77 }
   };
 
@@ -304,7 +308,42 @@
       str = str.substring(prefixMatch[0].length).trim();
     }
 
-    // ── PATTERN 1: Combinations (i), (ii), (iii) e.g. 28(A-D) ──
+    // ── PATTERN 0: Data Interpretation (PDF Faithful Structured Layout) ──
+    // Match: **Direction(1-5):** <direction text>\n\n[IMAGE:...]\n\n**[Set X - QX-N]** (pos) <question>
+    const diMatch = str.match(/^(?:\*\*)?Direction\(([^)]+)\):(?:\*\*)?\s*([\s\S]*?)(?:\n\n|\r\n\r\n)(?:\[IMAGE:[^\]]+\]\n\n)?\*\*\[([^\]]+)\]\*\*\s*(\(\d+\))\s+([\s\S]*)$/i);
+    if (diMatch) {
+      const dirRange  = diMatch[1].trim();   // e.g. "1-5"
+      const dirFull   = diMatch[2].trim();   // direction text (instruction + description)
+      const setLabel  = diMatch[3].trim();   // "Set A - QA-1"
+      const qPosTag   = diMatch[4].trim();   // "(1)"
+      const qText     = diMatch[5].trim();   // actual question text
+
+      // Split direction into header (instruction) and body (data description)
+      const dirLines  = dirFull.split(/\r?\n/);
+      const dirHeader = dirLines[0].trim();
+      const dirBody   = dirLines.slice(1).join('\n').trim();
+
+      // Direction(1-5): badge
+      const rangeBadge = `<span class="di-range-badge">Direction(${esc(dirRange)}):</span> `;
+
+      return `
+        <div class="di-container">
+          <div class="di-direction-box">
+            <div class="di-direction-header">${rangeBadge}<span class="di-dir-instruction">${esc(dirHeader)}</span></div>
+            ${dirBody ? `<div class="di-direction-desc">${esc(dirBody)}</div>` : ''}
+          </div>
+          ${imageHTML ? `<div class="di-diagram-wrapper">${imageHTML}</div>` : ''}
+          <div class="di-question-box">
+            <div class="di-question-meta">
+              ${setLabel ? `<span class="di-question-tag">${esc(setLabel)}</span>` : ''}
+              <span class="di-pos-num">${esc(qPosTag)}</span>
+            </div>
+            <div class="di-question-text">${esc(qText)}</div>
+          </div>
+        </div>`;
+    }
+
+        // ── PATTERN 1: Combinations (i), (ii), (iii) e.g. 28(A-D) ──
     const combMatch = str.match(/(\([iI]+\)\s+[A-Za-z\s]+?)\s*(\([iI]+\)\s+[A-Za-z\s]+?)\s*(\([iI]+\)\s+[A-Za-z\s]+?)\s*(From each of the given combinations.*)$/i);
     if (combMatch) {
       const introText = str.substring(0, combMatch.index).trim();
@@ -1336,6 +1375,26 @@
             <p class="text-muted">No tests configured for Question Book yet. You can add PDFs via tools/make_data.py or data/config.js.</p>
           </div>
         ` : tests.map(t => {
+          if (t.isAnswerViewer) {
+            return `
+              <div class="card mb-4" style="border-left: 4px solid var(--brand-primary); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; padding: 20px;">
+                <div>
+                  <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+                    <h3 style="margin:0; font-size:1.15rem;">${esc(t.name)}</h3>
+                    <span class="badge badge-success">Visual Answers</span>
+                  </div>
+                  <p class="text-muted" style="margin:0; font-size:0.88rem;">
+                    Browse all <b>${t.count} questions</b> in sequential order (1(A) to 45(A)) with verified step-by-step visual solutions.
+                  </p>
+                </div>
+                <div>
+                  <button type="button" class="btn btn-view-answers" data-testid="${esc(t.id)}" style="display:inline-flex; align-items:center; gap:8px; font-weight:700; padding:10px 18px;">
+                    <span>📖</span> View Answers
+                  </button>
+                </div>
+              </div>
+            `;
+          }
           const wrongList = wrongIdsForTest(t.id);
           const qInfo = getTestQuestionInfo(t);
           const maxQ = qInfo.mainCount;
@@ -1383,6 +1442,10 @@
                     <label class="subpart-pill" title="Test only sub-part B in sequential order (1st question, 2nd question...)">
                       <input type="radio" name="subpart_mode_${esc(t.id)}" value="B">
                       <span class="pill-btn">Only Part B</span>
+                    </label>
+                    <label class="subpart-pill" title="Test only Part A and Part B (2 variations per question)">
+                      <input type="radio" name="subpart_mode_${esc(t.id)}" value="AB">
+                      <span class="pill-btn">Only Part A &amp; B</span>
                     </label>
                     <label class="subpart-pill" title="Test only sub-part C in sequential order (1st question, 2nd question...)">
                       <input type="radio" name="subpart_mode_${esc(t.id)}" value="C">
@@ -1910,6 +1973,23 @@
       };
     }
 
+    // Attach click handler for simple Answer Viewer cards
+    app.querySelectorAll('.btn-view-answers').forEach(btn => {
+      btn.onclick = () => {
+        const testId = btn.dataset.testid;
+        const testConfig = C.tests.find(x => x.id === testId);
+        if (!testConfig) return;
+        startTest(testConfig, {
+          from: 1,
+          to: testConfig.count || 45,
+          lim: 0,
+          sq: false,
+          so: false,
+          isAnswerViewer: true
+        });
+      };
+    });
+
     // Attach form submit handlers for standard Question Book tests
     app.querySelectorAll('.test-config-form').forEach(form => {
       const testId = form.dataset.testid;
@@ -1940,6 +2020,11 @@
           infoText = `Practicing all 4 sub-parts (A, B, C, D) for each question (Total: ${totalSelected} Questions).`;
           if (fromHint) fromHint.textContent = `Question ${fromVal} (includes A–D)`;
           if (toHint) toHint.textContent = `Question ${toVal} (includes A–D)`;
+        } else if (subMode === 'AB') {
+          totalSelected = qCount * 2;
+          infoText = `Testing Part A & Part B only: Question ${fromVal} to ${toVal} (Total: ${totalSelected} Questions).`;
+          if (fromHint) fromHint.textContent = `Question ${fromVal} (Parts A & B)`;
+          if (toHint) toHint.textContent = `Question ${toVal} (Parts A & B)`;
         } else if (subMode === 'A' || subMode === 'B' || subMode === 'C' || subMode === 'D') {
           totalSelected = qCount;
           infoText = `Testing Part ${subMode} only: Question ${fromVal}(${subMode}) to ${toVal}(${subMode}) in sequential order (1st question, 2nd question...). Total: ${totalSelected} Questions.`;
@@ -2110,10 +2195,10 @@
         let displayN = q.n;
         let groupNum = idx + 1;
         let subPart = '';
-        const m = String(q.n || '').match(/^(\d+)(?:\(([A-Za-z])\))?/);
+        const m = String(q.n || '').match(/^(\d+)(?:\(([A-Za-z])\)|([A-Za-z]))/);
         if (m) {
           groupNum = parseInt(m[1], 10);
-          subPart = (m[2] || '').toUpperCase();
+          subPart = (m[2] || m[3] || '').toUpperCase();
           displayN = q.n;
         } else {
           const m2 = String(q.n || '').match(/^(\d+)/);
@@ -2142,7 +2227,9 @@
         qs = qs.filter(q => q.groupNum >= fromGroup && q.groupNum <= toGroup);
 
         const subMode = opts.subpartMode || 'all';
-        if (subMode === 'A' || subMode === 'B' || subMode === 'C' || subMode === 'D') {
+        if (subMode === 'AB') {
+          qs = qs.filter(q => q.subPart === 'A' || q.subPart === 'B');
+        } else if (subMode === 'A' || subMode === 'B' || subMode === 'C' || subMode === 'D') {
           qs = qs.filter(q => q.subPart === subMode);
         } else if (subMode === 'custom' && opts.selectedSubParts && opts.selectedSubParts.length) {
           qs = qs.filter(q => opts.selectedSubParts.includes(q.subPart));
@@ -2183,6 +2270,7 @@
           q: q.q,
           f: q.f,
           sol: q.sol || '',
+          ansImg: q.ansImg || '', 
           oi: op.map(z => z.i),
           opts: op.map(z => z.x),
           ci: q.a == null ? null : op.findIndex(z => z.i === q.a),
@@ -2315,7 +2403,7 @@
     const qHistory = questionHistoryCache[q.id];
     const prevTimesStr = qHistory && qHistory.times.length ? qHistory.times.map(t => t + 's').join(', ') : 'None yet';
     const benchmark = Analytics.getBenchmark(S.t.topic);
-    const isGroupedTest = S.o?.isGrouped || S.qs.some(item => /\([A-Za-z]\)/.test(item.n));
+    const isGroupedTest = (S.o?.isGrouped || S.qs.some(item => /\([A-Za-z]\)/.test(item.n))) && S.t.id !== "di-1";
 
     // Count subs per main group to determine palette grid column count
     const groupSubCounts = {};
@@ -2376,6 +2464,15 @@
             ${renderFormattedQuestion(q.q)}
           </div>
 
+          ${(q.ansImg || (S.t && S.t.isAnswerViewer && q.img)) ? `
+            <div class="q-image-container" style="margin-top:16px; background:#ffffff; border:1px solid var(--border-color); border-radius:var(--radius-md); padding:16px; text-align:center;">
+              <div style="font-weight:700; color:var(--color-success); font-size:0.95rem; margin-bottom:10px; text-align:left; display:flex; align-items:center; gap:6px;">
+                <span>💡</span> Step-by-Step Answer:
+              </div>
+              <img src="${esc(q.ansImg || q.img)}" alt="Question ${esc(q.n)} Answer" class="q-question-img" style="max-width:100%; height:auto; box-shadow:0 2px 8px rgba(0,0,0,0.06); border-radius:6px;" loading="lazy" />
+            </div>
+          ` : ''}
+
           ${q.f ? `
             <div class="rec-box mb-4" style="background:var(--color-warning-bg); border-color:var(--color-warning-border); padding:12px;">
               <span style="font-weight:600; color:var(--color-warning);">Note on this question:</span> ${esc(q.f)}
@@ -2416,10 +2513,48 @@
             <span class="text-muted text-sm">${answeredCount}/${n} Solved</span>
           </div>
 
+          ${S.t?.id === 'di-1' ? `
+          <div class="palette-di-container">
+            ${(() => {
+              // Group questions by set rows (contiguous questions with same set letter A, B, C, D)
+              let rows = [];
+              let curRow = [];
+              let curLetter = null;
+
+              S.qs.forEach((item, idx) => {
+                const m = String(item.n || '').match(/^[0-9]+([A-Za-z])/);
+                const letter = m ? m[1].toUpperCase() : '';
+                if (curLetter === null || curLetter === letter) {
+                  curRow.push({ item, idx });
+                  curLetter = letter;
+                } else {
+                  rows.push(curRow);
+                  curRow = [{ item, idx }];
+                  curLetter = letter;
+                }
+              });
+              if (curRow.length) rows.push(curRow);
+
+              return rows.map(row => {
+                return `
+                  <div class="palette-set-row" style="grid-template-columns: repeat(${row.length}, 1fr);">
+                    ${row.map(({ item, idx }) => {
+                      const cleanLabel = String(item.n || (idx + 1)).replace(/\((\w+)\)/g, '$1').toUpperCase();
+                      return `
+                        <button class="palette-btn ${idx === S.cur ? 'current' : ''} ${item.sel != null ? 'answered' : ''} ${item.markedForReview ? 'marked' : ''}" data-idx="${idx}" title="Question ${esc(item.n)}">
+                          ${cleanLabel}
+                        </button>
+                      `;
+                    }).join('')}
+                  </div>
+                `;
+              }).join('');
+            })()}
+          </div>
+          ` : `
           <div class="palette-grid ${isGroupedTest ? 'palette-grouped' : ''}"
-              style="${(isGroupedTest && maxSubsPerGroup > 1) ? `grid-template-columns: repeat(${maxSubsPerGroup}, 1fr)` : `grid-template-columns: repeat(auto-fill, minmax(42px, 1fr))`}"">
+              style="${(isGroupedTest && maxSubsPerGroup > 1) ? `grid-template-columns: repeat(${maxSubsPerGroup}, 1fr)` : `grid-template-columns: repeat(5, 1fr)`}">
             ${S.qs.map((item, idx) => {
-              // For grouped: "1(a)" -> "1A", for plain: "1" -> "1"
               const rawLabel = String(item.n || (idx + 1));
               const cleanLabel = rawLabel.replace(/\((\w+)\)/g, '$1').toUpperCase();
               return `
@@ -2429,6 +2564,7 @@
               `;
             }).join('')}
           </div>
+          `}
 
           <div style="margin-top:18px; font-size:0.82rem; display:flex; flex-direction:column; gap:6px;">
             <div style="display:flex; align-items:center; gap:8px;"><span style="width:12px; height:12px; border-radius:2px; background:var(--color-success); display:inline-block;"></span> Answered (${answeredCount})</div>
@@ -2643,6 +2779,7 @@
           fastestHistorical: qHist.fastestTime || q.time,
           f: q.f,
           sol: q.sol || '',
+          ansImg: q.ansImg || '', 
           st,
           speedClass: classification.speedClass,
           speedLabel: classification.label,

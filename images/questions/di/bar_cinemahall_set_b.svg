@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 370" width="100%" height="auto" style="max-width: 640px; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; background: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; margin: 12px 0;">
+    <rect width="640" height="370" fill="#f8fafc" rx="12" />
+    <rect x="0" y="0" width="640" height="56" fill="#ffffff" rx="12" />
+    <line x1="0" y1="56" x2="640" y2="56" stroke="#e2e8f0" stroke-width="1.5" />
+    <text x="24" y="26" font-size="15" font-weight="700" fill="#0f172a">Cinema Hall Visitors (Set B)</text>
+    <text x="24" y="44" font-size="12" font-weight="500" fill="#64748b">Number of people from 4 cities on Sunday &amp; Monday</text>
+
+    <!-- Legend -->
+    <g transform="translate(420, 20)">
+      <rect x="0" y="0" width="14" height="14" rx="3" fill="#6366F1" />
+      <text x="20" y="11" font-size="12" font-weight="600" fill="#1e293b">Sunday</text>
+      <rect x="100" y="0" width="14" height="14" rx="3" fill="#1E293B" />
+      <text x="120" y="11" font-size="12" font-weight="600" fill="#1e293b">Monday</text>
+    </g>
+
+    <!-- Plot area -->
+    <g>
+      
+      <line x1="65" y1="290" x2="595" y2="290" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="294" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">0</text>
+    
+      <line x1="65" y1="248" x2="595" y2="248" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="252" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">72</text>
+    
+      <line x1="65" y1="206" x2="595" y2="206" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="210" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">144</text>
+    
+      <line x1="65" y1="164" x2="595" y2="164" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="168" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">216</text>
+    
+      <line x1="65" y1="122" x2="595" y2="122" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="126" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">288</text>
+    
+      <line x1="65" y1="80" x2="595" y2="80" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="84" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">360</text>
+    
+      <line x1="65" y1="290" x2="595" y2="290" stroke="#94a3b8" stroke-width="1.5" />
+      
+      <!-- Bar 1 -->
+      <rect x="90.2" y="85.8" width="37.1" height="204.2" rx="4" fill="#6366F1" />
+      <text x="108.7" y="79.8" font-size="11" font-weight="700" fill="#6366F1" text-anchor="middle">350</text>
+      
+      <!-- Bar 2 -->
+      <rect x="135.3" y="167.5" width="37.1" height="122.5" rx="4" fill="#1E293B" />
+      <text x="153.8" y="161.5" font-size="11" font-weight="700" fill="#1E293B" text-anchor="middle">210</text>
+
+      <!-- Category Label -->
+      <text x="131.3" y="314" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">P</text>
+    
+      <!-- Bar 1 -->
+      <rect x="222.7" y="190.8" width="37.1" height="99.2" rx="4" fill="#6366F1" />
+      <text x="241.2" y="184.8" font-size="11" font-weight="700" fill="#6366F1" text-anchor="middle">170</text>
+      
+      <!-- Bar 2 -->
+      <rect x="267.8" y="214.2" width="37.1" height="75.8" rx="4" fill="#1E293B" />
+      <text x="286.3" y="208.2" font-size="11" font-weight="700" fill="#1E293B" text-anchor="middle">130</text>
+
+      <!-- Category Label -->
+      <text x="263.8" y="314" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">Q</text>
+    
+      <!-- Bar 1 -->
+      <rect x="355.1" y="173.3" width="37.1" height="116.7" rx="4" fill="#6366F1" />
+      <text x="373.7" y="167.3" font-size="11" font-weight="700" fill="#6366F1" text-anchor="middle">200</text>
+      
+      <!-- Bar 2 -->
+      <rect x="400.3" y="179.2" width="37.1" height="110.8" rx="4" fill="#1E293B" />
+      <text x="418.8" y="173.2" font-size="11" font-weight="700" fill="#1E293B" text-anchor="middle">190</text>
+
+      <!-- Category Label -->
+      <text x="396.3" y="314" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">R</text>
+    
+      <!-- Bar 1 -->
+      <rect x="487.6" y="208.3" width="37.1" height="81.7" rx="4" fill="#6366F1" />
+      <text x="506.2" y="202.3" font-size="11" font-weight="700" fill="#6366F1" text-anchor="middle">140</text>
+      
+      <!-- Bar 2 -->
+      <rect x="532.8" y="202.5" width="37.1" height="87.5" rx="4" fill="#1E293B" />
+      <text x="551.3" y="196.5" font-size="11" font-weight="700" fill="#1E293B" text-anchor="middle">150</text>
+
+      <!-- Category Label -->
+      <text x="528.8" y="314" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">S</text>
+    
+    </g>
+  </svg>

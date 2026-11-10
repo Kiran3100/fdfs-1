@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 336 311" width="100%" height="auto" style="max-width: 336px; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; background: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; margin: 12px 0;">
+    <rect width="336" height="311" fill="#f8fafc" rx="12" />
+    <rect x="0" y="0" width="336" height="50" fill="#ffffff" rx="12" />
+    <line x1="0" y1="50" x2="336" y2="50" stroke="#e2e8f0" stroke-width="1.5" />
+    <text x="24" y="32" font-size="15" font-weight="700" fill="#0f172a">Pages in 5 Books (Set C)</text>
+    <g>
+      
+    <rect x="20" y="70" width="296" height="36" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" />
+  <text x="36" y="93" font-size="12" font-weight="700" fill="#0f172a" text-anchor="start">Books</text><text x="184" y="93" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">Number of Pages</text><text x="272" y="93" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">% of Pages Read</text>
+      <rect x="20" y="106" width="296" height="36" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" />
+    <text x="36" y="129" font-size="12" font-weight="600" fill="#1e293b" text-anchor="start">A</text><text x="184" y="129" font-size="12" font-weight="500" fill="#1e293b" text-anchor="middle">312</text><text x="272" y="129" font-size="12" font-weight="500" fill="#1e293b" text-anchor="middle">33 ⅓%</text>
+      <rect x="20" y="142" width="296" height="36" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+    <text x="36" y="165" font-size="12" font-weight="600" fill="#1e293b" text-anchor="start">B</text><text x="184" y="165" font-size="12" font-weight="500" fill="#1e293b" text-anchor="middle">424</text><text x="272" y="165" font-size="12" font-weight="500" fill="#1e293b" text-anchor="middle">87 ½%</text>
+      <rect x="20" y="178" width="296" height="36" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" />
+    <text x="36" y="201" font-size="12" font-weight="600" fill="#1e293b" text-anchor="start">C</text><text x="184" y="201" font-size="12" font-weight="500" fill="#1e293b" text-anchor="middle">225</text><text x="272" y="201" font-size="12" font-weight="500" fill="#1e293b" text-anchor="middle">20%</text>
+      <rect x="20" y="214" width="296" height="36" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+    <text x="36" y="237" font-size="12" font-weight="600" fill="#1e293b" text-anchor="start">D</text><text x="184" y="237" font-size="12" font-weight="500" fill="#1e293b" text-anchor="middle">567</text><text x="272" y="237" font-size="12" font-weight="500" fill="#1e293b" text-anchor="middle">66 ⅔%</text>
+      <rect x="20" y="250" width="296" height="36" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" />
+    <text x="36" y="273" font-size="12" font-weight="600" fill="#1e293b" text-anchor="start">E</text><text x="184" y="273" font-size="12" font-weight="500" fill="#1e293b" text-anchor="middle">720</text><text x="272" y="273" font-size="12" font-weight="500" fill="#1e293b" text-anchor="middle">30%</text>
+    </g>
+  </svg>

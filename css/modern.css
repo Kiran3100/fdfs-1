@@ -1254,7 +1254,7 @@ p.subtitle {
 
 /* Compact style for grouped tests with many sub-parts (1A, 1B, 1C...) */
 .palette-grid.palette-grouped {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
 }
 .palette-grid.palette-grouped .palette-btn {
   height: 36px;
@@ -3229,4 +3229,184 @@ dialog::backdrop {
   font-size: 0.76rem;
   color: var(--text-muted);
   font-weight: 600;
+}
+
+/* ══
+
+
+/* ═══════════════════════════════════════════════════════════
+   DATA INTERPRETATION LAYOUT — PDF-Faithful Question Display
+   ═══════════════════════════════════════════════════════════ */
+
+/* Outer container: stacks Direction → Diagram → Question */
+.di-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+/* ── Direction Block ── */
+.di-direction-box {
+  background: var(--bg-secondary, #f8fafc);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: var(--radius-md, 8px);
+  padding: 12px 16px;
+}
+
+.di-direction-header {
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+/* Direction(1-5) badge — matches booklet bold prefix */
+.di-range-badge {
+  display: inline;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.di-dir-instruction {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* Body text: distribution description, total number etc. */
+.di-direction-desc {
+  margin-top: 6px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--text-primary);
+  white-space: pre-line;
+  text-align: center;
+}
+
+/* ── Diagram Block ── */
+.di-diagram-wrapper {
+  text-align: center;
+  padding: 10px 8px 6px;
+  background: var(--bg-surface, #fff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: var(--radius-md, 8px);
+}
+
+/* Diagram image sizing — matches the compact booklet size */
+.di-diagram-wrapper img,
+.di-diagram-wrapper svg {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  display: inline-block;
+}
+
+/* Keep the SVG wrapper styles from q-image-container out of the way inside di */
+.di-diagram-wrapper .q-image-container {
+  margin: 0;
+  background: none;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.di-diagram-wrapper .q-question-img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  box-shadow: none;
+}
+
+/* ── Question Box ── */
+.di-question-box {
+  background: var(--bg-surface, #fff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-left: 4px solid var(--brand-primary, #4F46E5);
+  border-radius: var(--radius-md, 8px);
+  padding: 12px 16px;
+}
+
+/* Position badge: (1), (2), (3)... within the direction group */
+.di-pos-num {
+  display: inline-block;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--brand-primary, #4F46E5);
+  margin-right: 4px;
+}
+
+/* Set A / QA-1 tag */
+.di-question-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--brand-primary, #4F46E5);
+  background: color-mix(in srgb, var(--brand-primary, #4F46E5) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand-primary, #4F46E5) 25%, transparent);
+  padding: 1px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  letter-spacing: 0.03em;
+}
+
+/* Main question text */
+.di-question-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* Dark mode tweaks */
+[data-theme="dark"] .di-direction-box {
+  background: #1e293b;
+  border-color: #334155;
+}
+[data-theme="dark"] .di-diagram-wrapper {
+  background: #1e293b;
+  border-color: #334155;
+}
+[data-theme="dark"] .di-question-box {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+/* ── DI Question Meta Row (tag + position number inline) ── */
+.di-question-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.di-question-num {
+  display: none; /* position already inline in .di-question-meta */
+}
+
+/* ═══ DI PALETTE ROW-BY-ROW LAYOUT ═══ */
+.palette-di-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 440px;
+  overflow-y: auto;
+  padding: 4px;
+}
+
+.palette-set-row {
+  display: grid;
+  gap: 6px;
+  width: 100%;
+}
+
+.palette-set-row .palette-btn {
+  height: 38px;
+  min-width: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0 2px;
 }

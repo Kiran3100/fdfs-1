@@ -523,12 +523,24 @@ window.BankDrill = (function() {
       } else if (mode === 'sequence') {
         const rFrom = Math.max(1, Math.min(100, +set.rangeFrom || 1));
         const rTo = Math.max(rFrom, Math.min(100, +set.rangeTo || 5));
+        const tableBreaks = [];
         for (let n = rFrom; n <= rTo; n++) {
           let oneTableQs = makeQsForTable(n);
           if (set.order === 'shuffled') oneTableQs = shuffle(oneTableQs);
+          // Tag each question with its table number
+          oneTableQs = oneTableQs.map(q => Object.assign({}, q, { tableNum: n }));
+          tableBreaks.push({ tableNum: n, startIdx: qs.length, endIdx: qs.length + oneTableQs.length - 1 });
           qs = qs.concat(oneTableQs);
         }
         title = 'Tables ' + rFrom + ' to ' + rTo + ' (One by One)';
+        return {
+          tab: 'tables',
+          title: title,
+          questions: qs,
+          style: 'one',
+          tableBreaks: tableBreaks,
+          isSequenceMode: true
+        };
       }
 
       return {
@@ -849,7 +861,9 @@ window.BankDrill = (function() {
         if (state.activeSession.isSubmitted) {
           contentHtml = renderResultSummary(state.activeSession);
         } else if (state.activeSession.style === 'one') {
-          contentHtml = renderOneByOnePractice(state.activeSession);
+          contentHtml = state.activeSession.tableTransition
+            ? renderTableTransition(state.activeSession)
+            : renderOneByOnePractice(state.activeSession);
         } else {
           contentHtml = renderFullSheetPractice(state.activeSession);
         }
@@ -2178,7 +2192,11 @@ window.BankDrill = (function() {
       elapsedSeconds: 0,
       timerRemaining: timerTotal,
       isSubmitted: false,
-      result: null
+      result: null,
+      // sequence mode extras
+      tableBreaks: generated.tableBreaks || null,
+      isSequenceMode: generated.isSequenceMode || false,
+      tableTransition: null   // set when showing inter-table checkpoint card
     };
 
     if (timerTotal != null) {
@@ -2286,6 +2304,42 @@ window.BankDrill = (function() {
     const total = session.questions.length;
     const userVal = session.answers[q.id] || '';
 
+    // ── Sequence mode: figure out current table info ──────────────────────
+    const isSeq = session.isSequenceMode && session.tableBreaks;
+    let curTB = null;         // current tableBreak entry
+    let isTableLastQ = false; // is this the last question of this table?
+    let isLastTable = false;  // is this the last table overall?
+    if (isSeq) {
+      curTB = session.tableBreaks.find(tb => curIdx >= tb.startIdx && curIdx <= tb.endIdx);
+      if (curTB) {
+        isTableLastQ = (curIdx === curTB.endIdx);
+        isLastTable = (curTB.tableNum === session.tableBreaks[session.tableBreaks.length - 1].tableNum);
+      }
+    }
+
+    // Label for Next button
+    let nextLabel;
+    if (isSeq && isTableLastQ && !isLastTable) {
+      nextLabel = 'Finish Table ✓';
+    } else if (curIdx === total - 1) {
+      nextLabel = 'Finish &amp; Check ✓';
+    } else {
+      nextLabel = 'Next &rarr;';
+    }
+
+    // Table info badge shown above the question
+    const tableInfoHtml = (isSeq && curTB) ? `
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px; flex-wrap:wrap;">
+        <span style="background:var(--color-primary); color:#fff; border-radius:20px; padding:4px 14px; font-size:0.95rem; font-weight:700;">
+          Table ${curTB.tableNum}
+        </span>
+        <span class="text-muted" style="font-size:0.9rem;">
+          ${curIdx - curTB.startIdx + 1} / ${curTB.endIdx - curTB.startIdx + 1} in this table
+          &nbsp;&middot;&nbsp;
+          Overall: ${curIdx + 1} / ${total}
+        </span>
+      </div>` : '';
+
     return `
       <div class="card mb-4" style="padding:24px;">
         <div class="flex-between mb-4">
@@ -2300,6 +2354,8 @@ window.BankDrill = (function() {
             <button class="btn alt sm" id="btn-cancel-drill">Exit Drill</button>
           </div>
         </div>
+
+        ${tableInfoHtml}
 
         <div class="drill-one-card">
           <div class="text-muted" style="font-weight:700; letter-spacing:0.05em; font-size:0.85rem; text-transform:uppercase;">
@@ -2323,10 +2379,79 @@ window.BankDrill = (function() {
           <div style="font-weight:700; color:var(--text-secondary);">
             Progress: ${curIdx + 1} / ${total}
           </div>
-          <button class="btn sm" id="btn-one-next">
-            ${curIdx === total - 1 ? 'Finish &amp; Check ✓' : 'Next &rarr;'}
-          </button>
+          <button class="btn sm" id="btn-one-next">${nextLabel}</button>
         </div>
+      </div>
+    `;
+  }
+
+  // ── NEW: renderTableTransition — shown between tables in sequence mode ────
+  function renderTableTransition(session) {
+    const tr = session.tableTransition;
+    const isLast = tr.isLastTable;
+
+    // Count correct answers for the just-finished table
+    let correct = 0;
+    const tableQs = session.questions.filter(q => q.tableNum === tr.completedTable);
+    tableQs.forEach(q => {
+      const userRaw = (session.answers[q.id] || '').trim();
+      if (isAnswerCorrect(userRaw, q)) correct++;
+    });
+    const total = tableQs.length;
+    const pct = total ? Math.round(correct / total * 100) : 0;
+    const isPerfect = correct === total;
+
+    // Wrong questions list for quick review
+    const wrongItems = tableQs
+      .filter(q => !isAnswerCorrect((session.answers[q.id] || '').trim(), q))
+      .map(q => `<li style="margin:3px 0;"><b>${esc(q.prompt)}</b> Your: <span style="color:var(--color-danger);">${esc(session.answers[q.id] || '(blank)')}</span> → Correct: <b style="color:var(--color-success);">${esc(q.ans)}</b></li>`)
+      .join('');
+
+    return `
+      <div class="card mb-4" style="padding:28px; max-width:600px; margin:0 auto;">
+        <div style="text-align:center; margin-bottom:20px;">
+          <div style="font-size:2.5rem; margin-bottom:8px;">${isPerfect ? '🎉' : correct >= total / 2 ? '👍' : '📖'}</div>
+          <h2 style="margin:0 0 6px;">Table ${tr.completedTable} Complete!</h2>
+          <div style="font-size:1.3rem; font-weight:700; color:${isPerfect ? 'var(--color-success)' : 'var(--color-primary)'};">
+            ${correct} / ${total} correct (${pct}%)
+          </div>
+        </div>
+
+        ${wrongItems ? `
+          <div style="background:rgba(239,68,68,0.06); border-radius:8px; padding:14px; margin-bottom:20px;">
+            <div style="font-weight:700; margin-bottom:8px; color:var(--color-danger);">❌ Review these:</div>
+            <ul style="margin:0; padding-left:20px; font-size:0.95rem;">${wrongItems}</ul>
+          </div>` : `
+          <div style="background:rgba(16,185,129,0.08); border-radius:8px; padding:14px; margin-bottom:20px; text-align:center; color:var(--color-success); font-weight:700;">
+            ✅ Perfect! All ${total} answers correct!
+          </div>`}
+
+        ${isLast ? `
+          <div style="text-align:center;">
+            <p class="text-muted" style="margin-bottom:16px;">All tables done! Click below to see your full results.</p>
+            <button class="btn" id="btn-seq-finish" style="padding:12px 32px; font-size:1.1rem;">
+              🏁 View Full Results
+            </button>
+          </div>
+        ` : `
+          <div style="border-top:1px solid var(--border-color); padding-top:20px;">
+            <div style="font-weight:700; margin-bottom:14px; font-size:1rem;">
+              ➡️ Next: Table ${tr.nextTable}
+            </div>
+            <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+              <button class="btn" id="btn-next-table" data-table="${tr.nextTable}" style="padding:10px 28px; font-size:1rem;">
+                Start Table ${tr.nextTable} →
+              </button>
+              <div style="display:flex; align-items:center; gap:8px; padding-left:12px; border-left:1px solid var(--border-color);">
+                <label style="font-size:0.9rem; color:var(--text-muted);">Jump to table:</label>
+                <input type="number" id="inp-jump-table" min="1" max="100"
+                  value="${tr.nextTable}"
+                  style="width:70px; height:38px; text-align:center; font-weight:700; font-size:1rem; border:1px solid var(--border-color); border-radius:var(--radius-sm);">
+                <button class="btn alt sm" id="btn-jump-table">Go</button>
+              </div>
+            </div>
+          </div>
+        `}
       </div>
     `;
   }
@@ -3580,14 +3705,80 @@ window.BankDrill = (function() {
     if (target.id === 'btn-one-next') {
       if (state.activeSession) {
         saveSingleInputAnswer();
-        if (state.activeSession.currentIdx < state.activeSession.questions.length - 1) {
-          recordQuestionTime(state.activeSession.currentIdx + 1);
-          state.activeSession.currentIdx++;
+        const sess = state.activeSession;
+        const curIdx = sess.currentIdx;
+        const totalQs = sess.questions.length;
+
+        // Check if we are at a table boundary (sequence mode)
+        if (sess.isSequenceMode && sess.tableBreaks) {
+          const curTB = sess.tableBreaks.find(tb => curIdx >= tb.startIdx && curIdx <= tb.endIdx);
+          if (curTB && curIdx === curTB.endIdx) {
+            // Last question of this table
+            recordQuestionTime(curIdx);
+            const tbIdx = sess.tableBreaks.indexOf(curTB);
+            const isLastTable = (tbIdx === sess.tableBreaks.length - 1);
+            if (isLastTable) {
+              // Last table's last question → submit everything
+              submitSession();
+            } else {
+              // Show transition card
+              const nextTB = sess.tableBreaks[tbIdx + 1];
+              sess.tableTransition = {
+                completedTable: curTB.tableNum,
+                nextTable: nextTB.tableNum,
+                nextStartIdx: nextTB.startIdx,
+                isLastTable: false
+              };
+              render();
+            }
+            return;
+          }
+        }
+
+        if (curIdx < totalQs - 1) {
+          recordQuestionTime(curIdx + 1);
+          sess.currentIdx++;
           render();
         } else {
           submitSession();
         }
       }
+      return;
+    }
+
+    // Transition card: "Start Table N →"
+    if (target.id === 'btn-next-table') {
+      if (state.activeSession && state.activeSession.tableTransition) {
+        const nextIdx = state.activeSession.tableTransition.nextStartIdx;
+        recordQuestionTime(nextIdx);
+        state.activeSession.currentIdx = nextIdx;
+        state.activeSession.tableTransition = null;
+        render();
+      }
+      return;
+    }
+
+    // Transition card: "Jump to table" Go button
+    if (target.id === 'btn-jump-table') {
+      if (state.activeSession && state.activeSession.tableTransition) {
+        const inp = document.getElementById('inp-jump-table');
+        const jumpNum = inp ? +inp.value : state.activeSession.tableTransition.nextTable;
+        const tb = state.activeSession.tableBreaks && state.activeSession.tableBreaks.find(x => x.tableNum === jumpNum);
+        if (tb) {
+          recordQuestionTime(tb.startIdx);
+          state.activeSession.currentIdx = tb.startIdx;
+          state.activeSession.tableTransition = null;
+          render();
+        } else {
+          alert('Table ' + jumpNum + ' is not in this drill range.');
+        }
+      }
+      return;
+    }
+
+    // Transition card: "View Full Results" (last table complete)
+    if (target.id === 'btn-seq-finish') {
+      submitSession();
       return;
     }
 

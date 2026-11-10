@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 360" width="100%" height="auto" style="max-width: 580px; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; margin: 12px 0;">
+    <rect width="580" height="360" fill="#f8fafc" rx="12" />
+    <rect x="0" y="0" width="580" height="64" fill="#ffffff" rx="12" />
+    <line x1="0" y1="64" x2="580" y2="64" stroke="#e2e8f0" stroke-width="1.5" />
+    <text x="24" y="28" font-size="16" font-weight="700" fill="#0f172a">Township Valid Voters Distribution (Set C)</text>
+    <text x="24" y="48" font-size="12" font-weight="500" fill="#64748b">Distribution of valid voters across 4 zones (Z1 = 90°)</text>
+    
+    <g>
+      
+      <path d="M 200 200 L 200.00 70.00 A 130 130 0 0 1 330.00 200.00 Z" fill="#3B82F6" stroke="#ffffff" stroke-width="2.5" />
+      <text x="262.5" y="141.5" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff" filter="drop-shadow(0px 1px 2px rgba(0,0,0,0.6))">90°</text>
+    
+      <path d="M 200 200 L 330.00 200.00 A 130 130 0 0 1 135.00 312.58 Z" fill="#10B981" stroke="#ffffff" stroke-width="2.5" />
+      <text x="244.2" y="280.6" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff" filter="drop-shadow(0px 1px 2px rgba(0,0,0,0.6))">120°</text>
+    
+      <path d="M 200 200 L 135.00 312.58 A 130 130 0 0 1 79.47 151.30 Z" fill="#F59E0B" stroke="#ffffff" stroke-width="2.5" />
+      <text x="116.4" y="232.8" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff" filter="drop-shadow(0px 1px 2px rgba(0,0,0,0.6))">82°</text>
+    
+      <path d="M 200 200 L 79.47 151.30 A 130 130 0 0 1 200.00 70.00 Z" fill="#8B5CF6" stroke="#ffffff" stroke-width="2.5" />
+      <text x="150.6" y="130.7" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff" filter="drop-shadow(0px 1px 2px rgba(0,0,0,0.6))">68°</text>
+    
+    </g>
+    <g>
+      
+      <g transform="translate(380, 90)">
+        <rect x="0" y="0" width="18" height="18" rx="4" fill="#3B82F6" stroke="#cbd5e1" stroke-width="1" />
+        <text x="26" y="14" font-size="13" font-weight="600" fill="#1e293b">Z1 (90°)</text>
+      </g>
+    
+      <g transform="translate(380, 126)">
+        <rect x="0" y="0" width="18" height="18" rx="4" fill="#10B981" stroke="#cbd5e1" stroke-width="1" />
+        <text x="26" y="14" font-size="13" font-weight="600" fill="#1e293b">Z2 (120°)</text>
+      </g>
+    
+      <g transform="translate(380, 162)">
+        <rect x="0" y="0" width="18" height="18" rx="4" fill="#F59E0B" stroke="#cbd5e1" stroke-width="1" />
+        <text x="26" y="14" font-size="13" font-weight="600" fill="#1e293b">Z3 (82°)</text>
+      </g>
+    
+      <g transform="translate(380, 198)">
+        <rect x="0" y="0" width="18" height="18" rx="4" fill="#8B5CF6" stroke="#cbd5e1" stroke-width="1" />
+        <text x="26" y="14" font-size="13" font-weight="600" fill="#1e293b">Z4 (68°)</text>
+      </g>
+    
+    </g>
+  </svg>

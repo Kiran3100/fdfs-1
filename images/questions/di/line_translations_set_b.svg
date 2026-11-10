@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 380" width="100%" height="auto" style="max-width: 660px; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; background: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; margin: 12px 0;">
+    <rect width="660" height="380" fill="#f8fafc" rx="12" />
+    <rect x="0" y="0" width="660" height="56" fill="#ffffff" rx="12" />
+    <line x1="0" y1="56" x2="660" y2="56" stroke="#e2e8f0" stroke-width="1.5" />
+    <text x="24" y="26" font-size="15" font-weight="700" fill="#0f172a">Questions Translated (Set B)</text>
+    <text x="24" y="44" font-size="12" font-weight="500" fill="#64748b">Telugu, Kannada, Konkani, Urdu on Fri &amp; Sat</text>
+
+    <!-- Legend -->
+    <g transform="translate(420, 20)">
+      <circle cx="8" cy="7" r="5" fill="#1E293B" />
+      <text x="20" y="11" font-size="12" font-weight="600" fill="#1e293b">Friday</text>
+      
+      <polygon points="110,2 115,7 110,12 105,7" fill="#6366F1" />
+      <text x="122" y="11" font-size="12" font-weight="600" fill="#1e293b">Saturday</text>
+    </g>
+
+    <g>
+      
+      <line x1="65" y1="300" x2="615" y2="300" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="304" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">0</text>
+    
+      <line x1="65" y1="268.57142857142856" x2="615" y2="268.57142857142856" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="272.57142857142856" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">43</text>
+    
+      <line x1="65" y1="237.14285714285714" x2="615" y2="237.14285714285714" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="241.14285714285714" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">86</text>
+    
+      <line x1="65" y1="205.71428571428572" x2="615" y2="205.71428571428572" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="209.71428571428572" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">129</text>
+    
+      <line x1="65" y1="174.28571428571428" x2="615" y2="174.28571428571428" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="178.28571428571428" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">171</text>
+    
+      <line x1="65" y1="142.85714285714286" x2="615" y2="142.85714285714286" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="146.85714285714286" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">214</text>
+    
+      <line x1="65" y1="111.42857142857144" x2="615" y2="111.42857142857144" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="115.42857142857144" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">257</text>
+    
+      <line x1="65" y1="80" x2="615" y2="80" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="84" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">300</text>
+    
+      <line x1="65" y1="300" x2="615" y2="300" stroke="#94a3b8" stroke-width="1.5" />
+      <path d="M 65.0 102.0 L 248.3 234.0 L 431.7 168.0 L 615.0 146.0" fill="none" stroke="#1E293B" stroke-width="2.5" />
+      <path d="M 65.0 146.0 L 248.3 212.0 L 431.7 135.0 L 615.0 102.0" fill="none" stroke="#6366F1" stroke-width="2.5" stroke-dasharray="5 4" />
+      
+      <circle cx="65.0" cy="102.0" r="5.5" fill="#1E293B" stroke="#ffffff" stroke-width="2" />
+      <text x="65.0" y="92.0" font-size="10" font-weight="700" fill="#1E293B" text-anchor="middle">270</text>
+    
+      <circle cx="248.3" cy="234.0" r="5.5" fill="#1E293B" stroke="#ffffff" stroke-width="2" />
+      <text x="248.3" y="224.0" font-size="10" font-weight="700" fill="#1E293B" text-anchor="middle">90</text>
+    
+      <circle cx="431.7" cy="168.0" r="5.5" fill="#1E293B" stroke="#ffffff" stroke-width="2" />
+      <text x="431.7" y="158.0" font-size="10" font-weight="700" fill="#1E293B" text-anchor="middle">180</text>
+    
+      <circle cx="615.0" cy="146.0" r="5.5" fill="#1E293B" stroke="#ffffff" stroke-width="2" />
+      <text x="615.0" y="136.0" font-size="10" font-weight="700" fill="#1E293B" text-anchor="middle">210</text>
+    
+      <polygon points="65.0,140.0 71.0,146.0 65.0,152.0 59.0,146.0" fill="#6366F1" stroke="#ffffff" stroke-width="2" />
+      <text x="65.0" y="164.0" font-size="10" font-weight="700" fill="#6366F1" text-anchor="middle">210</text>
+    
+      <polygon points="248.3,206.0 254.3,212.0 248.3,218.0 242.3,212.0" fill="#6366F1" stroke="#ffffff" stroke-width="2" />
+      <text x="248.3" y="230.0" font-size="10" font-weight="700" fill="#6366F1" text-anchor="middle">120</text>
+    
+      <polygon points="431.7,129.0 437.7,135.0 431.7,141.0 425.7,135.0" fill="#6366F1" stroke="#ffffff" stroke-width="2" />
+      <text x="431.7" y="153.0" font-size="10" font-weight="700" fill="#6366F1" text-anchor="middle">225</text>
+    
+      <polygon points="615.0,96.0 621.0,102.0 615.0,108.0 609.0,102.0" fill="#6366F1" stroke="#ffffff" stroke-width="2" />
+      <text x="615.0" y="120.0" font-size="10" font-weight="700" fill="#6366F1" text-anchor="middle">270</text>
+    
+      <text x="65.0" y="324" font-size="12" font-weight="700" fill="#1e293b" text-anchor="middle">Telugu</text><text x="248.3" y="324" font-size="12" font-weight="700" fill="#1e293b" text-anchor="middle">Kannada</text><text x="431.7" y="324" font-size="12" font-weight="700" fill="#1e293b" text-anchor="middle">Konkani</text><text x="615.0" y="324" font-size="12" font-weight="700" fill="#1e293b" text-anchor="middle">Urdu</text>
+    </g>
+  </svg>

@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="100%" height="auto" style="max-width: 760px; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; background: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; margin: 12px 0;">
+    <rect width="760" height="400" fill="#f8fafc" rx="12" />
+    <rect x="0" y="0" width="760" height="50" fill="#ffffff" rx="12" />
+    <line x1="0" y1="50" x2="760" y2="50" stroke="#e2e8f0" stroke-width="1.5" />
+    <text x="24" y="32" font-size="16" font-weight="700" fill="#0f172a">RBI Bank Officers Distribution</text>
+    
+      <g>
+        <text x="190" y="68" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">Grade 'A' Officers</text>
+        <rect x="140" y="74" width="100" height="20" rx="4" fill="#eff6ff" stroke="#bfdbfe" />
+        <text x="190" y="88" text-anchor="middle" font-size="11" font-weight="700" fill="#1d4ed8">Total: 300</text>
+        
+        <path d="M 190 185 L 190.00 90.00 A 95 95 0 0 1 283.32 167.20 Z" fill="#3B82F6" stroke="#ffffff" stroke-width="2" />
+        <text x="229.4" y="141.4" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff" filter="drop-shadow(0px 1px 2px rgba(0,0,0,0.7))">22%</text>
+      
+        <path d="M 190 185 L 283.32 167.20 A 95 95 0 0 1 235.77 268.25 Z" fill="#10B981" stroke="#ffffff" stroke-width="2" />
+        <text x="245.9" y="215.3" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff" filter="drop-shadow(0px 1px 2px rgba(0,0,0,0.7))">20%</text>
+      
+        <path d="M 190 185 L 235.77 268.25 A 95 95 0 0 1 149.55 270.96 Z" fill="#F59E0B" stroke="#ffffff" stroke-width="2" />
+        <text x="191.9" y="250.7" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff" filter="drop-shadow(0px 1px 2px rgba(0,0,0,0.7))">15%</text>
+      
+        <path d="M 190 185 L 149.55 270.96 A 95 95 0 0 1 120.75 119.97 Z" fill="#8B5CF6" stroke="#ffffff" stroke-width="2" />
+        <text x="129.3" y="200.6" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff" filter="drop-shadow(0px 1px 2px rgba(0,0,0,0.7))">30%</text>
+      
+        <path d="M 190 185 L 120.75 119.97 A 95 95 0 0 1 190.00 90.00 Z" fill="#EC4899" stroke="#ffffff" stroke-width="2" />
+        <text x="165.5" y="132.3" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff" filter="drop-shadow(0px 1px 2px rgba(0,0,0,0.7))">13%</text>
+      
+        
+        <rect x="95" y="304" width="12" height="12" rx="3" fill="#3B82F6" />
+        <text x="111" y="314" font-size="11" font-weight="600" fill="#1e293b">AP</text>
+      
+        <rect x="190" y="304" width="12" height="12" rx="3" fill="#10B981" />
+        <text x="206" y="314" font-size="11" font-weight="600" fill="#1e293b">TG</text>
+      
+        <rect x="285" y="304" width="12" height="12" rx="3" fill="#F59E0B" />
+        <text x="301" y="314" font-size="11" font-weight="600" fill="#1e293b">Tamilnadu</text>
+      
+        <rect x="95" y="326" width="12" height="12" rx="3" fill="#8B5CF6" />
+        <text x="111" y="336" font-size="11" font-weight="600" fill="#1e293b">Karnataka</text>
+      
+        <rect x="190" y="326" width="12" height="12" rx="3" fill="#EC4899" />
+        <text x="206" y="336" font-size="11" font-weight="600" fill="#1e293b">Goa</text>
+      
+      </g>
+    
+    <line x1="380" y1="65" x2="380" y2="380" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4 4" />
+    
+      <g>
+        <text x="570" y="68" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">Grade 'B' Officers</text>
+        <rect x="520" y="74" width="100" height="20" rx="4" fill="#eff6ff" stroke="#bfdbfe" />
+        <text x="570" y="88" text-anchor="middle" font-size="11" font-weight="700" fill="#1d4ed8">Total: 200</text>
+        
+        <path d="M 570 185 L 570.00 90.00 A 95 95 0 0 1 662.02 161.37 Z" fill="#3B82F6" stroke="#ffffff" stroke-width="2" />
+        <text x="607.8" y="140.2" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff" filter="drop-shadow(0px 1px 2px rgba(0,0,0,0.7))">21%</text>
+      
+        <path d="M 570 185 L 662.02 161.37 A 95 95 0 0 1 610.45 270.96 Z" fill="#10B981" stroke="#ffffff" stroke-width="2" />
+        <text x="625.9" y="215.3" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff" filter="drop-shadow(0px 1px 2px rgba(0,0,0,0.7))">22%</text>
+      
+        <path d="M 570 185 L 610.45 270.96 A 95 95 0 0 1 504.97 254.25 Z" fill="#F59E0B" stroke="#ffffff" stroke-width="2" />
+        <text x="560.3" y="250.0" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff" filter="drop-shadow(0px 1px 2px rgba(0,0,0,0.7))">19%</text>
+      
+        <path d="M 570 185 L 504.97 254.25 A 95 95 0 0 1 484.04 144.55 Z" fill="#8B5CF6" stroke="#ffffff" stroke-width="2" />
+        <text x="509.3" y="200.6" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff" filter="drop-shadow(0px 1px 2px rgba(0,0,0,0.7))">20%</text>
+      
+        <path d="M 570 185 L 484.04 144.55 A 95 95 0 0 1 570.00 90.00 Z" fill="#EC4899" stroke="#ffffff" stroke-width="2" />
+        <text x="536.9" y="136.9" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff" filter="drop-shadow(0px 1px 2px rgba(0,0,0,0.7))">18%</text>
+      
+        
+        <rect x="475" y="304" width="12" height="12" rx="3" fill="#3B82F6" />
+        <text x="491" y="314" font-size="11" font-weight="600" fill="#1e293b">AP</text>
+      
+        <rect x="570" y="304" width="12" height="12" rx="3" fill="#10B981" />
+        <text x="586" y="314" font-size="11" font-weight="600" fill="#1e293b">TG</text>
+      
+        <rect x="665" y="304" width="12" height="12" rx="3" fill="#F59E0B" />
+        <text x="681" y="314" font-size="11" font-weight="600" fill="#1e293b">Tamilnadu</text>
+      
+        <rect x="475" y="326" width="12" height="12" rx="3" fill="#8B5CF6" />
+        <text x="491" y="336" font-size="11" font-weight="600" fill="#1e293b">Karnataka</text>
+      
+        <rect x="570" y="326" width="12" height="12" rx="3" fill="#EC4899" />
+        <text x="586" y="336" font-size="11" font-weight="600" fill="#1e293b">Goa</text>
+      
+      </g>
+    
+  </svg>

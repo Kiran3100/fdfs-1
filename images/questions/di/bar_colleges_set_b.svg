@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 370" width="100%" height="auto" style="max-width: 640px; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; background: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; margin: 12px 0;">
+    <rect width="640" height="370" fill="#f8fafc" rx="12" />
+    <rect x="0" y="0" width="640" height="56" fill="#ffffff" rx="12" />
+    <line x1="0" y1="56" x2="640" y2="56" stroke="#e2e8f0" stroke-width="1.5" />
+    <text x="24" y="26" font-size="15" font-weight="700" fill="#0f172a">% of Girls in Degree Colleges (Set B)</text>
+    <text x="24" y="44" font-size="12" font-weight="500" fill="#64748b">Percentage of girls in colleges P, Q, R</text>
+
+    <!-- Legend -->
+    <g transform="translate(420, 20)">
+      <rect x="0" y="0" width="14" height="14" rx="3" fill="#EC4899" />
+      <text x="20" y="11" font-size="12" font-weight="600" fill="#1e293b">% Girls</text>
+      <rect x="100" y="0" width="14" height="14" rx="3" fill="transparent" />
+      <text x="120" y="11" font-size="12" font-weight="600" fill="#1e293b"></text>
+    </g>
+
+    <!-- Plot area -->
+    <g>
+      
+      <line x1="65" y1="290" x2="595" y2="290" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="294" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">0</text>
+    
+      <line x1="65" y1="248" x2="595" y2="248" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="252" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">14</text>
+    
+      <line x1="65" y1="206" x2="595" y2="206" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="210" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">28</text>
+    
+      <line x1="65" y1="164" x2="595" y2="164" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="168" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">42</text>
+    
+      <line x1="65" y1="122" x2="595" y2="122" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="126" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">56</text>
+    
+      <line x1="65" y1="80" x2="595" y2="80" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="84" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">70</text>
+    
+      <line x1="65" y1="290" x2="595" y2="290" stroke="#94a3b8" stroke-width="1.5" />
+      
+      <!-- Bar 1 -->
+      <rect x="99.9" y="140.0" width="49.5" height="150.0" rx="4" fill="#EC4899" />
+      <text x="124.6" y="134.0" font-size="11" font-weight="700" fill="#EC4899" text-anchor="middle">50</text>
+      
+      <!-- Bar 2 -->
+      <rect x="157.3" y="290.0" width="49.5" height="0.0" rx="4" fill="transparent" />
+      <text x="182.1" y="284.0" font-size="11" font-weight="700" fill="transparent" text-anchor="middle">0</text>
+
+      <!-- Category Label -->
+      <text x="153.3" y="314" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">College P</text>
+    
+      <!-- Bar 1 -->
+      <rect x="276.5" y="110.0" width="49.5" height="180.0" rx="4" fill="#EC4899" />
+      <text x="301.3" y="104.0" font-size="11" font-weight="700" fill="#EC4899" text-anchor="middle">60</text>
+      
+      <!-- Bar 2 -->
+      <rect x="334.0" y="290.0" width="49.5" height="0.0" rx="4" fill="transparent" />
+      <text x="358.7" y="284.0" font-size="11" font-weight="700" fill="transparent" text-anchor="middle">0</text>
+
+      <!-- Category Label -->
+      <text x="330.0" y="314" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">College Q</text>
+    
+      <!-- Bar 1 -->
+      <rect x="453.2" y="140.0" width="49.5" height="150.0" rx="4" fill="#EC4899" />
+      <text x="477.9" y="134.0" font-size="11" font-weight="700" fill="#EC4899" text-anchor="middle">50</text>
+      
+      <!-- Bar 2 -->
+      <rect x="510.7" y="290.0" width="49.5" height="0.0" rx="4" fill="transparent" />
+      <text x="535.4" y="284.0" font-size="11" font-weight="700" fill="transparent" text-anchor="middle">0</text>
+
+      <!-- Category Label -->
+      <text x="506.7" y="314" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">College R</text>
+    
+    </g>
+  </svg>

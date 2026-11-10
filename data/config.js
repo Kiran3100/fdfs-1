@@ -71,6 +71,17 @@ window.APP_CONFIG = {
       marking: { correct: 1, wrong: 0 } // set wrong: 0.25 for negative marking
     },
     {
+      id: 'pct-part-a',
+      subject: 'arithmetic',
+      topic: 'percentages',
+      name: 'Percentages Part-A Answers (Q 1(A) to 45(A))',
+      source: 'Percentages part-A answers (Visual Solutions)',
+      file: 'data/arithmetic/percentages-part-a.js',
+      count: 45,
+      marking: { correct: 1, wrong: 0 },
+      isAnswerViewer: true
+    },
+    {
       id: 'bm-1',
       subject: 'arithmetic',
       topic: 'basic-maths',

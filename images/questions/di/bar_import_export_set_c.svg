@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 370" width="100%" height="auto" style="max-width: 640px; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; background: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; margin: 12px 0;">
+    <rect width="640" height="370" fill="#f8fafc" rx="12" />
+    <rect x="0" y="0" width="640" height="56" fill="#ffffff" rx="12" />
+    <line x1="0" y1="56" x2="640" y2="56" stroke="#e2e8f0" stroke-width="1.5" />
+    <text x="24" y="26" font-size="15" font-weight="700" fill="#0f172a">Export to Import Ratio (1993-98) - Set C</text>
+    <text x="24" y="44" font-size="12" font-weight="500" fill="#64748b">Ratio of Export to Import for Companies A and B</text>
+
+    <!-- Legend -->
+    <g transform="translate(420, 20)">
+      <rect x="0" y="0" width="14" height="14" rx="3" fill="#3B82F6" />
+      <text x="20" y="11" font-size="12" font-weight="600" fill="#1e293b">Company A</text>
+      <rect x="100" y="0" width="14" height="14" rx="3" fill="#10B981" />
+      <text x="120" y="11" font-size="12" font-weight="600" fill="#1e293b">Company B</text>
+    </g>
+
+    <!-- Plot area -->
+    <g>
+      
+      <line x1="65" y1="290" x2="595" y2="290" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="294" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">0</text>
+    
+      <line x1="65" y1="248" x2="595" y2="248" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="252" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">1</text>
+    
+      <line x1="65" y1="206" x2="595" y2="206" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="210" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">1</text>
+    
+      <line x1="65" y1="164" x2="595" y2="164" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="168" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">2</text>
+    
+      <line x1="65" y1="122" x2="595" y2="122" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="126" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">2</text>
+    
+      <line x1="65" y1="80" x2="595" y2="80" stroke="#e2e8f0" stroke-width="1" />
+      <text x="55" y="84" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">3</text>
+    
+      <line x1="65" y1="290" x2="595" y2="290" stroke="#94a3b8" stroke-width="1.5" />
+      
+      <!-- Bar 1 -->
+      <rect x="80.4" y="178.0" width="24.7" height="112.0" rx="4" fill="#3B82F6" />
+      <text x="92.8" y="172.0" font-size="11" font-weight="700" fill="#3B82F6" text-anchor="middle">1.6</text>
+      
+      <!-- Bar 2 -->
+      <rect x="113.2" y="234.0" width="24.7" height="56.0" rx="4" fill="#10B981" />
+      <text x="125.5" y="228.0" font-size="11" font-weight="700" fill="#10B981" text-anchor="middle">0.8</text>
+
+      <!-- Category Label -->
+      <text x="109.2" y="314" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">1993</text>
+    
+      <!-- Bar 1 -->
+      <rect x="168.8" y="227.0" width="24.7" height="63.0" rx="4" fill="#3B82F6" />
+      <text x="181.1" y="221.0" font-size="11" font-weight="700" fill="#3B82F6" text-anchor="middle">0.9</text>
+      
+      <!-- Bar 2 -->
+      <rect x="201.5" y="213.0" width="24.7" height="77.0" rx="4" fill="#10B981" />
+      <text x="213.9" y="207.0" font-size="11" font-weight="700" fill="#10B981" text-anchor="middle">1.1</text>
+
+      <!-- Category Label -->
+      <text x="197.5" y="314" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">1994</text>
+    
+      <!-- Bar 1 -->
+      <rect x="257.1" y="185.0" width="24.7" height="105.0" rx="4" fill="#3B82F6" />
+      <text x="269.5" y="179.0" font-size="11" font-weight="700" fill="#3B82F6" text-anchor="middle">1.5</text>
+      
+      <!-- Bar 2 -->
+      <rect x="289.8" y="143.0" width="24.7" height="147.0" rx="4" fill="#10B981" />
+      <text x="302.2" y="137.0" font-size="11" font-weight="700" fill="#10B981" text-anchor="middle">2.1</text>
+
+      <!-- Category Label -->
+      <text x="285.8" y="314" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">1995</text>
+    
+      <!-- Bar 1 -->
+      <rect x="345.4" y="237.5" width="24.7" height="52.5" rx="4" fill="#3B82F6" />
+      <text x="357.8" y="231.5" font-size="11" font-weight="700" fill="#3B82F6" text-anchor="middle">0.75</text>
+      
+      <!-- Bar 2 -->
+      <rect x="378.2" y="122.0" width="24.7" height="168.0" rx="4" fill="#10B981" />
+      <text x="390.5" y="116.0" font-size="11" font-weight="700" fill="#10B981" text-anchor="middle">2.4</text>
+
+      <!-- Category Label -->
+      <text x="374.2" y="314" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">1996</text>
+    
+      <!-- Bar 1 -->
+      <rect x="433.8" y="248.0" width="24.7" height="42.0" rx="4" fill="#3B82F6" />
+      <text x="446.1" y="242.0" font-size="11" font-weight="700" fill="#3B82F6" text-anchor="middle">0.6</text>
+      
+      <!-- Bar 2 -->
+      <rect x="466.5" y="185.0" width="24.7" height="105.0" rx="4" fill="#10B981" />
+      <text x="478.9" y="179.0" font-size="11" font-weight="700" fill="#10B981" text-anchor="middle">1.5</text>
+
+      <!-- Category Label -->
+      <text x="462.5" y="314" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">1997</text>
+    
+      <!-- Bar 1 -->
+      <rect x="522.1" y="206.0" width="24.7" height="84.0" rx="4" fill="#3B82F6" />
+      <text x="534.5" y="200.0" font-size="11" font-weight="700" fill="#3B82F6" text-anchor="middle">1.2</text>
+      
+      <!-- Bar 2 -->
+      <rect x="554.8" y="178.0" width="24.7" height="112.0" rx="4" fill="#10B981" />
+      <text x="567.2" y="172.0" font-size="11" font-weight="700" fill="#10B981" text-anchor="middle">1.6</text>
+
+      <!-- Category Label -->
+      <text x="550.8" y="314" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">1998</text>
+    
+    </g>
+  </svg>
