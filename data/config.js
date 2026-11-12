@@ -92,6 +92,17 @@ window.APP_CONFIG = {
       marking: { correct: 1, wrong: 0 }
     },
     {
+      id: 'bm-part-a',
+      subject: 'arithmetic',
+      topic: 'basic-maths',
+      name: 'Basic Mathematics Part-A Answers (Q 1(A) to 25(A))',
+      source: 'Basic Mathematics part-A answers (Visual Solutions)',
+      file: 'data/arithmetic/basic-maths-part-a.js',
+      count: 25,
+      marking: { correct: 1, wrong: 0 },
+      isAnswerViewer: true
+    },
+    {
       id: 'pl-1',
       subject: 'arithmetic',
       topic: 'profit-loss',
@@ -154,6 +165,29 @@ window.APP_CONFIG = {
       marking: { correct: 1, wrong: 0 }
     },
     {
+      id: 'rp-important-points',
+      subject: 'arithmetic',
+      topic: 'ratio-proportion',
+      name: 'Ratio and Proportion - Important Points & Formulas',
+      source: 'Ratio and Proportion Core Concepts & Formulas',
+      file: 'data/arithmetic/ratio-proportion-important-points.js',
+      count: 4,
+      marking: { correct: 1, wrong: 0 },
+      isAnswerViewer: true,
+      isImportantPoints: true
+    },
+    {
+      id: 'rp-part-a',
+      subject: 'arithmetic',
+      topic: 'ratio-proportion',
+      name: 'Ratio and Proportion Part-A Answers (Q 1(A) to 35(A))',
+      source: 'Ratio and Proportion part-A answers (Visual Solutions)',
+      file: 'data/arithmetic/ratio-proportion-part-a.js',
+      count: 35,
+      marking: { correct: 1, wrong: 0 },
+      isAnswerViewer: true
+    },
+    {
       id: 'par-1',
       subject: 'arithmetic',
       topic: 'partnership',
@@ -164,6 +198,17 @@ window.APP_CONFIG = {
       marking: { correct: 1, wrong: 0 }
     },
     {
+      id: 'par-part-a',
+      subject: 'arithmetic',
+      topic: 'partnership',
+      name: 'Partnership Part-A Answers (Q 1(A) to 20(A))',
+      source: 'Partnership part-A answers (Visual Solutions)',
+      file: 'data/arithmetic/partnership-part-a.js',
+      count: 20,
+      marking: { correct: 1, wrong: 0 },
+      isAnswerViewer: true
+    },
+    {
       id: 'pa-1',
       subject: 'arithmetic',
       topic: 'problems-on-ages',
@@ -172,6 +217,17 @@ window.APP_CONFIG = {
       file: 'data/arithmetic/problems-on-ages-1.js',
       count: 80,
       marking: { correct: 1, wrong: 0 }
+    },
+    {
+      id: 'pa-part-a',
+      subject: 'arithmetic',
+      topic: 'problems-on-ages',
+      name: 'Problems on Ages Part-A Answers (Q 1(A) to 20(A))',
+      source: 'Problems on Ages part-A answers (Visual Solutions)',
+      file: 'data/arithmetic/problems-on-ages-part-a.js',
+      count: 20,
+      marking: { correct: 1, wrong: 0 },
+      isAnswerViewer: true
     },
     {
       id: 'averages-1',
@@ -232,6 +288,29 @@ window.APP_CONFIG = {
       file: 'data/arithmetic/time-work-1.js?v=2',
       count: 140,
       marking: { correct: 1, wrong: 0 }
+    },
+    {
+      id: 'tw-important-points',
+      subject: 'arithmetic',
+      topic: 'time-work',
+      name: 'Time and Work - Important Points & Formulas (9 Topics)',
+      source: 'Time and Work Core Concepts, Models & Formulas',
+      file: 'data/arithmetic/time-work-important-points.js',
+      count: 9,
+      marking: { correct: 1, wrong: 0 },
+      isAnswerViewer: true,
+      isImportantPoints: true
+    },
+    {
+      id: 'tw-part-a',
+      subject: 'arithmetic',
+      topic: 'time-work',
+      name: 'Time and Work Part-A Answers (Q 1(A) to 35(A))',
+      source: 'Time and Work part-A answers (Visual Solutions)',
+      file: 'data/arithmetic/time-work-part-a.js',
+      count: 35,
+      marking: { correct: 1, wrong: 0 },
+      isAnswerViewer: true
     },
     {
       id: 'pipes-cisterns-1',

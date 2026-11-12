@@ -522,6 +522,48 @@
         </div>`;
     }
 
+    // ── PATTERN 3D: Inequalities Comparison (Two Equations: I. top & II. bottom) ──
+    const ineqEqMatch = str.match(/^(?:\[\d+\]\s*)?(Directions?\s*(?:\s*\(\d+[-–]\d+\)\s*)?:\s*[\s\S]*?(?:solve both the equations|appropriate answer|equations numbered I & II)[\s\S]*?)\n\s*I\.\s*([\s\S]*?)\n\s*II\.\s*([\s\S]*)$/i);
+    if (ineqEqMatch) {
+      const dirText = ineqEqMatch[1].trim();
+      let eq1 = ineqEqMatch[2].trim();
+      let eq2 = ineqEqMatch[3].trim();
+
+      const formatEq = (s) => {
+        let res = esc(s);
+        // Case-normalize single variable Y -> y
+        res = res.replace(/\bY\b/g, 'y');
+        res = res.replace(/\b([xyXY])2\b/g, '$1²');
+        res = res.replace(/\b([xyXY])3\b/g, '$1³');
+        res = res.replace(/\b([xyXY])4\b/g, '$1⁴');
+        res = res.replace(/\b([xyXY])5\b/g, '$1⁵');
+        res = res.replace(/\b([xyXY])(\d+\/\d+)\b/g, '$1<sup>$2</sup>');
+        res = res.replace(/\b102\s*([−\-])/g, '10² $1');
+        return res;
+      };
+
+      return `
+        <div class="reasoning-q-layout q-inequalities-layout">
+          ${labelPrefix ? `<div class="q-meta-tag mb-2"><span class="q-label-tag">${esc(labelPrefix)}</span></div>` : ''}
+          ${dirText ? `
+            <div class="q-directions-block mb-3">
+              <span class="q-block-label">Direction:</span>
+              <span class="q-directions-text">${applyBoldMarkup(dirText)}</span>
+            </div>` : ''}
+          <div class="q-equations-card">
+            <div class="q-equation-row">
+              <span class="q-equation-badge">I.</span>
+              <span class="q-equation-text">${formatEq(eq1)}</span>
+            </div>
+            <div class="q-equation-row">
+              <span class="q-equation-badge">II.</span>
+              <span class="q-equation-text">${formatEq(eq2)}</span>
+            </div>
+          </div>
+          ${imageHTML}
+        </div>`;
+    }
+
     // ── PATTERN 4: Statement + Conclusions (Coded Inequalities, Syllogisms) ──
     const stmtRegex = /\b(Statements?)\s*:\s*/gi;
     let stmtMatches = [];
@@ -2479,7 +2521,8 @@
             </div>
           ` : ''}
 
-          <!-- Options -->
+          <!-- Options (hidden for answer-viewer tests — topics shown in sidebar instead) -->
+          ${S.t && S.t.isAnswerViewer ? '' : `
           <div class="options-list">
             ${q.opts.map((optText, optIdx) => `
               <label class="option-item ${q.sel === optIdx ? 'selected' : ''}">
@@ -2489,6 +2532,7 @@
               </label>
             `).join('')}
           </div>
+          `}
 
           <!-- Bottom Navigation Actions -->
           <div class="question-nav-actions">
@@ -2506,6 +2550,24 @@
           </div>
         </div>
 
+        ${(S.t && S.t.isImportantPoints) ? `
+        <!-- Topic Navigation sidebar for Important Points & Formulas -->
+        <div class="palette-card">
+          <div style="font-weight:700; font-size:0.95rem; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--border-color);">
+            📋 Topics
+          </div>
+          <div class="options-list" style="margin-bottom:0;">
+            ${S.qs.map((item, idx) => `
+              <button class="option-item ${idx === S.cur ? 'selected' : ''}"
+                      data-topic-idx="${idx}"
+                      style="width:100%; text-align:left; background:none; border-width:1.5px; cursor:pointer; font-family:inherit;">
+                <span class="opt-prefix">${LET[idx] || (idx + 1)}</span>
+                <span>${esc(item.q)}</span>
+              </button>
+            `).join('')}
+          </div>
+        </div>
+        ` : `
         <!-- Question Palette -->
         <div class="palette-card">
           <div class="flex-between mb-4">
@@ -2584,6 +2646,7 @@
             </div>
           </div>
         </div>
+        `}
       </div>
     `;
 
@@ -2620,13 +2683,34 @@
       }
     };
 
-    // Option selection
+    // Topic nav buttons (answer-viewer mode: navigate between topic questions)
+    app.querySelectorAll('button[data-topic-idx]').forEach(btn => {
+      btn.onclick = () => {
+        const idx = +btn.dataset.topicIdx;
+        if (idx !== S.cur) goToQuestion(idx);
+      };
+    });
+
+    // Option selection — covers normal options-list
     app.querySelectorAll('input[name="option-choice"]').forEach(radio => {
       radio.onchange = () => {
         const val = +radio.value;
         if (q.sel != null && q.sel !== val) {
           q.answerChangedCount++;
         }
+        q.sel = val;
+        renderTest();
+      };
+    });
+
+    // Extra click handler for option-item labels (not topic-nav buttons)
+    app.querySelectorAll('.option-item:not([data-topic-idx])').forEach(label => {
+      label.onclick = (e) => {
+        const radio = label.querySelector('input[type="radio"]');
+        if (!radio) return;
+        const val = +radio.value;
+        if (q.sel === val) return;
+        if (q.sel != null) q.answerChangedCount++;
         q.sel = val;
         renderTest();
       };
