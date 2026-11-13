@@ -27,7 +27,7 @@ window.APP_CONFIG = {
         { id: 'volumes', num: 18, name: 'Volumes', category: 'Mensuration', filePdf: '18.volumes.pdf' },
         { id: 'lcm-hcf', num: 19, name: 'LCM and HCF', category: 'Foundation', filePdf: '19.lcm_and_hcf.pdf' },
         { id: 'problems-on-numbers', num: 20, name: 'Problems on Numbers', category: 'Foundation', filePdf: '20.problems_on_numbers.pdf' },
-        { id: 'approximation', num: 21, name: 'Approximation', category: 'Calculation', filePdf: '21.approximation.pdf' },
+        { id: 'approximation', num: 21, name: 'Simplification and Approximation', category: 'Calculation', filePdf: '21.approximation.pdf' },
         { id: 'permutations-combinations', num: 22, name: 'Permutations and Combinations', category: 'Modern Math', filePdf: '22.permutations_and_combinations.pdf' },
         { id: 'probability', num: 23, name: 'Probability', category: 'Modern Math', filePdf: '23.probability.pdf' }
       ]
@@ -323,6 +323,17 @@ window.APP_CONFIG = {
       marking: { correct: 1, wrong: 0 }
     },
     {
+      id: 'pc-part-a',
+      subject: 'arithmetic',
+      topic: 'pipes-cisterns',
+      name: 'Pipes and Cisterns Part-A Answers (Q 1(A) to 15(A))',
+      source: 'Pipes and Cisterns part-A answers (Visual Solutions)',
+      file: 'data/arithmetic/pipes-cisterns-part-a.js',
+      count: 15,
+      marking: { correct: 1, wrong: 0 },
+      isAnswerViewer: true
+    },
+    {
       id: 'inequalities-comparison-1',
       subject: 'arithmetic',
       topic: 'inequalities-comparison',
@@ -373,14 +384,144 @@ window.APP_CONFIG = {
       marking: { correct: 1, wrong: 0 }
     },
     {
+      id: 'simplification-1',
+      subject: 'arithmetic',
+      topic: 'approximation',
+      name: 'Simplification - Question Bank (500 Qs)',
+      source: '500_Simplification_Questions_with_Answer_Key.pdf',
+      file: 'data/arithmetic/simplification-1.js',
+      count: 500,
+      marking: { correct: 1, wrong: 0 }
+    },
+    {
+      id: 'simp-set1',
+      subject: 'arithmetic',
+      topic: 'approximation',
+      name: 'Simplification - Set 1 (Q1 to Q100)',
+      source: 'Simplification Set 1 (100 Qs)',
+      file: 'data/arithmetic/simplification-set1.js',
+      count: 100,
+      marking: { correct: 1, wrong: 0 },
+      isChapterSet: true,
+      setName: 'Simplification Set 1 (Q1-Q100)'
+    },
+    {
+      id: 'simp-set2',
+      subject: 'arithmetic',
+      topic: 'approximation',
+      name: 'Simplification - Set 2 (Q101 to Q200)',
+      source: 'Simplification Set 2 (100 Qs)',
+      file: 'data/arithmetic/simplification-set2.js',
+      count: 100,
+      marking: { correct: 1, wrong: 0 },
+      isChapterSet: true,
+      setName: 'Simplification Set 2 (Q101-Q200)'
+    },
+    {
+      id: 'simp-set3',
+      subject: 'arithmetic',
+      topic: 'approximation',
+      name: 'Simplification - Set 3 (Q201 to Q300)',
+      source: 'Simplification Set 3 (100 Qs)',
+      file: 'data/arithmetic/simplification-set3.js',
+      count: 100,
+      marking: { correct: 1, wrong: 0 },
+      isChapterSet: true,
+      setName: 'Simplification Set 3 (Q201-Q300)'
+    },
+    {
+      id: 'simp-set4',
+      subject: 'arithmetic',
+      topic: 'approximation',
+      name: 'Simplification - Set 4 (Q301 to Q400)',
+      source: 'Simplification Set 4 (100 Qs)',
+      file: 'data/arithmetic/simplification-set4.js',
+      count: 100,
+      marking: { correct: 1, wrong: 0 },
+      isChapterSet: true,
+      setName: 'Simplification Set 4 (Q301-Q400)'
+    },
+    {
+      id: 'simp-set5',
+      subject: 'arithmetic',
+      topic: 'approximation',
+      name: 'Simplification - Set 5 (Q401 to Q500)',
+      source: 'Simplification Set 5 (100 Qs)',
+      file: 'data/arithmetic/simplification-set5.js',
+      count: 100,
+      marking: { correct: 1, wrong: 0 },
+      isChapterSet: true,
+      setName: 'Simplification Set 5 (Q401-Q500)'
+    },
+    {
       id: 'approximation-1',
       subject: 'arithmetic',
       topic: 'approximation',
-      name: 'Approximation - Practice Test 1',
-      source: '21.Approximation_Coded_Full_Question_Per_Page.pdf',
+      name: 'Approximation - Question Bank (500 Qs)',
+      source: '500_Simplification_Approximation_Questions_with_Answer_Key.pdf',
       file: 'data/arithmetic/approximation-1.js',
-      count: 30,
+      count: 500,
       marking: { correct: 1, wrong: 0 }
+    },
+    {
+      id: 'approx-set1',
+      subject: 'arithmetic',
+      topic: 'approximation',
+      name: 'Approximation - Set 1 (Q1 to Q100)',
+      source: 'Approximation Set 1 (100 Qs)',
+      file: 'data/arithmetic/approximation-set1.js',
+      count: 100,
+      marking: { correct: 1, wrong: 0 },
+      isChapterSet: true,
+      setName: 'Approximation Set 1 (Q1-Q100)'
+    },
+    {
+      id: 'approx-set2',
+      subject: 'arithmetic',
+      topic: 'approximation',
+      name: 'Approximation - Set 2 (Q101 to Q200)',
+      source: 'Approximation Set 2 (100 Qs)',
+      file: 'data/arithmetic/approximation-set2.js',
+      count: 100,
+      marking: { correct: 1, wrong: 0 },
+      isChapterSet: true,
+      setName: 'Approximation Set 2 (Q101-Q200)'
+    },
+    {
+      id: 'approx-set3',
+      subject: 'arithmetic',
+      topic: 'approximation',
+      name: 'Approximation - Set 3 (Q201 to Q300)',
+      source: 'Approximation Set 3 (100 Qs)',
+      file: 'data/arithmetic/approximation-set3.js',
+      count: 100,
+      marking: { correct: 1, wrong: 0 },
+      isChapterSet: true,
+      setName: 'Approximation Set 3 (Q201-Q300)'
+    },
+    {
+      id: 'approx-set4',
+      subject: 'arithmetic',
+      topic: 'approximation',
+      name: 'Approximation - Set 4 (Q301 to Q400)',
+      source: 'Approximation Set 4 (100 Qs)',
+      file: 'data/arithmetic/approximation-set4.js',
+      count: 100,
+      marking: { correct: 1, wrong: 0 },
+      isChapterSet: true,
+      setName: 'Approximation Set 4 (Q301-Q400)'
+    },
+    {
+      id: 'approx-set5',
+      subject: 'arithmetic',
+      topic: 'approximation',
+      name: 'Approximation - Set 5 (Q401 to Q500)',
+      source: 'Approximation Set 5 (100 Qs)',
+      file: 'data/arithmetic/approximation-set5.js',
+      count: 100,
+      marking: { correct: 1, wrong: 0 },
+      isChapterSet: true,
+      setName: 'Approximation Set 5 (Q401-Q500)'
     },
     {
       id: 'alphabets-1',

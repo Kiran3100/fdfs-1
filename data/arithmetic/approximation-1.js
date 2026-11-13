@@ -2,362 +2,6502 @@ window.QBANK = window.QBANK || {};
 QBANK["approximation-1"] = [
   {
     "n": "1",
-    "q": "[1] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n28% of 500 \u00d7 343 \u00f7 2401 + 26% of 400 = ?",
+    "subCode": "1(A)",
+    "q": "Approximate value of ? : 96.04 ÷ 8.03 × 19.98 = ?",
     "o": [
-      "112",
-      "116",
-      "120",
-      "124",
-      "130"
+      "240",
+      "210",
+      "285",
+      "195",
+      "255"
     ],
-    "a": 3
+    "a": 0
   },
   {
     "n": "2",
-    "q": "[2] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n600.16 \u00d7 \u221a? + 60.05 \u00d7 \u221a63 = 2280",
+    "subCode": "1(B)",
+    "q": "Approximate value of ? : 450.04 ÷ 15.05 × 23.04 = ?",
     "o": [
-      "121",
-      "9",
-      "81",
-      "49",
-      "25"
+      "640",
+      "790",
+      "540",
+      "840",
+      "690"
     ],
-    "a": 1
+    "a": 4
   },
   {
     "n": "3",
-    "q": "[3] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n2/3 of 3/5 of 7/9 of 5/11 of 11/13 of 6/7 \u00f7 4/3 = ?",
+    "subCode": "1(C)",
+    "q": "Approximate value of ? : 649.95 ÷ 25.01 × 27.97 = ?",
     "o": [
-      "0",
-      "1",
-      "1/13",
-      "55/91",
-      "None"
+      "678",
+      "878",
+      "728",
+      "828",
+      "628"
     ],
     "a": 2
   },
   {
     "n": "4",
-    "q": "[4] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n2 + [ 3 + { 2 (4 + 8) \u00f7 3 + 7 \u00d7 5 } + 8 ] = ?",
+    "subCode": "1(D)",
+    "q": "Approximate value of ? : 160.02 ÷ 39.98 × 7.02 = ?",
     "o": [
-      "62",
-      "42",
-      "56",
-      "49",
-      "None"
-    ],
-    "a": 2
-  },
-  {
-    "n": "5",
-    "q": "[5] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n[ { ( 1/49 \u00d7 343/81 ) \u00f7 7/9 } \u00d7 3 \u2212 { 27 + 54 } ] = ?",
-    "o": [
-      "\u221281/3",
-      "\u2212243/3",
-      "\u2212237/3",
-      "\u2212242/3",
-      "None"
+      "32",
+      "22",
+      "26",
+      "28",
+      "24"
     ],
     "a": 3
   },
   {
-    "n": "6",
-    "q": "[6] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n(2401)^(3/4) \u00d7 (343)^(2/3) \u00d7 (49)^(1/2) = 7^?",
+    "n": "5",
+    "subCode": "2(A)",
+    "q": "Approximate value of ? : 167.95 ÷ 6.03 × 25.03 = ?",
     "o": [
-      "6",
-      "8",
-      "10",
-      "12",
-      "None"
+      "650",
+      "700",
+      "600",
+      "800",
+      "850"
+    ],
+    "a": 1
+  },
+  {
+    "n": "6",
+    "subCode": "2(B)",
+    "q": "Approximate value of ? : 210.03 ÷ 15.03 × 12.05 = ?",
+    "o": [
+      "168",
+      "198",
+      "148",
+      "138",
+      "158"
     ],
     "a": 0
   },
   {
     "n": "7",
-    "q": "[7] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n5/9 of 8/11 of 13/36 of 985 = ?",
+    "subCode": "2(C)",
+    "q": "Approximate value of ? : 660.03 ÷ 29.98 × 5.97 = ?",
     "o": [
-      "152",
-      "124",
-      "136",
-      "144",
-      "None"
+      "123",
+      "105",
+      "141",
+      "114",
+      "132"
     ],
-    "a": 3
+    "a": 4
   },
   {
     "n": "8",
-    "q": "[8] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n12 \u00f7 12 \u00f7 12 \u00f7 12 = ?",
+    "subCode": "2(D)",
+    "q": "Approximate value of ? : 329.95 ÷ 29.99 × 13.02 = ?",
     "o": [
-      "1",
-      "144",
-      "1/144",
-      "1/12",
-      "12"
+      "133",
+      "113",
+      "143",
+      "123",
+      "163"
     ],
     "a": 2
   },
   {
     "n": "9",
-    "q": "[9] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n10.2% of 1600 + 14.2% of ? = 362",
+    "subCode": "3(A)",
+    "q": "Approximate value of ? : 174.03 ÷ 6.01 × 25.95 = ?",
     "o": [
-      "1100",
-      "1200",
-      "1300",
-      "1440",
-      "1500"
+      "589",
+      "809",
+      "864",
+      "754",
+      "644"
     ],
     "a": 3
   },
   {
     "n": "10",
-    "q": "[10] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n2 \u00d7 5 ( 3600/? + 5 ) \u2212 2 ( 540/9 ) + 25 = 15",
+    "subCode": "3(B)",
+    "q": "Approximate value of ? : 96.04 ÷ 23.95 × 15.98 = ?",
     "o": [
-      "200",
-      "300",
-      "400",
-      "500",
-      "600"
-    ],
-    "a": 4
-  },
-  {
-    "n": "11",
-    "q": "[11] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n(511.79)^(1/3) \u00d7 \u221a483.8 + 52.02% of 549.9 \u2212 ? = 123.93 \u00d7 2.97",
-    "o": [
-      "84",
-      "92",
-      "82",
-      "78",
+      "76",
+      "64",
+      "56",
+      "68",
       "72"
     ],
     "a": 1
   },
   {
-    "n": "12",
-    "q": "[12] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n1819.98 \u00f7 454.8 + \u221a441.01 + ?\u00b2 = \u221a5475.82",
+    "n": "11",
+    "subCode": "3(C)",
+    "q": "Approximate value of ? : 431.95 ÷ 24.05 × 29.04 = ?",
     "o": [
-      "14",
-      "13",
-      "17",
-      "7",
-      "15"
-    ],
-    "a": 3
-  },
-  {
-    "n": "13",
-    "q": "[13] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n80.04% of 150 + 60.02% of 50.07 = ?",
-    "o": [
-      "150",
-      "125",
-      "210",
-      "175",
-      "140"
-    ],
-    "a": 0
-  },
-  {
-    "n": "14",
-    "q": "[14] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n(28.07 \u00d7 4.97 + 15 \u00d7 6.05) / ( (7.03)\u00b2 + \u221a256.10 + 13.0001 ) = ?",
-    "o": [
-      "2",
-      "\u22122",
-      "3",
-      "6",
-      "4"
+      "557",
+      "417",
+      "522",
+      "487",
+      "627"
     ],
     "a": 2
   },
   {
-    "n": "15",
-    "q": "[15] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n\u221a6560 \u00d7 4.007 + 119.99 \u00d7 1.998 \u2212 50.01% of 479.9 = ?",
+    "n": "12",
+    "subCode": "3(D)",
+    "q": "Approximate value of ? : 463.95 ÷ 16.04 × 17.04 = ?",
     "o": [
-      "348",
-      "324",
-      "368",
-      "372",
-      "396"
+      "563",
+      "493",
+      "598",
+      "528",
+      "388"
     ],
     "a": 1
   },
   {
-    "n": "16",
-    "q": "[16] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n? \u00d7 5 + 444.99 \u00d7 5.9 + 899.906 + 9.87 = 4579.9",
+    "n": "13",
+    "subCode": "4(A)",
+    "q": "Approximate value of ? : 119.99 ÷ 5.98 × 11.04 = ?",
     "o": [
-      "200",
-      "300",
-      "280",
-      "320",
-      "400"
+      "235",
+      "250",
+      "205",
+      "220",
+      "175"
+    ],
+    "a": 3
+  },
+  {
+    "n": "14",
+    "subCode": "4(B)",
+    "q": "Approximate value of ? : 192.05 ÷ 8.02 × 22.99 = ?",
+    "o": [
+      "552",
+      "512",
+      "432",
+      "672",
+      "472"
     ],
     "a": 0
   },
   {
-    "n": "17",
-    "q": "[17] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n(12.05)\u00b2 \u2212 (8.99)\u00b2 + (13.99)\u00b2 \u2212 (17.08)\u00b2 = ?",
+    "n": "15",
+    "subCode": "4(C)",
+    "q": "Approximate value of ? : 749.98 ÷ 24.95 × 10.95 = ?",
     "o": [
-      "\u221220",
-      "\u221240",
-      "\u221230",
-      "\u221250",
-      "\u221230"
-    ],
-    "a": 2
-  },
-  {
-    "n": "18",
-    "q": "[18] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n300.01 \u00f7 12.99 \u00d7 174.99 \u00f7 35.01 = ?",
-    "o": [
-      "135",
-      "105",
-      "120",
-      "125",
-      "115"
+      "255",
+      "355",
+      "305",
+      "280",
+      "330"
     ],
     "a": 4
   },
   {
-    "n": "19",
-    "q": "[19] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n(15.99)\u00b2 \u00f7 8.03 \u2212 8.97 \u00d7 8.08 = ? \u2212 56.89",
+    "n": "16",
+    "subCode": "4(D)",
+    "q": "Approximate value of ? : 300.05 ÷ 30.02 × 21.04 = ?",
     "o": [
-      "21",
-      "17",
-      "26",
-      "32",
-      "27"
+      "180",
+      "225",
+      "165",
+      "195",
+      "210"
     ],
-    "a": 1
+    "a": 4
   },
   {
-    "n": "20",
-    "q": "[20] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n(21.5% of 999)^(1/3) + (43% of 601)^(1/2) = ?",
+    "n": "17",
+    "subCode": "5(A)",
+    "q": "Approximate value of ? : 720.05 ÷ 30.05 × 19.01 = ?",
     "o": [
-      "22",
-      "18",
-      "30",
-      "26",
-      "33"
-    ],
-    "a": 0
-  },
-  {
-    "n": "21",
-    "q": "[21] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n45.01% of 499.9 \u00d7 ?% of 120 = ?\u00b2",
-    "o": [
-      "250",
-      "290",
-      "260",
-      "270",
-      "280"
+      "486",
+      "396",
+      "426",
+      "456",
+      "366"
     ],
     "a": 3
   },
   {
-    "n": "22",
-    "q": "[22] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n15\u00b2/729 \u00d7 46/225 \u00f7 23/27 = ?",
+    "n": "18",
+    "subCode": "5(B)",
+    "q": "Approximate value of ? : 447.97 ÷ 15.97 × 11.99 = ?",
     "o": [
-      "1",
-      "2/27",
-      "27/2",
-      "33/4",
-      "None"
+      "261",
+      "336",
+      "361",
+      "411",
+      "286"
     ],
     "a": 1
   },
   {
-    "n": "23",
-    "q": "[23] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n\u2074\u221a( 6561 \u00d7 4096 / 1296 ) + \u221a( (48\u00b2 \u2212 12\u00b2) 60 ) = ?",
+    "n": "19",
+    "subCode": "5(C)",
+    "q": "Approximate value of ? : 640.04 ÷ 39.95 × 29.03 = ?",
     "o": [
-      "360",
-      "372",
-      "384",
-      "412",
-      "None"
+      "464",
+      "434",
+      "524",
+      "374",
+      "494"
+    ],
+    "a": 0
+  },
+  {
+    "n": "20",
+    "subCode": "5(D)",
+    "q": "Approximate value of ? : 149.95 ÷ 14.95 × 26.04 = ?",
+    "o": [
+      "240",
+      "200",
+      "260",
+      "280",
+      "300"
+    ],
+    "a": 2
+  },
+  {
+    "n": "21",
+    "subCode": "6(A)",
+    "q": "Approximate value of ? : 40% of 1599.8 + 35% of 1879.6 = ?",
+    "o": [
+      "1298",
+      "1118",
+      "1028",
+      "1568",
+      "1478"
+    ],
+    "a": 0
+  },
+  {
+    "n": "22",
+    "subCode": "6(B)",
+    "q": "Approximate value of ? : 30% of 440.04 + 40% of 1319.6 = ?",
+    "o": [
+      "525",
+      "795",
+      "750",
+      "570",
+      "660"
+    ],
+    "a": 4
+  },
+  {
+    "n": "23",
+    "subCode": "6(C)",
+    "q": "Approximate value of ? : 40% of 1279.9 + 15% of 1399.6 = ?",
+    "o": [
+      "672",
+      "722",
+      "872",
+      "822",
+      "622"
     ],
     "a": 1
   },
   {
     "n": "24",
-    "q": "[24] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n219^(1/3) \u00d7 (12.001)\u00b2 \u00d7 (17.998)\u00b2 \u00f7 [ (11.999)\u2074 \u00d7 2^(\u22121) ] = 3^?",
+    "subCode": "6(D)",
+    "q": "Approximate value of ? : 40% of 440.05 + 30% of 679.99 = ?",
     "o": [
-      "\u22125",
-      "11",
-      "\u22127",
-      "3",
-      "8"
+      "455",
+      "430",
+      "405",
+      "380",
+      "305"
     ],
     "a": 3
   },
   {
     "n": "25",
-    "q": "[25] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n(815 + ?)/100 \u00d7 28 \u00d7 3 \u2212 815 \u00d7 14 \u00d7 6/100 = 1680",
+    "subCode": "7(A)",
+    "q": "Approximate value of ? : 40% of 399.95 + 10% of 200.04 = ?",
     "o": [
-      "2000",
-      "3000",
-      "4000",
-      "6000",
-      "8000"
+      "210",
+      "135",
+      "180",
+      "195",
+      "150"
+    ],
+    "a": 2
+  },
+  {
+    "n": "26",
+    "subCode": "7(B)",
+    "q": "Approximate value of ? : 12.5% of 679.98 + 60% of 799.97 = ?",
+    "o": [
+      "605",
+      "485",
+      "645",
+      "445",
+      "565"
+    ],
+    "a": 4
+  },
+  {
+    "n": "27",
+    "subCode": "7(C)",
+    "q": "Approximate value of ? : 45% of 1880.4 + 25% of 1800.1 = ?",
+    "o": [
+      "1296",
+      "1476",
+      "1386",
+      "1206",
+      "1026"
     ],
     "a": 0
   },
   {
-    "n": "26",
-    "q": "[26] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n15^12 \u00d7 15^(\u22129) \u00f7 15^(\u22126) = 15^?",
-    "o": [
-      "6",
-      "4",
-      "9",
-      "8",
-      "None"
-    ],
-    "a": 2
-  },
-  {
-    "n": "27",
-    "q": "[27] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n1/2 of 5/8 of 1/3 of 5424 = ?",
-    "o": [
-      "113",
-      "425",
-      "565",
-      "815",
-      "None"
-    ],
-    "a": 2
-  },
-  {
     "n": "28",
-    "q": "[28] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n16 1/2 % of 600 \u00f7 16 2/3 % of 66 = ?",
+    "subCode": "7(D)",
+    "q": "Approximate value of ? : 10% of 1879.7 + 30% of 1680.1 = ?",
     "o": [
-      "2",
-      "9",
-      "6",
-      "8",
-      "None"
+      "592",
+      "792",
+      "692",
+      "642",
+      "842"
+    ],
+    "a": 2
+  },
+  {
+    "n": "29",
+    "subCode": "8(A)",
+    "q": "Approximate value of ? : 45% of 1400.1 + 20% of 1679.6 = ?",
+    "o": [
+      "896",
+      "1036",
+      "1176",
+      "966",
+      "1106"
+    ],
+    "a": 3
+  },
+  {
+    "n": "30",
+    "subCode": "8(B)",
+    "q": "Approximate value of ? : 12.5% of 1880.1 + 35% of 600.02 = ?",
+    "o": [
+      "385",
+      "445",
+      "475",
+      "355",
+      "535"
     ],
     "a": 1
   },
   {
-    "n": "29",
-    "q": "[29] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n125^(2/3) + 625^(1/2) \u00d7 5 + 475 = 5^?",
+    "n": "31",
+    "subCode": "8(C)",
+    "q": "Approximate value of ? : 45% of 1160.2 + 35% of 560.05 = ?",
     "o": [
-      "4",
-      "6",
-      "8",
-      "10",
-      "None"
+      "568",
+      "718",
+      "868",
+      "768",
+      "818"
+    ],
+    "a": 1
+  },
+  {
+    "n": "32",
+    "subCode": "8(D)",
+    "q": "Approximate value of ? : 10% of 1159.8 + 12.5% of 360.03 = ?",
+    "o": [
+      "131",
+      "191",
+      "161",
+      "141",
+      "151"
+    ],
+    "a": 2
+  },
+  {
+    "n": "33",
+    "subCode": "9(A)",
+    "q": "Approximate value of ? : 75% of 240.04 + 30% of 239.95 = ?",
+    "o": [
+      "312",
+      "192",
+      "232",
+      "252",
+      "292"
+    ],
+    "a": 3
+  },
+  {
+    "n": "34",
+    "subCode": "9(B)",
+    "q": "Approximate value of ? : 30% of 960.03 + 75% of 1319.9 = ?",
+    "o": [
+      "1278",
+      "1098",
+      "1548",
+      "1458",
+      "1188"
     ],
     "a": 0
   },
   {
-    "n": "30",
-    "q": "[30] Direction (1-30): What approximate value will come in place of the question mark (?) in the given questions ? (you are not expected to calculate exact value)\n67.08 \u00d7 \u221a196.45 \u2212 9.99% of 2000 \u2212 25.99 \u00d7 8.99 = ?",
+    "n": "35",
+    "subCode": "9(C)",
+    "q": "Approximate value of ? : 40% of 1640.1 + 40% of 1760.1 = ?",
     "o": [
+      "1265",
+      "1075",
+      "1550",
+      "1645",
+      "1360"
+    ],
+    "a": 4
+  },
+  {
+    "n": "36",
+    "subCode": "9(D)",
+    "q": "Approximate value of ? : 60% of 720.03 + 45% of 1279.7 = ?",
+    "o": [
+      "1078",
+      "1148",
+      "868",
+      "938",
+      "1008"
+    ],
+    "a": 4
+  },
+  {
+    "n": "37",
+    "subCode": "10(A)",
+    "q": "Approximate value of ? : 60% of 1919.9 + 20% of 2000.3 = ?",
+    "o": [
+      "1332",
+      "1552",
+      "1662",
+      "1882",
+      "1222"
+    ],
+    "a": 1
+  },
+  {
+    "n": "38",
+    "subCode": "10(B)",
+    "q": "Approximate value of ? : 10% of 1839.8 + 20% of 640.04 = ?",
+    "o": [
+      "312",
+      "372",
+      "332",
+      "352",
+      "292"
+    ],
+    "a": 0
+  },
+  {
+    "n": "39",
+    "subCode": "10(C)",
+    "q": "Approximate value of ? : 10% of 1839.7 + 40% of 679.97 = ?",
+    "o": [
+      "486",
+      "426",
+      "456",
+      "366",
+      "396"
+    ],
+    "a": 2
+  },
+  {
+    "n": "40",
+    "subCode": "10(D)",
+    "q": "Approximate value of ? : 15% of 1520.1 + 75% of 719.99 = ?",
+    "o": [
+      "823",
+      "603",
+      "658",
+      "768",
+      "933"
+    ],
+    "a": 3
+  },
+  {
+    "n": "41",
+    "subCode": "11(A)",
+    "q": "Approximate value of ? : 54.05 × 29.04 + 23.05 × 21.98 = ?",
+    "o": [
+      "1782",
+      "2072",
+      "1637",
+      "2217",
+      "2507"
+    ],
+    "a": 1
+  },
+  {
+    "n": "42",
+    "subCode": "11(B)",
+    "q": "Approximate value of ? : 35.99 × 16.02 + 30.95 × 26.95 = ?",
+    "o": [
+      "1713",
+      "1613",
+      "1413",
+      "1313",
+      "1113"
+    ],
+    "a": 2
+  },
+  {
+    "n": "43",
+    "subCode": "11(C)",
+    "q": "Approximate value of ? : 38.03 × 34.04 + 29.95 × 15.95 = ?",
+    "o": [
+      "2147",
+      "1897",
+      "1647",
+      "1772",
+      "1522"
+    ],
+    "a": 3
+  },
+  {
+    "n": "44",
+    "subCode": "11(D)",
+    "q": "Approximate value of ? : 18.98 × 38.01 + 45.01 × 21.97 = ?",
+    "o": [
+      "1832",
+      "1472",
+      "1592",
+      "1952",
+      "1712"
+    ],
+    "a": 4
+  },
+  {
+    "n": "45",
+    "subCode": "12(A)",
+    "q": "Approximate value of ? : 17.04 × 25.99 + 40.97 × 31.03 = ?",
+    "o": [
+      "1713",
+      "1833",
+      "2073",
+      "1953",
+      "1593"
+    ],
+    "a": 0
+  },
+  {
+    "n": "46",
+    "subCode": "12(B)",
+    "q": "Approximate value of ? : 22.01 × 39.98 + 34.02 × 39.04 = ?",
+    "o": [
+      "2361",
+      "2671",
+      "2516",
+      "1741",
+      "2206"
+    ],
+    "a": 4
+  },
+  {
+    "n": "47",
+    "subCode": "12(C)",
+    "q": "Approximate value of ? : 60.02 × 18.04 + 47.99 × 22.98 = ?",
+    "o": [
+      "2184",
+      "2029",
+      "2649",
+      "1719",
+      "2339"
+    ],
+    "a": 0
+  },
+  {
+    "n": "48",
+    "subCode": "12(D)",
+    "q": "Approximate value of ? : 27.98 × 31.97 + 18.03 × 14.99 = ?",
+    "o": [
+      "1006",
+      "1406",
+      "1326",
+      "1166",
+      "1246"
+    ],
+    "a": 3
+  },
+  {
+    "n": "49",
+    "subCode": "13(A)",
+    "q": "Approximate value of ? : 53.03 × 11.02 + 51.98 × 37.02 = ?",
+    "o": [
+      "3032",
+      "2507",
+      "1982",
+      "2682",
+      "2857"
+    ],
+    "a": 1
+  },
+  {
+    "n": "50",
+    "subCode": "13(B)",
+    "q": "Approximate value of ? : 31.98 × 20.97 + 22.05 × 21.02 = ?",
+    "o": [
+      "1054",
+      "1374",
+      "1134",
+      "1294",
+      "974"
+    ],
+    "a": 2
+  },
+  {
+    "n": "51",
+    "subCode": "13(C)",
+    "q": "Approximate value of ? : 38.01 × 7.98 + 12.02 × 10.98 = ?",
+    "o": [
+      "406",
+      "526",
+      "436",
+      "376",
+      "346"
+    ],
+    "a": 2
+  },
+  {
+    "n": "52",
+    "subCode": "13(D)",
+    "q": "Approximate value of ? : 18.03 × 39.95 + 54.97 × 27.05 = ?",
+    "o": [
+      "1895",
+      "2515",
+      "2050",
+      "2360",
+      "2205"
+    ],
+    "a": 4
+  },
+  {
+    "n": "53",
+    "subCode": "14(A)",
+    "q": "Approximate value of ? : 32.05 × 17.98 + 50.03 × 34.04 = ?",
+    "o": [
+      "1956",
+      "2276",
+      "1796",
+      "2756",
+      "2596"
+    ],
+    "a": 1
+  },
+  {
+    "n": "54",
+    "subCode": "14(B)",
+    "q": "Approximate value of ? : 55.03 × 28.97 + 28.05 × 22.97 = ?",
+    "o": [
+      "2084",
+      "2549",
+      "2704",
+      "2239",
+      "1774"
+    ],
+    "a": 3
+  },
+  {
+    "n": "55",
+    "subCode": "14(C)",
+    "q": "Approximate value of ? : 29.98 × 26.02 + 56.05 × 23.03 = ?",
+    "o": [
+      "2068",
+      "2213",
+      "1778",
+      "1923",
+      "2358"
+    ],
+    "a": 0
+  },
+  {
+    "n": "56",
+    "subCode": "14(D)",
+    "q": "Approximate value of ? : 49.01 × 39.04 + 12.97 × 25.98 = ?",
+    "o": [
+      "2714",
+      "1939",
+      "1784",
+      "2249",
+      "2559"
+    ],
+    "a": 3
+  },
+  {
+    "n": "57",
+    "subCode": "15(A)",
+    "q": "Approximate value of ? : 21.97 × 11.99 + 51.04 × 12.03 = ?",
+    "o": [
+      "876",
+      "696",
+      "1056",
+      "996",
+      "816"
+    ],
+    "a": 0
+  },
+  {
+    "n": "58",
+    "subCode": "15(B)",
+    "q": "Approximate value of ? : 50.05 × 23.99 + 53.03 × 6.02 = ?",
+    "o": [
+      "1308",
+      "1623",
+      "1833",
+      "1728",
+      "1518"
+    ],
+    "a": 4
+  },
+  {
+    "n": "59",
+    "subCode": "15(C)",
+    "q": "Approximate value of ? : 36.01 × 19.99 + 35.99 × 31.04 = ?",
+    "o": [
+      "1446",
+      "1836",
+      "1576",
+      "2226",
+      "1706"
+    ],
+    "a": 1
+  },
+  {
+    "n": "60",
+    "subCode": "15(D)",
+    "q": "Approximate value of ? : 13.05 × 39.02 + 53.99 × 40.01 = ?",
+    "o": [
+      "2482",
+      "2852",
+      "2667",
+      "2112",
+      "3222"
+    ],
+    "a": 2
+  },
+  {
+    "n": "61",
+    "subCode": "16(A)",
+    "q": "Approximate value of ? : √169.04 × 11.95 ÷ 2.02 = ?",
+    "o": [
+      "93",
+      "88",
+      "78",
+      "83",
+      "68"
+    ],
+    "a": 2
+  },
+  {
+    "n": "62",
+    "subCode": "16(B)",
+    "q": "Approximate value of ? : √783.98 × 15.99 ÷ 3.97 = ?",
+    "o": [
+      "128",
+      "104",
+      "88",
+      "96",
+      "112"
+    ],
+    "a": 4
+  },
+  {
+    "n": "63",
+    "subCode": "16(C)",
+    "q": "Approximate value of ? : √196.03 × 48.04 ÷ 8.03 = ?",
+    "o": [
+      "78",
+      "72",
+      "90",
+      "84",
+      "102"
+    ],
+    "a": 3
+  },
+  {
+    "n": "64",
+    "subCode": "16(D)",
+    "q": "Approximate value of ? : √1024.2 × 4.02 ÷ 1.98 = ?",
+    "o": [
+      "56",
+      "64",
+      "60",
+      "72",
+      "68"
+    ],
+    "a": 1
+  },
+  {
+    "n": "65",
+    "subCode": "17(A)",
+    "q": "Approximate value of ? : √676.05 × 32.03 ÷ 7.99 = ?",
+    "o": [
+      "104",
+      "90",
+      "111",
+      "97",
+      "83"
+    ],
+    "a": 0
+  },
+  {
+    "n": "66",
+    "subCode": "17(B)",
+    "q": "Approximate value of ? : √841.03 × 20.03 ÷ 4.02 = ?",
+    "o": [
+      "165",
+      "175",
+      "145",
+      "155",
+      "115"
+    ],
+    "a": 2
+  },
+  {
+    "n": "67",
+    "subCode": "17(C)",
+    "q": "Approximate value of ? : √1680.6 × 54.01 ÷ 5.99 = ?",
+    "o": [
+      "294",
+      "344",
+      "419",
+      "369",
+      "319"
+    ],
+    "a": 3
+  },
+  {
+    "n": "68",
+    "subCode": "17(D)",
+    "q": "Approximate value of ? : √1443.8 × 27.03 ÷ 2.97 = ?",
+    "o": [
+      "367",
+      "342",
+      "267",
+      "292",
+      "317"
+    ],
+    "a": 1
+  },
+  {
+    "n": "69",
+    "subCode": "18(A)",
+    "q": "Approximate value of ? : √1443.9 × 8.01 ÷ 2.01 = ?",
+    "o": [
+      "162",
+      "142",
+      "182",
+      "122",
+      "152"
+    ],
+    "a": 4
+  },
+  {
+    "n": "70",
+    "subCode": "18(B)",
+    "q": "Approximate value of ? : √783.97 × 8.97 ÷ 2.99 = ?",
+    "o": [
+      "84",
+      "72",
+      "66",
+      "96",
+      "90"
+    ],
+    "a": 0
+  },
+  {
+    "n": "71",
+    "subCode": "18(C)",
+    "q": "Approximate value of ? : √961.05 × 12.05 ÷ 5.97 = ?",
+    "o": [
+      "62",
+      "54",
+      "70",
+      "58",
+      "66"
+    ],
+    "a": 0
+  },
+  {
+    "n": "72",
+    "subCode": "18(D)",
+    "q": "Approximate value of ? : √2024.9 × 31.98 ÷ 7.99 = ?",
+    "o": [
+      "210",
+      "225",
+      "165",
+      "135",
+      "180"
+    ],
+    "a": 4
+  },
+  {
+    "n": "73",
+    "subCode": "19(A)",
+    "q": "Approximate value of ? : √1295.6 × 23.97 ÷ 4.03 = ?",
+    "o": [
+      "171",
+      "216",
+      "246",
+      "186",
+      "201"
+    ],
+    "a": 1
+  },
+  {
+    "n": "74",
+    "subCode": "19(B)",
+    "q": "Approximate value of ? : √576.02 × 18.04 ÷ 3.01 = ?",
+    "o": [
+      "124",
+      "174",
+      "134",
+      "144",
+      "154"
+    ],
+    "a": 3
+  },
+  {
+    "n": "75",
+    "subCode": "19(C)",
+    "q": "Approximate value of ? : √1156.2 × 23.97 ÷ 2.97 = ?",
+    "o": [
+      "252",
+      "312",
+      "272",
+      "232",
+      "332"
+    ],
+    "a": 2
+  },
+  {
+    "n": "76",
+    "subCode": "19(D)",
+    "q": "Approximate value of ? : √1764.1 × 35.04 ÷ 4.98 = ?",
+    "o": [
+      "274",
+      "354",
+      "234",
+      "254",
+      "294"
+    ],
+    "a": 4
+  },
+  {
+    "n": "77",
+    "subCode": "20(A)",
+    "q": "Approximate value of ? : √528.99 × 15.97 ÷ 3.98 = ?",
+    "o": [
+      "98",
+      "92",
+      "86",
+      "80",
+      "110"
+    ],
+    "a": 1
+  },
+  {
+    "n": "78",
+    "subCode": "20(B)",
+    "q": "Approximate value of ? : √1936.4 × 15.98 ÷ 8.01 = ?",
+    "o": [
+      "88",
+      "100",
+      "76",
+      "106",
+      "94"
+    ],
+    "a": 0
+  },
+  {
+    "n": "79",
+    "subCode": "20(C)",
+    "q": "Approximate value of ? : √961.01 × 11.99 ÷ 2.98 = ?",
+    "o": [
+      "106",
+      "133",
+      "151",
+      "124",
+      "97"
+    ],
+    "a": 3
+  },
+  {
+    "n": "80",
+    "subCode": "20(D)",
+    "q": "Approximate value of ? : √1023.9 × 15.05 ÷ 5.01 = ?",
+    "o": [
+      "110",
+      "89",
+      "96",
+      "103",
+      "82"
+    ],
+    "a": 2
+  },
+  {
+    "n": "81",
+    "subCode": "21(A)",
+    "q": "Approximate value of ? : (92.03)² ÷ 8.02 + 99.95 = ?",
+    "o": [
+      "1398",
+      "1318",
+      "1078",
+      "918",
+      "1158"
+    ],
+    "a": 4
+  },
+  {
+    "n": "82",
+    "subCode": "21(B)",
+    "q": "Approximate value of ? : (80.03)² ÷ 2.03 + 165.95 = ?",
+    "o": [
+      "3131",
+      "3836",
+      "3366",
+      "2661",
+      "2896"
+    ],
+    "a": 2
+  },
+  {
+    "n": "83",
+    "subCode": "21(C)",
+    "q": "Approximate value of ? : (19.98)² ÷ 8.02 + 75.02 = ?",
+    "o": [
+      "143",
+      "125",
+      "152",
+      "98",
+      "116"
+    ],
+    "a": 1
+  },
+  {
+    "n": "84",
+    "subCode": "21(D)",
+    "q": "Approximate value of ? : (95.99)² ÷ 8.01 + 155.05 = ?",
+    "o": [
+      "1487",
+      "1037",
+      "1577",
+      "1307",
+      "1217"
+    ],
+    "a": 3
+  },
+  {
+    "n": "85",
+    "subCode": "22(A)",
+    "q": "Approximate value of ? : (52.05)² ÷ 8.01 + 291.99 = ?",
+    "o": [
+      "630",
+      "675",
+      "540",
+      "765",
+      "585"
+    ],
+    "a": 0
+  },
+  {
+    "n": "86",
+    "subCode": "22(B)",
+    "q": "Approximate value of ? : (68.03)² ÷ 4.01 + 152.05 = ?",
+    "o": [
+      "1398",
+      "1038",
+      "1308",
+      "1488",
+      "1128"
+    ],
+    "a": 2
+  },
+  {
+    "n": "87",
+    "subCode": "22(C)",
+    "q": "Approximate value of ? : (35.95)² ÷ 15.99 + 119.05 = ?",
+    "o": [
+      "170",
+      "230",
+      "185",
+      "155",
+      "200"
+    ],
+    "a": 4
+  },
+  {
+    "n": "88",
+    "subCode": "22(D)",
+    "q": "Approximate value of ? : (52.03)² ÷ 8.01 + 99.95 = ?",
+    "o": [
+      "438",
+      "408",
+      "468",
+      "528",
+      "498"
+    ],
+    "a": 0
+  },
+  {
+    "n": "89",
+    "subCode": "23(A)",
+    "q": "Approximate value of ? : (28.01)² ÷ 8.01 + 176.99 = ?",
+    "o": [
+      "235",
+      "275",
+      "335",
+      "255",
+      "315"
+    ],
+    "a": 1
+  },
+  {
+    "n": "90",
+    "subCode": "23(B)",
+    "q": "Approximate value of ? : (43.95)² ÷ 2.03 + 190.05 = ?",
+    "o": [
+      "1078",
+      "1398",
+      "1238",
+      "1158",
+      "918"
+    ],
+    "a": 3
+  },
+  {
+    "n": "91",
+    "subCode": "23(C)",
+    "q": "Approximate value of ? : (12.05)² ÷ 16.03 + 207.98 = ?",
+    "o": [
+      "172",
+      "232",
+      "187",
+      "217",
+      "262"
+    ],
+    "a": 3
+  },
+  {
+    "n": "92",
+    "subCode": "23(D)",
+    "q": "Approximate value of ? : (96.05)² ÷ 16.03 + 147.03 = ?",
+    "o": [
+      "723",
+      "773",
+      "673",
+      "823",
+      "873"
+    ],
+    "a": 0
+  },
+  {
+    "n": "93",
+    "subCode": "24(A)",
+    "q": "Approximate value of ? : (59.97)² ÷ 2.01 + 128.04 = ?",
+    "o": [
+      "1658",
+      "2063",
+      "1523",
+      "2198",
+      "1928"
+    ],
+    "a": 4
+  },
+  {
+    "n": "94",
+    "subCode": "24(B)",
+    "q": "Approximate value of ? : (28.05)² ÷ 8.02 + 210.95 = ?",
+    "o": [
+      "349",
+      "309",
+      "269",
+      "369",
+      "329"
+    ],
+    "a": 1
+  },
+  {
+    "n": "95",
+    "subCode": "24(C)",
+    "q": "Approximate value of ? : (12.01)² ÷ 8.03 + 58.98 = ?",
+    "o": [
+      "87",
+      "67",
+      "77",
+      "72",
+      "62"
+    ],
+    "a": 2
+  },
+  {
+    "n": "96",
+    "subCode": "24(D)",
+    "q": "Approximate value of ? : (52.01)² ÷ 8.02 + 49.04 = ?",
+    "o": [
+      "362",
+      "387",
+      "337",
+      "462",
+      "412"
+    ],
+    "a": 1
+  },
+  {
+    "n": "97",
+    "subCode": "25(A)",
+    "q": "Approximate value of ? : (87.98)² ÷ 7.97 + 229.01 = ?",
+    "o": [
+      "1452",
+      "1027",
+      "1282",
+      "1197",
+      "1367"
+    ],
+    "a": 3
+  },
+  {
+    "n": "98",
+    "subCode": "25(B)",
+    "q": "Approximate value of ? : (24.03)² ÷ 1.99 + 118.95 = ?",
+    "o": [
+      "407",
+      "497",
+      "437",
+      "377",
+      "317"
+    ],
+    "a": 0
+  },
+  {
+    "n": "99",
+    "subCode": "25(C)",
+    "q": "Approximate value of ? : (88.02)² ÷ 3.98 + 127.05 = ?",
+    "o": [
+      "2498",
+      "2353",
+      "1918",
+      "1628",
+      "2063"
+    ],
+    "a": 4
+  },
+  {
+    "n": "100",
+    "subCode": "25(D)",
+    "q": "Approximate value of ? : (24.02)² ÷ 4.02 + 53.97 = ?",
+    "o": [
+      "228",
+      "243",
+      "198",
+      "213",
+      "153"
+    ],
+    "a": 2
+  },
+  {
+    "n": "101",
+    "subCode": "26(A)",
+    "q": "Approximate value of ? : 456.01 ÷ 11.95 × 28.03 − 282.03 = ?",
+    "o": [
+      "782",
+      "672",
+      "892",
+      "947",
+      "837"
+    ],
+    "a": 0
+  },
+  {
+    "n": "102",
+    "subCode": "26(B)",
+    "q": "Approximate value of ? : 575.02 ÷ 24.95 × 24.03 − 265.02 = ?",
+    "o": [
+      "307",
+      "247",
+      "227",
+      "287",
+      "347"
+    ],
+    "a": 3
+  },
+  {
+    "n": "103",
+    "subCode": "26(C)",
+    "q": "Approximate value of ? : 169.95 ÷ 5.01 × 9.01 − 30.95 = ?",
+    "o": [
+      "235",
+      "315",
+      "335",
+      "255",
+      "275"
+    ],
+    "a": 4
+  },
+  {
+    "n": "104",
+    "subCode": "26(D)",
+    "q": "Approximate value of ? : 390.05 ÷ 15.02 × 13.01 − 281.97 = ?",
+    "o": [
+      "44",
+      "68",
+      "56",
+      "48",
+      "52"
+    ],
+    "a": 2
+  },
+  {
+    "n": "105",
+    "subCode": "27(A)",
+    "q": "Approximate value of ? : 660.04 ÷ 20.04 × 24.03 − 65.95 = ?",
+    "o": [
+      "826",
+      "726",
+      "776",
+      "576",
+      "626"
+    ],
+    "a": 1
+  },
+  {
+    "n": "106",
+    "subCode": "27(B)",
+    "q": "Approximate value of ? : 599.98 ÷ 25.04 × 15.99 − 112.02 = ?",
+    "o": [
+      "252",
+      "292",
+      "332",
+      "272",
+      "212"
+    ],
+    "a": 3
+  },
+  {
+    "n": "107",
+    "subCode": "27(C)",
+    "q": "Approximate value of ? : 269.97 ÷ 29.95 × 24.01 − 129.01 = ?",
+    "o": [
+      "105",
+      "81",
+      "87",
+      "75",
+      "69"
+    ],
+    "a": 2
+  },
+  {
+    "n": "108",
+    "subCode": "27(D)",
+    "q": "Approximate value of ? : 1050.2 ÷ 30.02 × 20.95 − 83.99 = ?",
+    "o": [
+      "516",
+      "561",
+      "696",
+      "741",
+      "651"
+    ],
+    "a": 4
+  },
+  {
+    "n": "109",
+    "subCode": "28(A)",
+    "q": "Approximate value of ? : 650.04 ÷ 25.04 × 25.01 − 219.99 = ?",
+    "o": [
+      "490",
+      "430",
+      "400",
+      "460",
+      "340"
+    ],
+    "a": 1
+  },
+  {
+    "n": "110",
+    "subCode": "28(B)",
+    "q": "Approximate value of ? : 143.97 ÷ 12.02 × 9.01 − 50.99 = ?",
+    "o": [
+      "57",
+      "65",
+      "49",
+      "61",
+      "45"
+    ],
+    "a": 0
+  },
+  {
+    "n": "111",
+    "subCode": "28(C)",
+    "q": "Approximate value of ? : 239.99 ÷ 11.95 × 21.99 − 201.99 = ?",
+    "o": [
+      "193",
+      "283",
+      "268",
+      "223",
+      "238"
+    ],
+    "a": 4
+  },
+  {
+    "n": "112",
+    "subCode": "28(D)",
+    "q": "Approximate value of ? : 70.05 ÷ 5.03 × 25.95 − 98.04 = ?",
+    "o": [
+      "286",
+      "266",
+      "206",
+      "246",
+      "326"
+    ],
+    "a": 1
+  },
+  {
+    "n": "113",
+    "subCode": "29(A)",
+    "q": "Approximate value of ? : 360.04 ÷ 29.97 × 14.95 − 93.97 = ?",
+    "o": [
+      "86",
+      "80",
+      "92",
+      "74",
+      "98"
+    ],
+    "a": 0
+  },
+  {
+    "n": "114",
+    "subCode": "29(B)",
+    "q": "Approximate value of ? : 640.04 ÷ 40.05 × 16.05 − 100.95 = ?",
+    "o": [
+      "185",
+      "125",
+      "155",
+      "145",
+      "175"
+    ],
+    "a": 2
+  },
+  {
+    "n": "115",
+    "subCode": "29(C)",
+    "q": "Approximate value of ? : 240.05 ÷ 11.97 × 13.95 − 206.04 = ?",
+    "o": [
+      "89",
+      "79",
+      "59",
+      "74",
+      "69"
+    ],
+    "a": 3
+  },
+  {
+    "n": "116",
+    "subCode": "29(D)",
+    "q": "Approximate value of ? : 799.99 ÷ 39.98 × 15.99 − 269.04 = ?",
+    "o": [
+      "55",
+      "43",
+      "47",
+      "51",
+      "39"
+    ],
+    "a": 3
+  },
+  {
+    "n": "117",
+    "subCode": "30(A)",
+    "q": "Approximate value of ? : 374.97 ÷ 15.04 × 19.03 − 213.02 = ?",
+    "o": [
+      "262",
+      "242",
+      "202",
+      "282",
+      "322"
+    ],
+    "a": 0
+  },
+  {
+    "n": "118",
+    "subCode": "30(B)",
+    "q": "Approximate value of ? : 256.04 ÷ 7.97 × 19.04 − 196.98 = ?",
+    "o": [
+      "471",
+      "411",
+      "441",
+      "351",
+      "381"
+    ],
+    "a": 1
+  },
+  {
+    "n": "119",
+    "subCode": "30(C)",
+    "q": "Approximate value of ? : 419.97 ÷ 19.98 × 5.97 − 60.95 = ?",
+    "o": [
+      "50",
+      "55",
+      "70",
+      "75",
+      "65"
+    ],
+    "a": 4
+  },
+  {
+    "n": "120",
+    "subCode": "30(D)",
+    "q": "Approximate value of ? : 215.95 ÷ 7.97 × 29.97 − 252.99 = ?",
+    "o": [
+      "677",
+      "637",
+      "557",
+      "517",
+      "477"
+    ],
+    "a": 2
+  },
+  {
+    "n": "121",
+    "subCode": "31(A)",
+    "q": "Approximate value of ? : 1/4 of 479.97 + 1/3 of 899.98 − 13.04 × 2.98 = ?",
+    "o": [
+      "331",
+      "381",
+      "431",
+      "306",
+      "406"
+    ],
+    "a": 1
+  },
+  {
+    "n": "122",
+    "subCode": "31(B)",
+    "q": "Approximate value of ? : 5/8 of 1440.3 + 1/2 of 599.97 − 15.03 × 11.04 = ?",
+    "o": [
+      "965",
+      "1175",
+      "825",
+      "1035",
+      "1105"
+    ],
+    "a": 3
+  },
+  {
+    "n": "123",
+    "subCode": "31(C)",
+    "q": "Approximate value of ? : 1/3 of 480.05 + 5/6 of 1199.9 − 9.98 × 17.05 = ?",
+    "o": [
+      "920",
+      "780",
+      "1060",
+      "1130",
+      "990"
+    ],
+    "a": 4
+  },
+  {
+    "n": "124",
+    "subCode": "31(D)",
+    "q": "Approximate value of ? : 2/5 of 599.98 + 1/2 of 600.02 − 12.99 × 13.97 = ?",
+    "o": [
+      "308",
+      "283",
+      "358",
+      "433",
+      "383"
+    ],
+    "a": 2
+  },
+  {
+    "n": "125",
+    "subCode": "32(A)",
+    "q": "Approximate value of ? : 8/10 of 800.01 + 1/3 of 1079.8 − 7.01 × 10.97 = ?",
+    "o": [
+      "923",
+      "793",
+      "858",
+      "1118",
+      "728"
+    ],
+    "a": 0
+  },
+  {
+    "n": "126",
+    "subCode": "32(B)",
+    "q": "Approximate value of ? : 1/5 of 1500.4 + 3/4 of 960.01 − 5.97 × 20.05 = ?",
+    "o": [
+      "900",
+      "965",
+      "1030",
+      "1095",
+      "705"
+    ],
+    "a": 0
+  },
+  {
+    "n": "127",
+    "subCode": "32(C)",
+    "q": "Approximate value of ? : 2/5 of 799.99 + 1/2 of 1200.1 − 6.99 × 16.99 = ?",
+    "o": [
+      "691",
+      "801",
+      "636",
+      "746",
+      "966"
+    ],
+    "a": 1
+  },
+  {
+    "n": "128",
+    "subCode": "32(D)",
+    "q": "Approximate value of ? : 3/4 of 959.99 + 1/2 of 719.95 − 30.04 × 12.98 = ?",
+    "o": [
+      "740",
+      "590",
+      "790",
+      "840",
+      "690"
+    ],
+    "a": 4
+  },
+  {
+    "n": "129",
+    "subCode": "33(A)",
+    "q": "Approximate value of ? : 1/6 of 1440.2 + 3/4 of 640.02 − 7.97 × 14.99 = ?",
+    "o": [
+      "560",
+      "720",
+      "640",
+      "600",
+      "680"
+    ],
+    "a": 3
+  },
+  {
+    "n": "130",
+    "subCode": "33(B)",
+    "q": "Approximate value of ? : 2/3 of 899.97 + 7/8 of 960.04 − 7.01 × 6.99 = ?",
+    "o": [
+      "1581",
+      "1486",
+      "1391",
+      "1106",
+      "1676"
+    ],
+    "a": 2
+  },
+  {
+    "n": "131",
+    "subCode": "33(C)",
+    "q": "Approximate value of ? : 1/5 of 899.95 + 1/6 of 719.95 − 17.02 × 11.02 = ?",
+    "o": [
+      "129",
+      "113",
+      "105",
+      "97",
+      "121"
+    ],
+    "a": 1
+  },
+  {
+    "n": "132",
+    "subCode": "33(D)",
+    "q": "Approximate value of ? : 4/5 of 1199.8 + 4/8 of 480.01 − 24.01 × 20.02 = ?",
+    "o": [
+      "870",
+      "570",
+      "720",
+      "620",
+      "820"
+    ],
+    "a": 2
+  },
+  {
+    "n": "133",
+    "subCode": "34(A)",
+    "q": "Approximate value of ? : 4/8 of 1280.4 + 4/10 of 800.04 − 17.05 × 6.99 = ?",
+    "o": [
+      "781",
+      "961",
+      "721",
+      "841",
+      "901"
+    ],
+    "a": 3
+  },
+  {
+    "n": "134",
+    "subCode": "34(B)",
+    "q": "Approximate value of ? : 2/3 of 539.95 + 1/6 of 1440.3 − 25.95 × 7.03 = ?",
+    "o": [
+      "418",
+      "328",
+      "448",
+      "358",
+      "478"
+    ],
+    "a": 0
+  },
+  {
+    "n": "135",
+    "subCode": "34(C)",
+    "q": "Approximate value of ? : 1/2 of 800.04 + 1/6 of 1919.6 − 12.04 × 20.03 = ?",
+    "o": [
+      "410",
+      "445",
+      "375",
+      "585",
+      "480"
+    ],
+    "a": 4
+  },
+  {
+    "n": "136",
+    "subCode": "34(D)",
+    "q": "Approximate value of ? : 2/3 of 719.98 + 4/5 of 899.98 − 4.98 × 20.01 = ?",
+    "o": [
+      "1025",
+      "1175",
+      "950",
+      "1100",
+      "1250"
+    ],
+    "a": 3
+  },
+  {
+    "n": "137",
+    "subCode": "35(A)",
+    "q": "Approximate value of ? : 4/5 of 799.98 + 1/2 of 359.98 − 14.03 × 3.03 = ?",
+    "o": [
+      "888",
+      "668",
+      "723",
+      "943",
+      "778"
+    ],
+    "a": 4
+  },
+  {
+    "n": "138",
+    "subCode": "35(B)",
+    "q": "Approximate value of ? : 2/3 of 239.98 + 1/5 of 1799.9 − 24.03 × 7.99 = ?",
+    "o": [
+      "328",
+      "303",
+      "253",
+      "403",
+      "378"
+    ],
+    "a": 0
+  },
+  {
+    "n": "139",
+    "subCode": "35(C)",
+    "q": "Approximate value of ? : 2/3 of 720.05 + 1/5 of 199.98 − 25.95 × 16.95 = ?",
+    "o": [
+      "83",
+      "68",
+      "78",
+      "93",
+      "88"
+    ],
+    "a": 2
+  },
+  {
+    "n": "140",
+    "subCode": "35(D)",
+    "q": "Approximate value of ? : 1/2 of 80.02 + 3/5 of 1200.2 − 18.05 × 4.98 = ?",
+    "o": [
+      "535",
+      "670",
+      "805",
+      "580",
+      "715"
+    ],
+    "a": 1
+  },
+  {
+    "n": "141",
+    "subCode": "36(A)",
+    "q": "Approximate value of ? : 2919.6 ÷ 20.02 − 5.02 × 7.98 = ?",
+    "o": [
+      "106",
+      "85",
+      "120",
+      "99",
+      "113"
+    ],
+    "a": 0
+  },
+  {
+    "n": "142",
+    "subCode": "36(B)",
+    "q": "Approximate value of ? : 3689.9 ÷ 15.02 − 7.01 × 17.05 = ?",
+    "o": [
+      "118",
+      "127",
+      "100",
+      "136",
+      "109"
+    ],
+    "a": 1
+  },
+  {
+    "n": "143",
+    "subCode": "36(C)",
+    "q": "Approximate value of ? : 3959.8 ÷ 12.04 − 18.02 × 12.04 = ?",
+    "o": [
+      "90",
+      "138",
+      "114",
+      "98",
+      "106"
+    ],
+    "a": 2
+  },
+  {
+    "n": "144",
+    "subCode": "36(D)",
+    "q": "Approximate value of ? : 5430.4 ÷ 15.04 − 19.02 × 9.01 = ?",
+    "o": [
+      "206",
+      "176",
+      "146",
+      "161",
+      "191"
+    ],
+    "a": 4
+  },
+  {
+    "n": "145",
+    "subCode": "37(A)",
+    "q": "Approximate value of ? : 7720.3 ÷ 20.05 − 7.97 × 13.95 = ?",
+    "o": [
+      "214",
+      "254",
+      "334",
+      "274",
+      "294"
+    ],
+    "a": 3
+  },
+  {
+    "n": "146",
+    "subCode": "37(B)",
+    "q": "Approximate value of ? : 8975.4 ÷ 24.97 − 15.03 × 16.05 = ?",
+    "o": [
+      "127",
+      "95",
+      "119",
+      "111",
+      "135"
+    ],
+    "a": 2
+  },
+  {
+    "n": "147",
+    "subCode": "37(C)",
+    "q": "Approximate value of ? : 3760.4 ÷ 20.05 − 19.95 × 3.98 = ?",
+    "o": [
+      "108",
+      "132",
+      "116",
+      "124",
+      "92"
+    ],
+    "a": 0
+  },
+  {
+    "n": "148",
+    "subCode": "37(D)",
+    "q": "Approximate value of ? : 1259.9 ÷ 6.01 − 22.05 × 5.01 = ?",
+    "o": [
+      "121",
+      "100",
+      "114",
+      "79",
+      "107"
+    ],
+    "a": 1
+  },
+  {
+    "n": "149",
+    "subCode": "38(A)",
+    "q": "Approximate value of ? : 5112.2 ÷ 24.01 − 12.97 × 3.98 = ?",
+    "o": [
+      "151",
+      "191",
+      "181",
+      "161",
+      "131"
+    ],
+    "a": 3
+  },
+  {
+    "n": "150",
+    "subCode": "38(B)",
+    "q": "Approximate value of ? : 2249.7 ÷ 14.98 − 6.03 × 15.04 = ?",
+    "o": [
+      "56",
+      "72",
+      "52",
+      "68",
+      "60"
+    ],
+    "a": 4
+  },
+  {
+    "n": "151",
+    "subCode": "38(C)",
+    "q": "Approximate value of ? : 11519.6 ÷ 29.99 − 23.98 × 5.02 = ?",
+    "o": [
+      "324",
+      "284",
+      "264",
+      "244",
+      "204"
+    ],
+    "a": 2
+  },
+  {
+    "n": "152",
+    "subCode": "38(D)",
+    "q": "Approximate value of ? : 1784.9 ÷ 15.05 − 6.98 × 6.99 = ?",
+    "o": [
+      "70",
+      "75",
+      "80",
+      "60",
+      "65"
+    ],
+    "a": 0
+  },
+  {
+    "n": "153",
+    "subCode": "39(A)",
+    "q": "Approximate value of ? : 8675.3 ÷ 25.03 − 4.97 × 12.95 = ?",
+    "o": [
+      "302",
+      "222",
+      "242",
+      "262",
+      "282"
+    ],
+    "a": 4
+  },
+  {
+    "n": "154",
+    "subCode": "39(B)",
+    "q": "Approximate value of ? : 7295.8 ÷ 24.02 − 18.98 × 7.99 = ?",
+    "o": [
+      "162",
+      "142",
+      "132",
+      "152",
+      "172"
+    ],
+    "a": 3
+  },
+  {
+    "n": "155",
+    "subCode": "39(C)",
+    "q": "Approximate value of ? : 11340.4 ÷ 29.99 − 9.03 × 10.02 = ?",
+    "o": [
+      "268",
+      "288",
+      "308",
+      "248",
+      "348"
+    ],
+    "a": 1
+  },
+  {
+    "n": "156",
+    "subCode": "39(D)",
+    "q": "Approximate value of ? : 5472.4 ÷ 16.02 − 11.98 × 10.02 = ?",
+    "o": [
+      "222",
+      "252",
+      "267",
+      "207",
+      "237"
+    ],
+    "a": 0
+  },
+  {
+    "n": "157",
+    "subCode": "40(A)",
+    "q": "Approximate value of ? : 10410.2 ÷ 29.95 − 7.97 × 6.01 = ?",
+    "o": [
+      "279",
+      "299",
+      "319",
+      "239",
+      "339"
+    ],
+    "a": 1
+  },
+  {
+    "n": "158",
+    "subCode": "40(B)",
+    "q": "Approximate value of ? : 1763.6 ÷ 11.98 − 9.02 × 10.02 = ?",
+    "o": [
+      "61",
+      "53",
+      "57",
+      "65",
+      "45"
+    ],
+    "a": 2
+  },
+  {
+    "n": "159",
+    "subCode": "40(C)",
+    "q": "Approximate value of ? : 6125.1 ÷ 25.03 − 10.95 × 9.98 = ?",
+    "o": [
+      "162",
+      "117",
+      "126",
+      "135",
+      "153"
+    ],
+    "a": 3
+  },
+  {
+    "n": "160",
+    "subCode": "40(D)",
+    "q": "Approximate value of ? : 4548.4 ÷ 12.01 − 14.02 × 5.02 = ?",
+    "o": [
+      "369",
+      "249",
+      "289",
+      "269",
+      "309"
+    ],
+    "a": 4
+  },
+  {
+    "n": "161",
+    "subCode": "41(A)",
+    "q": "Approximate value of ? : 75% of 400.02 ÷ 9.95 × 9.02 = ?",
+    "o": [
+      "290",
+      "330",
+      "210",
+      "230",
+      "270"
+    ],
+    "a": 4
+  },
+  {
+    "n": "162",
+    "subCode": "41(B)",
+    "q": "Approximate value of ? : 75% of 799.98 ÷ 8.01 × 14.05 = ?",
+    "o": [
+      "1275",
+      "1050",
+      "1200",
+      "1125",
+      "900"
+    ],
+    "a": 1
+  },
+  {
+    "n": "163",
+    "subCode": "41(C)",
+    "q": "Approximate value of ? : 40% of 800.04 ÷ 10.05 × 20.03 = ?",
+    "o": [
+      "550",
+      "685",
+      "640",
+      "730",
+      "595"
+    ],
+    "a": 2
+  },
+  {
+    "n": "164",
+    "subCode": "41(D)",
+    "q": "Approximate value of ? : 75% of 399.97 ÷ 14.97 × 18.95 = ?",
+    "o": [
+      "355",
+      "305",
+      "455",
+      "380",
+      "430"
+    ],
+    "a": 3
+  },
+  {
+    "n": "165",
+    "subCode": "42(A)",
+    "q": "Approximate value of ? : 75% of 1599.7 ÷ 9.97 × 10.98 = ?",
+    "o": [
+      "1320",
+      "1500",
+      "1410",
+      "1230",
+      "1140"
+    ],
+    "a": 0
+  },
+  {
+    "n": "166",
+    "subCode": "42(B)",
+    "q": "Approximate value of ? : 20% of 3600.1 ÷ 20.05 × 15.99 = ?",
+    "o": [
+      "496",
+      "576",
+      "616",
+      "656",
+      "536"
+    ],
+    "a": 1
+  },
+  {
+    "n": "167",
+    "subCode": "42(C)",
+    "q": "Approximate value of ? : 25% of 2000.3 ÷ 5.01 × 14.05 = ?",
+    "o": [
+      "1400",
+      "1300",
+      "1600",
+      "1200",
+      "1100"
+    ],
+    "a": 0
+  },
+  {
+    "n": "168",
+    "subCode": "42(D)",
+    "q": "Approximate value of ? : 50% of 3599.9 ÷ 15.05 × 11.05 = ?",
+    "o": [
+      "1140",
+      "1410",
+      "1320",
+      "1230",
+      "1050"
+    ],
+    "a": 2
+  },
+  {
+    "n": "169",
+    "subCode": "43(A)",
+    "q": "Approximate value of ? : 40% of 1600.4 ÷ 20.01 × 13.03 = ?",
+    "o": [
+      "506",
+      "476",
+      "356",
+      "416",
+      "446"
+    ],
+    "a": 3
+  },
+  {
+    "n": "170",
+    "subCode": "43(B)",
+    "q": "Approximate value of ? : 25% of 1600.3 ÷ 8.02 × 13.95 = ?",
+    "o": [
+      "550",
+      "800",
+      "650",
+      "600",
+      "700"
+    ],
+    "a": 4
+  },
+  {
+    "n": "171",
+    "subCode": "43(C)",
+    "q": "Approximate value of ? : 20% of 1999.9 ÷ 9.97 × 27.02 = ?",
+    "o": [
+      "930",
+      "1305",
+      "1155",
+      "1080",
+      "855"
+    ],
+    "a": 3
+  },
+  {
+    "n": "172",
+    "subCode": "43(D)",
+    "q": "Approximate value of ? : 40% of 1199.7 ÷ 10.02 × 28.95 = ?",
+    "o": [
+      "1677",
+      "1202",
+      "1392",
+      "1297",
+      "1582"
+    ],
+    "a": 2
+  },
+  {
+    "n": "173",
+    "subCode": "44(A)",
+    "q": "Approximate value of ? : 60% of 800.02 ÷ 5.02 × 12.97 = ?",
+    "o": [
+      "1078",
+      "1163",
+      "1503",
+      "993",
+      "1248"
+    ],
+    "a": 4
+  },
+  {
+    "n": "174",
+    "subCode": "44(B)",
+    "q": "Approximate value of ? : 60% of 399.97 ÷ 4.03 × 5.98 = ?",
+    "o": [
+      "360",
+      "310",
+      "335",
+      "410",
+      "385"
+    ],
+    "a": 0
+  },
+  {
+    "n": "175",
+    "subCode": "44(C)",
+    "q": "Approximate value of ? : 20% of 799.97 ÷ 20.01 × 28.99 = ?",
+    "o": [
+      "262",
+      "232",
+      "187",
+      "202",
+      "277"
+    ],
+    "a": 1
+  },
+  {
+    "n": "176",
+    "subCode": "44(D)",
+    "q": "Approximate value of ? : 50% of 1600.4 ÷ 8.02 × 5.98 = ?",
+    "o": [
+      "520",
+      "680",
+      "640",
+      "600",
+      "720"
+    ],
+    "a": 3
+  },
+  {
+    "n": "177",
+    "subCode": "45(A)",
+    "q": "Approximate value of ? : 25% of 400.04 ÷ 9.95 × 20.95 = ?",
+    "o": [
+      "255",
+      "210",
+      "225",
+      "240",
+      "180"
+    ],
+    "a": 1
+  },
+  {
+    "n": "178",
+    "subCode": "45(B)",
+    "q": "Approximate value of ? : 20% of 799.97 ÷ 1.99 × 10.04 = ?",
+    "o": [
+      "745",
+      "855",
+      "800",
+      "965",
+      "910"
+    ],
+    "a": 2
+  },
+  {
+    "n": "179",
+    "subCode": "45(C)",
+    "q": "Approximate value of ? : 25% of 399.97 ÷ 2.03 × 14.01 = ?",
+    "o": [
+      "700",
+      "650",
+      "850",
+      "750",
+      "800"
+    ],
+    "a": 0
+  },
+  {
+    "n": "180",
+    "subCode": "45(D)",
+    "q": "Approximate value of ? : 20% of 400.05 ÷ 10.01 × 9.95 = ?",
+    "o": [
+      "68",
+      "98",
+      "74",
+      "92",
+      "80"
+    ],
+    "a": 4
+  },
+  {
+    "n": "181",
+    "subCode": "46(A)",
+    "q": "Approximate value of ? : 39.95 × 6.98 + (38.03)² − 160.03 = ?",
+    "o": [
+      "1894",
+      "1564",
+      "1674",
+      "1344",
+      "1234"
+    ],
+    "a": 1
+  },
+  {
+    "n": "182",
+    "subCode": "46(B)",
+    "q": "Approximate value of ? : 14.97 × 22.98 + (16.99)² − 284.05 = ?",
+    "o": [
+      "400",
+      "375",
+      "425",
+      "350",
+      "275"
+    ],
+    "a": 3
+  },
+  {
+    "n": "183",
+    "subCode": "46(C)",
+    "q": "Approximate value of ? : 23.98 × 5.99 + (25.95)² − 229.95 = ?",
+    "o": [
+      "590",
+      "470",
       "510",
       "550",
-      "504",
+      "710"
+    ],
+    "a": 0
+  },
+  {
+    "n": "184",
+    "subCode": "46(D)",
+    "q": "Approximate value of ? : 9.99 × 14.99 + (35.01)² − 177.04 = ?",
+    "o": [
+      "1028",
+      "1368",
+      "1198",
+      "1453",
+      "1113"
+    ],
+    "a": 2
+  },
+  {
+    "n": "185",
+    "subCode": "47(A)",
+    "q": "Approximate value of ? : 12.01 × 28.01 + (37.95)² − 278.97 = ?",
+    "o": [
+      "1816",
+      "1291",
+      "1396",
+      "1186",
+      "1501"
+    ],
+    "a": 4
+  },
+  {
+    "n": "186",
+    "subCode": "47(B)",
+    "q": "Approximate value of ? : 35.98 × 8.97 + (25.05)² − 224.98 = ?",
+    "o": [
+      "774",
+      "874",
+      "824",
+      "674",
+      "724"
+    ],
+    "a": 4
+  },
+  {
+    "n": "187",
+    "subCode": "47(C)",
+    "q": "Approximate value of ? : 20.99 × 21.98 + (37.02)² − 79.95 = ?",
+    "o": [
+      "1876",
+      "1626",
+      "2001",
+      "1751",
+      "2126"
+    ],
+    "a": 3
+  },
+  {
+    "n": "188",
+    "subCode": "47(D)",
+    "q": "Approximate value of ? : 38.95 × 5.01 + (31.03)² − 153.02 = ?",
+    "o": [
+      "1073",
+      "1003",
+      "933",
+      "793",
+      "1213"
+    ],
+    "a": 1
+  },
+  {
+    "n": "189",
+    "subCode": "48(A)",
+    "q": "Approximate value of ? : 27.05 × 15.01 + (11.03)² − 157.98 = ?",
+    "o": [
+      "293",
+      "418",
+      "368",
+      "343",
+      "443"
+    ],
+    "a": 2
+  },
+  {
+    "n": "190",
+    "subCode": "48(B)",
+    "q": "Approximate value of ? : 22.04 × 19.99 + (23.03)² − 250.95 = ?",
+    "o": [
+      "718",
+      "818",
+      "768",
+      "868",
+      "668"
+    ],
+    "a": 0
+  },
+  {
+    "n": "191",
+    "subCode": "48(C)",
+    "q": "Approximate value of ? : 15.98 × 12.99 + (27.02)² − 234.98 = ?",
+    "o": [
+      "702",
+      "852",
+      "802",
+      "552",
+      "652"
+    ],
+    "a": 0
+  },
+  {
+    "n": "192",
+    "subCode": "48(D)",
+    "q": "Approximate value of ? : 23.99 × 26.05 + (31.02)² − 230.01 = ?",
+    "o": [
+      "1640",
+      "1070",
+      "1545",
+      "1260",
+      "1355"
+    ],
+    "a": 4
+  },
+  {
+    "n": "193",
+    "subCode": "49(A)",
+    "q": "Approximate value of ? : 35.99 × 28.04 + (22.99)² − 150.97 = ?",
+    "o": [
+      "1101",
+      "1386",
+      "1196",
+      "1481",
+      "1291"
+    ],
+    "a": 1
+  },
+  {
+    "n": "194",
+    "subCode": "49(B)",
+    "q": "Approximate value of ? : 30.97 × 24.04 + (34.99)² − 94.02 = ?",
+    "o": [
+      "2135",
+      "1615",
+      "1485",
+      "1875",
+      "1745"
+    ],
+    "a": 3
+  },
+  {
+    "n": "195",
+    "subCode": "49(C)",
+    "q": "Approximate value of ? : 14.02 × 24.99 + (14.05)² − 55.99 = ?",
+    "o": [
+      "455",
       "420",
+      "490",
+      "385",
+      "525"
+    ],
+    "a": 2
+  },
+  {
+    "n": "196",
+    "subCode": "49(D)",
+    "q": "Approximate value of ? : 25.97 × 12.03 + (39.97)² − 169.05 = ?",
+    "o": [
+      "1503",
+      "1383",
+      "1623",
+      "2103",
+      "1743"
+    ],
+    "a": 4
+  },
+  {
+    "n": "197",
+    "subCode": "50(A)",
+    "q": "Approximate value of ? : 11.04 × 25.04 + (12.95)² − 187.97 = ?",
+    "o": [
+      "196",
+      "256",
+      "276",
+      "296",
+      "216"
+    ],
+    "a": 1
+  },
+  {
+    "n": "198",
+    "subCode": "50(B)",
+    "q": "Approximate value of ? : 18.95 × 7.97 + (19.97)² − 79.98 = ?",
+    "o": [
+      "577",
+      "507",
+      "472",
+      "367",
+      "542"
+    ],
+    "a": 2
+  },
+  {
+    "n": "199",
+    "subCode": "50(C)",
+    "q": "Approximate value of ? : 16.99 × 12.03 + (32.99)² − 210.05 = ?",
+    "o": [
+      "1083",
+      "858",
+      "1158",
+      "1233",
+      "1308"
+    ],
+    "a": 0
+  },
+  {
+    "n": "200",
+    "subCode": "50(D)",
+    "q": "Approximate value of ? : 28.05 × 16.01 + (37.95)² − 240.04 = ?",
+    "o": [
+      "1997",
+      "1422",
+      "1882",
+      "1652",
+      "1767"
+    ],
+    "a": 3
+  },
+  {
+    "n": "201",
+    "subCode": "51(A)",
+    "q": "Simplify: 14 + 32 ÷ 4 × 9 − 4² = ?",
+    "o": [
+      "65",
+      "55",
+      "70",
+      "60",
+      "85"
+    ],
+    "a": 2
+  },
+  {
+    "n": "202",
+    "subCode": "51(B)",
+    "q": "Simplify: 85 + 45 ÷ 3 × 13 − 8² = ?",
+    "o": [
+      "216",
+      "196",
+      "186",
+      "246",
+      "236"
+    ],
+    "a": 0
+  },
+  {
+    "n": "203",
+    "subCode": "51(C)",
+    "q": "Simplify: 22 + 48 ÷ 12 × 3 − 5² = ?",
+    "o": [
+      "7",
+      "12",
+      "11",
+      "10",
+      "9"
+    ],
+    "a": 4
+  },
+  {
+    "n": "204",
+    "subCode": "51(D)",
+    "q": "Simplify: 26 + 8 ÷ 2 × 2 − 5² = ?",
+    "o": [
+      "10",
+      "9",
+      "6",
+      "12",
+      "7"
+    ],
+    "a": 1
+  },
+  {
+    "n": "205",
+    "subCode": "52(A)",
+    "q": "Simplify: 84 + 140 ÷ 10 × 8 − 8² = ?",
+    "o": [
+      "137",
+      "127",
+      "117",
+      "132",
+      "122"
+    ],
+    "a": 3
+  },
+  {
+    "n": "206",
+    "subCode": "52(B)",
+    "q": "Simplify: 43 + 55 ÷ 11 × 7 − 5² = ?",
+    "o": [
+      "53",
+      "43",
+      "63",
+      "68",
+      "48"
+    ],
+    "a": 0
+  },
+  {
+    "n": "207",
+    "subCode": "52(C)",
+    "q": "Simplify: 60 + 24 ÷ 4 × 9 − 7² = ?",
+    "o": [
+      "70",
+      "55",
+      "65",
+      "75",
+      "60"
+    ],
+    "a": 2
+  },
+  {
+    "n": "208",
+    "subCode": "52(D)",
+    "q": "Simplify: 19 + 45 ÷ 5 × 13 − 9² = ?",
+    "o": [
+      "45",
+      "70",
+      "40",
+      "55",
+      "60"
+    ],
+    "a": 3
+  },
+  {
+    "n": "209",
+    "subCode": "53(A)",
+    "q": "Simplify: 31 + 9 ÷ 3 × 12 − 6² = ?",
+    "o": [
+      "35",
+      "33",
+      "25",
+      "37",
+      "31"
+    ],
+    "a": 4
+  },
+  {
+    "n": "210",
+    "subCode": "53(B)",
+    "q": "Simplify: 56 + 60 ÷ 5 × 5 − 3² = ?",
+    "o": [
+      "102",
+      "107",
+      "92",
+      "122",
+      "97"
+    ],
+    "a": 1
+  },
+  {
+    "n": "211",
+    "subCode": "53(C)",
+    "q": "Simplify: 56 + 80 ÷ 8 × 7 − 2² = ?",
+    "o": [
+      "132",
+      "112",
+      "122",
+      "152",
+      "142"
+    ],
+    "a": 2
+  },
+  {
+    "n": "212",
+    "subCode": "53(D)",
+    "q": "Simplify: 62 + 110 ÷ 11 × 15 − 2² = ?",
+    "o": [
+      "198",
+      "218",
+      "178",
+      "238",
+      "208"
+    ],
+    "a": 4
+  },
+  {
+    "n": "213",
+    "subCode": "54(A)",
+    "q": "Simplify: 37 + 18 ÷ 3 × 7 − 3² = ?",
+    "o": [
+      "75",
+      "85",
+      "55",
+      "70",
+      "60"
+    ],
+    "a": 3
+  },
+  {
+    "n": "214",
+    "subCode": "54(B)",
+    "q": "Simplify: 34 + 16 ÷ 8 × 3 − 2² = ?",
+    "o": [
+      "36",
+      "41",
+      "31",
+      "21",
+      "46"
+    ],
+    "a": 0
+  },
+  {
+    "n": "215",
+    "subCode": "54(C)",
+    "q": "Simplify: 10 + 28 ÷ 4 × 4 − 4² = ?",
+    "o": [
+      "19",
+      "22",
+      "25",
+      "20",
+      "23"
+    ],
+    "a": 1
+  },
+  {
+    "n": "216",
+    "subCode": "54(D)",
+    "q": "Simplify: 30 + 45 ÷ 3 × 7 − 2² = ?",
+    "o": [
+      "131",
+      "141",
+      "111",
+      "121",
+      "151"
+    ],
+    "a": 0
+  },
+  {
+    "n": "217",
+    "subCode": "55(A)",
+    "q": "Simplify: 20 + 21 ÷ 7 × 13 − 6² = ?",
+    "o": [
+      "26",
+      "25",
+      "20",
+      "23",
+      "21"
+    ],
+    "a": 3
+  },
+  {
+    "n": "218",
+    "subCode": "55(B)",
+    "q": "Simplify: 42 + 110 ÷ 10 × 4 − 3² = ?",
+    "o": [
+      "79",
+      "75",
+      "71",
+      "81",
+      "77"
+    ],
+    "a": 4
+  },
+  {
+    "n": "219",
+    "subCode": "55(C)",
+    "q": "Simplify: 24 + 60 ÷ 10 × 5 − 2² = ?",
+    "o": [
+      "45",
+      "55",
+      "50",
+      "40",
+      "35"
+    ],
+    "a": 2
+  },
+  {
+    "n": "220",
+    "subCode": "55(D)",
+    "q": "Simplify: 37 + 140 ÷ 10 × 4 − 8² = ?",
+    "o": [
+      "30",
+      "29",
+      "27",
+      "28",
+      "26"
+    ],
+    "a": 1
+  },
+  {
+    "n": "221",
+    "subCode": "56(A)",
+    "q": "Simplify: 9.2 × 1.9 + 2.5 ÷ 0.25 − 5.6 = ?",
+    "o": [
+      "22.03",
+      "21.93",
+      "21.88",
+      "21.98",
+      "21.78"
+    ],
+    "a": 2
+  },
+  {
+    "n": "222",
+    "subCode": "56(B)",
+    "q": "Simplify: 2.7 × 2.5 + 1 ÷ 2.5 − 1.6 = ?",
+    "o": [
+      "5.45",
+      "5.55",
+      "5.6",
+      "5.4",
+      "5.5"
+    ],
+    "a": 1
+  },
+  {
+    "n": "223",
+    "subCode": "56(C)",
+    "q": "Simplify: 3.3 × 3.8 + 5.3 ÷ 2.5 − 5.6 = ?",
+    "o": [
+      "9.06",
+      "9.11",
+      "8.96",
+      "9.16",
+      "8.91"
+    ],
+    "a": 0
+  },
+  {
+    "n": "224",
+    "subCode": "56(D)",
+    "q": "Simplify: 7.7 × 9.6 + 2.6 ÷ 2.5 − 1.8 = ?",
+    "o": [
+      "73.21",
+      "73.06",
+      "73.01",
+      "73.16",
+      "73.26"
+    ],
+    "a": 3
+  },
+  {
+    "n": "225",
+    "subCode": "57(A)",
+    "q": "Simplify: 7.3 × 7.9 + 3.3 ÷ 0.4 − 3 = ?",
+    "o": [
+      "62.97",
+      "62.77",
+      "62.82",
+      "62.87",
+      "62.92"
+    ],
+    "a": 4
+  },
+  {
+    "n": "226",
+    "subCode": "57(B)",
+    "q": "Simplify: 1.6 × 4.8 + 0.2 ÷ 2.5 − 2.8 = ?",
+    "o": [
+      "4.86",
+      "4.91",
+      "5.01",
+      "4.96",
+      "4.81"
+    ],
+    "a": 3
+  },
+  {
+    "n": "227",
+    "subCode": "57(C)",
+    "q": "Simplify: 7.7 × 9.9 + 2 ÷ 0.8 − 4.8 = ?",
+    "o": [
+      "73.98",
+      "74.08",
+      "73.93",
+      "73.83",
+      "74.03"
+    ],
+    "a": 2
+  },
+  {
+    "n": "228",
+    "subCode": "57(D)",
+    "q": "Simplify: 3 × 4.3 + 5 ÷ 0.25 − 3.3 = ?",
+    "o": [
+      "30.6",
+      "29.6",
+      "29.1",
+      "28.6",
+      "28.1"
+    ],
+    "a": 1
+  },
+  {
+    "n": "229",
+    "subCode": "58(A)",
+    "q": "Simplify: 6.6 × 4.5 + 4.2 ÷ 0.5 − 5 = ?",
+    "o": [
+      "32.7",
+      "33.3",
+      "33.5",
+      "32.5",
+      "33.1"
+    ],
+    "a": 4
+  },
+  {
+    "n": "230",
+    "subCode": "58(B)",
+    "q": "Simplify: 3.1 × 8.9 + 5.8 ÷ 2.5 − 3.6 = ?",
+    "o": [
+      "26.31",
+      "26.33",
+      "26.29",
+      "26.34",
+      "26.32"
+    ],
+    "a": 0
+  },
+  {
+    "n": "231",
+    "subCode": "58(C)",
+    "q": "Simplify: 5 × 4.3 + 4.2 ÷ 2.5 − 3.3 = ?",
+    "o": [
+      "19.73",
+      "20.03",
+      "19.88",
+      "19.78",
+      "19.83"
+    ],
+    "a": 2
+  },
+  {
+    "n": "232",
+    "subCode": "58(D)",
+    "q": "Simplify: 6.2 × 6.2 + 1.9 ÷ 0.5 − 5.8 = ?",
+    "o": [
+      "36.29",
+      "36.49",
+      "36.59",
+      "36.34",
+      "36.44"
+    ],
+    "a": 4
+  },
+  {
+    "n": "233",
+    "subCode": "59(A)",
+    "q": "Simplify: 7 × 2.2 + 4.1 ÷ 0.25 − 1.9 = ?",
+    "o": [
+      "29.8",
+      "30.2",
+      "30",
+      "29.9",
+      "30.1"
+    ],
+    "a": 3
+  },
+  {
+    "n": "234",
+    "subCode": "59(B)",
+    "q": "Simplify: 6.1 × 1.7 + 2.5 ÷ 2.5 − 2.6 = ?",
+    "o": [
+      "8.79",
+      "8.77",
+      "8.75",
+      "8.74",
+      "8.76"
+    ],
+    "a": 1
+  },
+  {
+    "n": "235",
+    "subCode": "59(C)",
+    "q": "Simplify: 1.3 × 4.7 + 2.7 ÷ 0.2 − 2.8 = ?",
+    "o": [
+      "16.81",
+      "16.78",
+      "16.84",
+      "16.79",
+      "16.82"
+    ],
+    "a": 0
+  },
+  {
+    "n": "236",
+    "subCode": "59(D)",
+    "q": "Simplify: 6.9 × 1.2 + 2.8 ÷ 0.2 − 0.8 = ?",
+    "o": [
+      "21.45",
+      "21.49",
+      "21.47",
+      "21.51",
+      "21.48"
+    ],
+    "a": 4
+  },
+  {
+    "n": "237",
+    "subCode": "60(A)",
+    "q": "Simplify: 5.4 × 6.5 + 4.6 ÷ 0.8 − 1.9 = ?",
+    "o": [
+      "38.95",
+      "38.97",
+      "38.93",
+      "38.92",
+      "38.94"
+    ],
+    "a": 0
+  },
+  {
+    "n": "238",
+    "subCode": "60(B)",
+    "q": "Simplify: 4 × 3.7 + 3.1 ÷ 0.2 − 5.5 = ?",
+    "o": [
+      "25.3",
+      "24.8",
+      "24.3",
+      "23.8",
+      "23.3"
+    ],
+    "a": 1
+  },
+  {
+    "n": "239",
+    "subCode": "60(C)",
+    "q": "Simplify: 9.7 × 8.8 + 2.6 ÷ 0.25 − 3.9 = ?",
+    "o": [
+      "91.85",
+      "91.84",
+      "91.87",
+      "91.86",
+      "91.83"
+    ],
+    "a": 3
+  },
+  {
+    "n": "240",
+    "subCode": "60(D)",
+    "q": "Simplify: 7.2 × 7 + 0.2 ÷ 0.5 − 4.4 = ?",
+    "o": [
+      "47.9",
+      "45.9",
+      "46.4",
+      "45.4",
+      "47.4"
+    ],
+    "a": 2
+  },
+  {
+    "n": "241",
+    "subCode": "61(A)",
+    "q": "Simplify: (4/7 + 2/5) × 1/2 = ?",
+    "o": [
+      "3/7",
+      "17/35",
+      "2/5",
+      "19/35",
+      "4/7"
+    ],
+    "a": 1
+  },
+  {
+    "n": "242",
+    "subCode": "61(B)",
+    "q": "Simplify: (1/2 + 1/4) × 4/5 = ?",
+    "o": [
+      "4/5",
+      "1/5",
+      "3/5",
+      "6/5",
+      "1"
+    ],
+    "a": 2
+  },
+  {
+    "n": "243",
+    "subCode": "61(C)",
+    "q": "Simplify: (1/2 + 3/4) × 1/2 = ?",
+    "o": [
+      "3/8",
+      "1/4",
+      "3/4",
+      "5/8",
+      "7/8"
+    ],
+    "a": 3
+  },
+  {
+    "n": "244",
+    "subCode": "61(D)",
+    "q": "Simplify: (1/3 + 1/3) × 1/2 = ?",
+    "o": [
+      "1/3",
+      "2/3",
+      "-2/3",
+      "0",
+      "-1/3"
+    ],
+    "a": 0
+  },
+  {
+    "n": "245",
+    "subCode": "62(A)",
+    "q": "Simplify: (2/5 + 1/5) × 3/4 = ?",
+    "o": [
+      "11/20",
+      "3/10",
+      "2/5",
+      "1/2",
+      "9/20"
+    ],
+    "a": 4
+  },
+  {
+    "n": "246",
+    "subCode": "62(B)",
+    "q": "Simplify: (1/2 + 1/3) × 4/7 = ?",
+    "o": [
+      "13/21",
+      "4/7",
+      "10/21",
+      "1/3",
+      "3/7"
+    ],
+    "a": 2
+  },
+  {
+    "n": "247",
+    "subCode": "62(C)",
+    "q": "Simplify: (1/2 + 1/2) × 1/2 = ?",
+    "o": [
+      "0",
+      "2",
+      "3/2",
+      "1",
+      "1/2"
+    ],
+    "a": 4
+  },
+  {
+    "n": "248",
+    "subCode": "62(D)",
+    "q": "Simplify: (1/2 + 1/2) × 5/9 = ?",
+    "o": [
+      "8/9",
+      "5/9",
+      "4/9",
+      "2/3",
+      "1/3"
+    ],
+    "a": 1
+  },
+  {
+    "n": "249",
+    "subCode": "63(A)",
+    "q": "Simplify: (4/7 + 1/2) × 1/2 = ?",
+    "o": [
+      "15/28",
+      "4/7",
+      "3/7",
+      "1/2",
+      "17/28"
+    ],
+    "a": 0
+  },
+  {
+    "n": "250",
+    "subCode": "63(B)",
+    "q": "Simplify: (1/2 + 1/8) × 1/7 = ?",
+    "o": [
+      "3/56",
+      "1/28",
+      "3/28",
+      "5/56",
+      "1/7"
+    ],
+    "a": 3
+  },
+  {
+    "n": "251",
+    "subCode": "63(C)",
+    "q": "Simplify: (3/7 + 4/7) × 1/2 = ?",
+    "o": [
+      "0",
+      "1/2",
+      "3/2",
+      "1",
+      "-1/2"
+    ],
+    "a": 1
+  },
+  {
+    "n": "252",
+    "subCode": "63(D)",
+    "q": "Simplify: (2/3 + 1/5) × 5/9 = ?",
+    "o": [
+      "16/27",
+      "5/9",
+      "10/27",
+      "13/27",
+      "14/27"
+    ],
+    "a": 3
+  },
+  {
+    "n": "253",
+    "subCode": "64(A)",
+    "q": "Simplify: (1/2 + 4/7) × 2/9 = ?",
+    "o": [
+      "2/7",
+      "2/21",
+      "4/21",
+      "1/7",
+      "5/21"
+    ],
+    "a": 4
+  },
+  {
+    "n": "254",
+    "subCode": "64(B)",
+    "q": "Simplify: (5/6 + 7/8) × 2/3 = ?",
+    "o": [
+      "41/36",
+      "13/12",
+      "19/18",
+      "11/9",
+      "43/36"
+    ],
+    "a": 0
+  },
+  {
+    "n": "255",
+    "subCode": "64(C)",
+    "q": "Simplify: (2/3 + 1/2) × 1/2 = ?",
+    "o": [
+      "3/4",
+      "5/12",
+      "7/12",
+      "1/3",
+      "5/6"
+    ],
+    "a": 2
+  },
+  {
+    "n": "256",
+    "subCode": "64(D)",
+    "q": "Simplify: (3/4 + 2/5) × 1/2 = ?",
+    "o": [
+      "1/2",
+      "3/5",
+      "23/40",
+      "11/20",
+      "5/8"
+    ],
+    "a": 2
+  },
+  {
+    "n": "257",
+    "subCode": "65(A)",
+    "q": "Simplify: 2/3 ÷ 1/2 × 2/3 = ?",
+    "o": [
+      "8/9",
+      "5/9",
+      "11/9",
+      "2/3",
+      "7/9"
+    ],
+    "a": 0
+  },
+  {
+    "n": "258",
+    "subCode": "65(B)",
+    "q": "Simplify: 3/5 ÷ 1/3 × 5/7 = ?",
+    "o": [
+      "12/7",
+      "11/7",
+      "6/7",
+      "9/7",
+      "8/7"
+    ],
+    "a": 3
+  },
+  {
+    "n": "259",
+    "subCode": "65(C)",
+    "q": "Simplify: 4/5 ÷ 4/9 × 1/2 = ?",
+    "o": [
+      "3/5",
+      "1",
+      "6/5",
+      "11/10",
+      "9/10"
+    ],
+    "a": 4
+  },
+  {
+    "n": "260",
+    "subCode": "65(D)",
+    "q": "Simplify: 5/9 ÷ 2/9 × 2/3 = ?",
+    "o": [
+      "2",
+      "5/3",
+      "4/3",
+      "1",
+      "7/3"
+    ],
+    "a": 1
+  },
+  {
+    "n": "261",
+    "subCode": "66(A)",
+    "q": "Simplify: 2/7 ÷ 8/9 × 1/3 = ?",
+    "o": [
+      "1/7",
+      "3/14",
+      "3/28",
+      "1/14",
+      "5/28"
+    ],
+    "a": 2
+  },
+  {
+    "n": "262",
+    "subCode": "66(B)",
+    "q": "Simplify: 3/4 ÷ 5/9 × 1/6 = ?",
+    "o": [
+      "9/40",
+      "3/10",
+      "7/40",
+      "3/20",
+      "1/4"
+    ],
+    "a": 0
+  },
+  {
+    "n": "263",
+    "subCode": "66(C)",
+    "q": "Simplify: 1/3 ÷ 1/2 × 1/3 = ?",
+    "o": [
+      "1/9",
+      "4/9",
+      "1/3",
+      "2/9",
+      "5/9"
+    ],
+    "a": 3
+  },
+  {
+    "n": "264",
+    "subCode": "66(D)",
+    "q": "Simplify: 1/2 ÷ 1/5 × 1/3 = ?",
+    "o": [
+      "1/2",
+      "5/6",
+      "1",
+      "7/6",
+      "1/3"
+    ],
+    "a": 1
+  },
+  {
+    "n": "265",
+    "subCode": "67(A)",
+    "q": "Simplify: 3/5 ÷ 1/3 × 2/3 = ?",
+    "o": [
+      "1",
+      "7/5",
+      "8/5",
+      "3/5",
+      "6/5"
+    ],
+    "a": 4
+  },
+  {
+    "n": "266",
+    "subCode": "67(B)",
+    "q": "Simplify: 4/7 ÷ 1/2 × 2/3 = ?",
+    "o": [
+      "6/7",
+      "13/21",
+      "5/7",
+      "16/21",
+      "17/21"
+    ],
+    "a": 3
+  },
+  {
+    "n": "267",
+    "subCode": "67(C)",
+    "q": "Simplify: 1/2 ÷ 3/4 × 2/9 = ?",
+    "o": [
+      "4/27",
+      "5/27",
+      "2/9",
+      "1/9",
+      "1/27"
+    ],
+    "a": 0
+  },
+  {
+    "n": "268",
+    "subCode": "67(D)",
+    "q": "Simplify: 1/2 ÷ 1/4 × 1/3 = ?",
+    "o": [
+      "5/3",
+      "1",
+      "4/3",
+      "1/3",
+      "2/3"
+    ],
+    "a": 4
+  },
+  {
+    "n": "269",
+    "subCode": "68(A)",
+    "q": "Simplify: 3/8 ÷ 1/3 × 1/4 = ?",
+    "o": [
+      "7/32",
+      "9/32",
+      "3/16",
+      "3/8",
+      "1/4"
+    ],
+    "a": 1
+  },
+  {
+    "n": "270",
+    "subCode": "68(B)",
+    "q": "Simplify: 1/2 ÷ 2/9 × 1/2 = ?",
+    "o": [
+      "7/8",
+      "5/4",
+      "9/8",
+      "3/2",
+      "11/8"
+    ],
+    "a": 2
+  },
+  {
+    "n": "271",
+    "subCode": "68(C)",
+    "q": "Simplify: 3/4 ÷ 3/8 × 2/3 = ?",
+    "o": [
+      "4/3",
+      "5/3",
+      "7/3",
+      "1",
+      "2"
+    ],
+    "a": 0
+  },
+  {
+    "n": "272",
+    "subCode": "68(D)",
+    "q": "Simplify: 1/2 ÷ 1/7 × 1/5 = ?",
+    "o": [
+      "2/5",
+      "7/10",
+      "9/10",
+      "3/5",
+      "1"
+    ],
+    "a": 1
+  },
+  {
+    "n": "273",
+    "subCode": "69(A)",
+    "q": "Simplify: 10% of 1240 + 75% of 280 − 10% of 880 = ?",
+    "o": [
+      "216",
+      "226",
+      "246",
+      "236",
+      "256"
+    ],
+    "a": 2
+  },
+  {
+    "n": "274",
+    "subCode": "69(B)",
+    "q": "Simplify: 35% of 960 + 30% of 1240 − 30% of 560 = ?",
+    "o": [
+      "530",
+      "525",
+      "555",
+      "540",
+      "535"
+    ],
+    "a": 3
+  },
+  {
+    "n": "275",
+    "subCode": "69(C)",
+    "q": "Simplify: 15% of 1440 + 20% of 1480 − 25% of 1440 = ?",
+    "o": [
+      "142",
+      "162",
+      "122",
+      "172",
+      "152"
+    ],
+    "a": 4
+  },
+  {
+    "n": "276",
+    "subCode": "69(D)",
+    "q": "Simplify: 20% of 480 + 10% of 1120 − 15% of 960 = ?",
+    "o": [
+      "62",
+      "58",
+      "64",
+      "60",
+      "68"
+    ],
+    "a": 2
+  },
+  {
+    "n": "277",
+    "subCode": "70(A)",
+    "q": "Simplify: 25% of 1440 + 60% of 1600 − 10% of 1440 = ?",
+    "o": [
+      "1226",
+      "1176",
+      "1326",
+      "1076",
+      "1026"
+    ],
+    "a": 1
+  },
+  {
+    "n": "278",
+    "subCode": "70(B)",
+    "q": "Simplify: 15% of 1400 + 20% of 800 − 20% of 640 = ?",
+    "o": [
+      "252",
+      "212",
+      "222",
+      "272",
+      "242"
+    ],
+    "a": 4
+  },
+  {
+    "n": "279",
+    "subCode": "70(C)",
+    "q": "Simplify: 10% of 120 + 30% of 1200 − 60% of 400 = ?",
+    "o": [
+      "132",
+      "142",
+      "152",
+      "162",
+      "102"
+    ],
+    "a": 0
+  },
+  {
+    "n": "280",
+    "subCode": "70(D)",
+    "q": "Simplify: 60% of 1240 + 15% of 1040 − 15% of 920 = ?",
+    "o": [
+      "757",
+      "772",
+      "752",
+      "762",
+      "747"
+    ],
+    "a": 3
+  },
+  {
+    "n": "281",
+    "subCode": "71(A)",
+    "q": "Simplify: 20% of 1520 + 30% of 720 − 25% of 760 = ?",
+    "o": [
+      "330",
+      "310",
+      "350",
+      "300",
+      "320"
+    ],
+    "a": 0
+  },
+  {
+    "n": "282",
+    "subCode": "71(B)",
+    "q": "Simplify: 25% of 880 + 40% of 1000 − 25% of 320 = ?",
+    "o": [
+      "520",
+      "510",
+      "570",
+      "540",
+      "560"
+    ],
+    "a": 3
+  },
+  {
+    "n": "283",
+    "subCode": "71(C)",
+    "q": "Simplify: 60% of 1040 + 60% of 600 − 30% of 520 = ?",
+    "o": [
+      "813",
+      "823",
+      "843",
+      "818",
+      "828"
+    ],
+    "a": 4
+  },
+  {
+    "n": "284",
+    "subCode": "71(D)",
+    "q": "Simplify: 60% of 1280 + 45% of 200 − 12.5% of 600 = ?",
+    "o": [
+      "768",
+      "783",
+      "798",
+      "778",
+      "773"
+    ],
+    "a": 1
+  },
+  {
+    "n": "285",
+    "subCode": "72(A)",
+    "q": "Simplify: 45% of 920 + 35% of 400 − 10% of 1520 = ?",
+    "o": [
+      "432",
+      "392",
+      "402",
+      "372",
+      "382"
+    ],
+    "a": 2
+  },
+  {
+    "n": "286",
+    "subCode": "72(B)",
+    "q": "Simplify: 20% of 1120 + 75% of 400 − 40% of 480 = ?",
+    "o": [
+      "322",
+      "302",
+      "352",
+      "342",
+      "332"
+    ],
+    "a": 4
+  },
+  {
+    "n": "287",
+    "subCode": "72(C)",
+    "q": "Simplify: 40% of 1280 + 30% of 200 − 20% of 1320 = ?",
+    "o": [
+      "328",
+      "318",
+      "288",
+      "308",
+      "298"
+    ],
+    "a": 3
+  },
+  {
+    "n": "288",
+    "subCode": "72(D)",
+    "q": "Simplify: 20% of 120 + 10% of 1560 − 45% of 240 = ?",
+    "o": [
+      "87",
+      "72",
+      "82",
+      "77",
+      "57"
+    ],
+    "a": 1
+  },
+  {
+    "n": "289",
+    "subCode": "73(A)",
+    "q": "Simplify: 45% of 1240 + 35% of 1280 − 15% of 680 = ?",
+    "o": [
+      "914",
+      "924",
+      "904",
+      "894",
+      "874"
+    ],
+    "a": 2
+  },
+  {
+    "n": "290",
+    "subCode": "73(B)",
+    "q": "Simplify: 15% of 800 + 35% of 920 − 25% of 520 = ?",
+    "o": [
+      "312",
+      "332",
+      "342",
+      "282",
+      "322"
+    ],
+    "a": 0
+  },
+  {
+    "n": "291",
+    "subCode": "73(C)",
+    "q": "Simplify: 40% of 1160 + 25% of 1520 − 20% of 120 = ?",
+    "o": [
+      "830",
+      "820",
+      "805",
+      "835",
+      "825"
+    ],
+    "a": 1
+  },
+  {
+    "n": "292",
+    "subCode": "73(D)",
+    "q": "Simplify: 25% of 200 + 20% of 840 − 12.5% of 360 = ?",
+    "o": [
+      "143",
+      "163",
+      "203",
+      "173",
+      "193"
+    ],
+    "a": 3
+  },
+  {
+    "n": "293",
+    "subCode": "74(A)",
+    "q": "Simplify: 71 − [13 + {22 − (7 − 4 of 3)}] = ?",
+    "o": [
+      "31",
+      "26",
+      "46",
+      "16",
+      "36"
+    ],
+    "a": 0
+  },
+  {
+    "n": "294",
+    "subCode": "74(B)",
+    "q": "Simplify: 97 − [10 + {22 − (15 − 5 of 5)}] = ?",
+    "o": [
+      "70",
+      "65",
+      "45",
+      "50",
+      "55"
+    ],
+    "a": 4
+  },
+  {
+    "n": "295",
+    "subCode": "74(C)",
+    "q": "Simplify: 68 − [19 + {31 − (9 − 5 of 2)}] = ?",
+    "o": [
+      "14",
+      "19",
+      "17",
+      "16",
+      "18"
+    ],
+    "a": 2
+  },
+  {
+    "n": "296",
+    "subCode": "74(D)",
+    "q": "Simplify: 74 − [26 + {34 − (11 − 6 of 3)}] = ?",
+    "o": [
+      "10",
+      "8",
+      "4",
+      "7",
+      "5"
+    ],
+    "a": 3
+  },
+  {
+    "n": "297",
+    "subCode": "75(A)",
+    "q": "Simplify: 92 − [13 + {28 − (5 − 5 of 5)}] = ?",
+    "o": [
+      "35",
+      "31",
+      "27",
+      "33",
+      "37"
+    ],
+    "a": 1
+  },
+  {
+    "n": "298",
+    "subCode": "75(B)",
+    "q": "Simplify: 42 − [27 + {13 − (12 − 2 of 5)}] = ?",
+    "o": [
+      "4",
+      "7",
+      "1",
+      "6",
+      "3"
+    ],
+    "a": 0
+  },
+  {
+    "n": "299",
+    "subCode": "75(C)",
+    "q": "Simplify: 61 − [23 + {10 − (17 − 2 of 2)}] = ?",
+    "o": [
+      "43",
+      "45",
+      "41",
+      "39",
+      "37"
+    ],
+    "a": 2
+  },
+  {
+    "n": "300",
+    "subCode": "75(D)",
+    "q": "Simplify: 65 − [27 + {22 − (20 − 5 of 4)}] = ?",
+    "o": [
+      "18",
+      "17",
+      "19",
+      "15",
+      "16"
+    ],
+    "a": 4
+  },
+  {
+    "n": "301",
+    "subCode": "76(A)",
+    "q": "Simplify: 97 − [16 + {39 − (19 − 6 of 5)}] = ?",
+    "o": [
+      "21",
+      "16",
+      "26",
+      "31",
+      "46"
+    ],
+    "a": 3
+  },
+  {
+    "n": "302",
+    "subCode": "76(B)",
+    "q": "Simplify: 72 − [15 + {25 − (18 − 6 of 2)}] = ?",
+    "o": [
+      "38",
+      "32",
+      "44",
+      "34",
+      "36"
+    ],
+    "a": 0
+  },
+  {
+    "n": "303",
+    "subCode": "76(C)",
+    "q": "Simplify: 69 − [22 + {32 − (18 − 2 of 3)}] = ?",
+    "o": [
+      "25",
+      "24",
+      "27",
+      "26",
+      "28"
+    ],
+    "a": 2
+  },
+  {
+    "n": "304",
+    "subCode": "76(D)",
+    "q": "Simplify: 98 − [17 + {38 − (9 − 3 of 5)}] = ?",
+    "o": [
+      "33",
+      "43",
+      "35",
+      "41",
+      "37"
+    ],
+    "a": 4
+  },
+  {
+    "n": "305",
+    "subCode": "77(A)",
+    "q": "Simplify: 60 − [30 + {28 − (18 − 5 of 2)}] = ?",
+    "o": [
+      "13",
+      "10",
+      "9",
+      "11",
+      "7"
+    ],
+    "a": 1
+  },
+  {
+    "n": "306",
+    "subCode": "77(B)",
+    "q": "Simplify: 57 − [22 + {18 − (8 − 4 of 4)}] = ?",
+    "o": [
+      "6",
+      "11",
+      "10",
+      "7",
+      "9"
+    ],
+    "a": 4
+  },
+  {
+    "n": "307",
+    "subCode": "77(C)",
+    "q": "Simplify: 71 − [23 + {31 − (11 − 3 of 3)}] = ?",
+    "o": [
+      "18",
+      "20",
+      "19",
+      "22",
+      "17"
+    ],
+    "a": 2
+  },
+  {
+    "n": "308",
+    "subCode": "77(D)",
+    "q": "Simplify: 69 − [17 + {34 − (12 − 5 of 5)}] = ?",
+    "o": [
+      "6",
+      "2",
+      "7",
+      "5",
+      "3"
+    ],
+    "a": 3
+  },
+  {
+    "n": "309",
+    "subCode": "78(A)",
+    "q": "Simplify: 83 − [14 + {10 − (14 − 4 of 5)}] = ?",
+    "o": [
+      "53",
+      "47",
+      "49",
+      "57",
+      "51"
+    ],
+    "a": 0
+  },
+  {
+    "n": "310",
+    "subCode": "78(B)",
+    "q": "Simplify: 53 − [11 + {25 − (10 − 2 of 4)}] = ?",
+    "o": [
+      "17",
+      "19",
+      "18",
+      "22",
+      "16"
+    ],
+    "a": 1
+  },
+  {
+    "n": "311",
+    "subCode": "78(C)",
+    "q": "Simplify: 59 − [8 + {31 − (14 − 6 of 2)}] = ?",
+    "o": [
+      "21",
+      "22",
+      "25",
+      "23",
+      "19"
+    ],
+    "a": 1
+  },
+  {
+    "n": "312",
+    "subCode": "78(D)",
+    "q": "Simplify: 63 − [14 + {15 − (8 − 5 of 5)}] = ?",
+    "o": [
+      "20",
+      "15",
+      "17",
+      "14",
+      "19"
+    ],
+    "a": 2
+  },
+  {
+    "n": "313",
+    "subCode": "79(A)",
+    "q": "Simplify: (5.6)² − (4)² = ?",
+    "o": [
+      "15.26",
+      "15.21",
+      "15.41",
+      "15.46",
+      "15.36"
+    ],
+    "a": 4
+  },
+  {
+    "n": "314",
+    "subCode": "79(B)",
+    "q": "Simplify: (17.9)² − (2.9)² = ?",
+    "o": [
+      "317",
+      "297",
+      "302",
+      "312",
+      "307"
+    ],
+    "a": 3
+  },
+  {
+    "n": "315",
+    "subCode": "79(C)",
+    "q": "Simplify: (11.8)² − (2.3)² = ?",
+    "o": [
+      "133.95",
+      "133.9",
+      "134.1",
+      "133.85",
+      "134"
+    ],
+    "a": 0
+  },
+  {
+    "n": "316",
+    "subCode": "79(D)",
+    "q": "Simplify: (7.2)² − (4)² = ?",
+    "o": [
+      "35.84",
+      "35.85",
+      "35.87",
+      "35.81",
+      "35.82"
+    ],
+    "a": 0
+  },
+  {
+    "n": "317",
+    "subCode": "80(A)",
+    "q": "Simplify: (11)² − (3.7)² = ?",
+    "o": [
+      "107.41",
+      "107.21",
+      "107.46",
+      "107.16",
+      "107.31"
+    ],
+    "a": 4
+  },
+  {
+    "n": "318",
+    "subCode": "80(B)",
+    "q": "Simplify: (17.3)² − (3.3)² = ?",
+    "o": [
+      "287.4",
+      "288.4",
+      "288.9",
+      "287.9",
+      "286.9"
+    ],
+    "a": 1
+  },
+  {
+    "n": "319",
+    "subCode": "80(C)",
+    "q": "Simplify: (7.3)² − (2.2)² = ?",
+    "o": [
+      "48.4",
+      "48.35",
+      "48.5",
+      "48.45",
+      "48.55"
+    ],
+    "a": 3
+  },
+  {
+    "n": "320",
+    "subCode": "80(D)",
+    "q": "Simplify: (17.8)² − (2.1)² = ?",
+    "o": [
+      "312.53",
+      "312.58",
+      "312.43",
+      "312.38",
+      "312.33"
+    ],
+    "a": 2
+  },
+  {
+    "n": "321",
+    "subCode": "81(A)",
+    "q": "Simplify: (14.6)² − (3.3)² = ?",
+    "o": [
+      "202.17",
+      "202.42",
+      "202.12",
+      "202.32",
+      "202.27"
+    ],
+    "a": 4
+  },
+  {
+    "n": "322",
+    "subCode": "81(B)",
+    "q": "Simplify: (13.3)² − (3.8)² = ?",
+    "o": [
+      "162.48",
+      "162.45",
+      "162.46",
+      "162.42",
+      "162.43"
+    ],
+    "a": 1
+  },
+  {
+    "n": "323",
+    "subCode": "81(C)",
+    "q": "Simplify: (13.4)² − (1.8)² = ?",
+    "o": [
+      "176.3",
+      "176.31",
+      "176.32",
+      "176.34",
+      "176.35"
+    ],
+    "a": 2
+  },
+  {
+    "n": "324",
+    "subCode": "81(D)",
+    "q": "Simplify: (16.3)² − (3)² = ?",
+    "o": [
+      "256.66",
+      "256.67",
+      "256.68",
+      "256.69",
+      "256.72"
+    ],
+    "a": 3
+  },
+  {
+    "n": "325",
+    "subCode": "82(A)",
+    "q": "Simplify: (17.8)² − (1.9)² = ?",
+    "o": [
+      "313.23",
+      "313.38",
+      "313.33",
+      "313.08",
+      "313.13"
+    ],
+    "a": 0
+  },
+  {
+    "n": "326",
+    "subCode": "82(B)",
+    "q": "Simplify: (15.7)² − (1.3)² = ?",
+    "o": [
+      "244.6",
+      "245",
+      "244.8",
+      "245.4",
+      "244.4"
+    ],
+    "a": 2
+  },
+  {
+    "n": "327",
+    "subCode": "82(C)",
+    "q": "Simplify: (6.4)² − (1.6)² = ?",
+    "o": [
+      "39",
+      "38.2",
+      "38.8",
+      "38.4",
+      "38.6"
+    ],
+    "a": 3
+  },
+  {
+    "n": "328",
+    "subCode": "82(D)",
+    "q": "Simplify: (8.6)² − (1.4)² = ?",
+    "o": [
+      "72",
+      "76",
+      "70",
+      "78",
+      "68"
+    ],
+    "a": 0
+  },
+  {
+    "n": "329",
+    "subCode": "83(A)",
+    "q": "Simplify: (9.5)² − (3.5)² = ?",
+    "o": [
+      "93",
+      "78",
+      "63",
+      "88",
+      "83"
+    ],
+    "a": 1
+  },
+  {
+    "n": "330",
+    "subCode": "83(B)",
+    "q": "Simplify: (15)² − (2.2)² = ?",
+    "o": [
+      "220.26",
+      "220.11",
+      "220.21",
+      "220.31",
+      "220.16"
+    ],
+    "a": 4
+  },
+  {
+    "n": "331",
+    "subCode": "83(C)",
+    "q": "Simplify: (16.4)² − (4.9)² = ?",
+    "o": [
+      "244.98",
+      "244.95",
+      "244.92",
+      "244.96",
+      "244.93"
+    ],
+    "a": 1
+  },
+  {
+    "n": "332",
+    "subCode": "83(D)",
+    "q": "Simplify: (16.9)² − (2.4)² = ?",
+    "o": [
+      "279.75",
+      "280",
+      "279.8",
+      "279.85",
+      "279.9"
+    ],
+    "a": 3
+  },
+  {
+    "n": "333",
+    "subCode": "84(A)",
+    "q": "Simplify: 7/12 of 276 + 3/5 of 105 − 1/3 of 72 = ?",
+    "o": [
+      "200",
+      "215",
+      "185",
+      "205",
+      "210"
+    ],
+    "a": 0
+  },
+  {
+    "n": "334",
+    "subCode": "84(B)",
+    "q": "Simplify: 4/6 of 144 + 1/2 of 34 − 3/5 of 40 = ?",
+    "o": [
+      "87",
+      "95",
+      "89",
+      "91",
+      "93"
+    ],
+    "a": 2
+  },
+  {
+    "n": "335",
+    "subCode": "84(C)",
+    "q": "Simplify: 3/4 of 24 + 5/6 of 78 − 1/8 of 136 = ?",
+    "o": [
+      "60",
+      "70",
+      "62",
+      "72",
+      "66"
+    ],
+    "a": 4
+  },
+  {
+    "n": "336",
+    "subCode": "84(D)",
+    "q": "Simplify: 2/3 of 54 + 5/6 of 180 − 1/2 of 44 = ?",
+    "o": [
+      "169",
+      "179",
+      "174",
+      "164",
+      "149"
+    ],
+    "a": 3
+  },
+  {
+    "n": "337",
+    "subCode": "85(A)",
+    "q": "Simplify: 3/8 of 104 + 2/8 of 112 − 1/2 of 6 = ?",
+    "o": [
+      "70",
+      "68",
+      "62",
+      "60",
+      "64"
+    ],
+    "a": 4
+  },
+  {
+    "n": "338",
+    "subCode": "85(B)",
+    "q": "Simplify: 1/4 of 24 + 5/8 of 160 − 2/4 of 64 = ?",
+    "o": [
+      "74",
+      "84",
+      "59",
+      "79",
+      "89"
+    ],
+    "a": 0
+  },
+  {
+    "n": "339",
+    "subCode": "85(C)",
+    "q": "Simplify: 2/5 of 135 + 6/10 of 240 − 1/8 of 32 = ?",
+    "o": [
+      "214",
+      "194",
+      "224",
+      "174",
+      "184"
+    ],
+    "a": 1
+  },
+  {
+    "n": "340",
+    "subCode": "85(D)",
+    "q": "Simplify: 5/6 of 42 + 8/12 of 336 − 1/2 of 20 = ?",
+    "o": [
+      "229",
+      "259",
+      "249",
+      "279",
+      "219"
+    ],
+    "a": 2
+  },
+  {
+    "n": "341",
+    "subCode": "86(A)",
+    "q": "Simplify: 5/12 of 324 + 7/8 of 184 − 1/2 of 12 = ?",
+    "o": [
+      "320",
+      "300",
+      "260",
+      "290",
+      "310"
+    ],
+    "a": 3
+  },
+  {
+    "n": "342",
+    "subCode": "86(B)",
+    "q": "Simplify: 7/10 of 140 + 3/4 of 92 − 1/4 of 32 = ?",
+    "o": [
+      "149",
+      "139",
+      "169",
+      "189",
+      "159"
+    ],
+    "a": 4
+  },
+  {
+    "n": "343",
+    "subCode": "86(C)",
+    "q": "Simplify: 2/3 of 42 + 9/12 of 180 − 1/2 of 22 = ?",
+    "o": [
+      "172",
+      "152",
+      "142",
+      "132",
+      "182"
+    ],
+    "a": 1
+  },
+  {
+    "n": "344",
+    "subCode": "86(D)",
+    "q": "Simplify: 1/4 of 100 + 2/6 of 90 − 2/8 of 24 = ?",
+    "o": [
+      "49",
+      "59",
+      "64",
+      "39",
+      "54"
+    ],
+    "a": 0
+  },
+  {
+    "n": "345",
+    "subCode": "87(A)",
+    "q": "Simplify: 1/6 of 36 + 4/5 of 65 − 4/8 of 72 = ?",
+    "o": [
+      "23",
+      "21",
+      "22",
+      "20",
+      "25"
+    ],
+    "a": 2
+  },
+  {
+    "n": "346",
+    "subCode": "87(B)",
+    "q": "Simplify: 4/6 of 102 + 2/5 of 110 − 1/3 of 27 = ?",
+    "o": [
+      "73",
+      "103",
+      "83",
+      "123",
+      "113"
+    ],
+    "a": 1
+  },
+  {
+    "n": "347",
+    "subCode": "87(C)",
+    "q": "Simplify: 7/8 of 56 + 7/10 of 50 − 1/3 of 33 = ?",
+    "o": [
+      "79",
+      "77",
+      "67",
+      "75",
+      "73"
+    ],
+    "a": 4
+  },
+  {
+    "n": "348",
+    "subCode": "87(D)",
+    "q": "Simplify: 2/3 of 60 + 1/2 of 42 − 3/5 of 85 = ?",
+    "o": [
+      "9",
+      "12",
+      "10",
+      "11",
+      "8"
+    ],
+    "a": 2
+  },
+  {
+    "n": "349",
+    "subCode": "88(A)",
+    "q": "Simplify: 1/8 of 80 + 3/5 of 135 − 1/2 of 44 = ?",
+    "o": [
+      "73",
+      "75",
+      "63",
+      "69",
+      "71"
+    ],
+    "a": 3
+  },
+  {
+    "n": "350",
+    "subCode": "88(B)",
+    "q": "Simplify: 8/12 of 264 + 5/12 of 240 − 5/8 of 160 = ?",
+    "o": [
+      "176",
+      "206",
+      "146",
+      "156",
+      "166"
+    ],
+    "a": 0
+  },
+  {
+    "n": "351",
+    "subCode": "88(C)",
+    "q": "Simplify: 1/3 of 27 + 1/2 of 22 − 1/3 of 21 = ?",
+    "o": [
+      "13",
+      "14",
+      "15",
+      "11",
+      "10"
+    ],
+    "a": 0
+  },
+  {
+    "n": "352",
+    "subCode": "88(D)",
+    "q": "Simplify: 1/2 of 40 + 3/5 of 100 − 1/2 of 10 = ?",
+    "o": [
+      "90",
+      "85",
+      "60",
+      "75",
+      "65"
+    ],
+    "a": 3
+  },
+  {
+    "n": "353",
+    "subCode": "89(A)",
+    "q": "Find the value of ? : ? ÷ 15 = 4.1 × 36",
+    "o": [
+      "2154",
+      "2234",
+      "2194",
+      "2254",
+      "2214"
+    ],
+    "a": 4
+  },
+  {
+    "n": "354",
+    "subCode": "89(B)",
+    "q": "Find the value of ? : ? ÷ 25 = 3.1 × 39",
+    "o": [
+      "3021",
+      "3022.5",
+      "3023.5",
+      "3023",
+      "3022"
+    ],
+    "a": 1
+  },
+  {
+    "n": "355",
+    "subCode": "89(C)",
+    "q": "Find the value of ? : ? ÷ 30 = 9.3 × 16",
+    "o": [
+      "4614",
+      "4314",
+      "4464",
+      "4514",
+      "4564"
+    ],
+    "a": 2
+  },
+  {
+    "n": "356",
+    "subCode": "89(D)",
+    "q": "Find the value of ? : ? ÷ 8 = 9.9 × 22",
+    "o": [
+      "1742.2",
+      "1742.8",
+      "1742",
+      "1743",
+      "1742.4"
+    ],
+    "a": 4
+  },
+  {
+    "n": "357",
+    "subCode": "90(A)",
+    "q": "Find the value of ? : ? ÷ 24 = 4.2 × 17",
+    "o": [
+      "1713.9",
+      "1713.3",
+      "1713.6",
+      "1713.4",
+      "1713.8"
+    ],
+    "a": 2
+  },
+  {
+    "n": "358",
+    "subCode": "90(B)",
+    "q": "Find the value of ? : ? ÷ 12 = 6.2 × 12",
+    "o": [
+      "892.8",
+      "892.5",
+      "892.6",
+      "893.1",
+      "892.9"
+    ],
+    "a": 0
+  },
+  {
+    "n": "359",
+    "subCode": "90(C)",
+    "q": "Find the value of ? : ? ÷ 40 = 8.1 × 11",
+    "o": [
+      "3464",
+      "3564",
+      "3414",
+      "3514",
+      "3714"
+    ],
+    "a": 1
+  },
+  {
+    "n": "360",
+    "subCode": "90(D)",
+    "q": "Find the value of ? : ? ÷ 20 = 5 × 17",
+    "o": [
+      "1800",
+      "1600",
+      "1850",
+      "1700",
+      "1750"
+    ],
+    "a": 3
+  },
+  {
+    "n": "361",
+    "subCode": "91(A)",
+    "q": "Find the value of ? : ? ÷ 18 = 6.7 × 30",
+    "o": [
+      "3598",
+      "3638",
+      "3678",
+      "3558",
+      "3618"
+    ],
+    "a": 4
+  },
+  {
+    "n": "362",
+    "subCode": "91(B)",
+    "q": "Find the value of ? : ? ÷ 8 = 1.5 × 10",
+    "o": [
+      "130",
+      "150",
+      "120",
+      "90",
+      "110"
+    ],
+    "a": 2
+  },
+  {
+    "n": "363",
+    "subCode": "91(C)",
+    "q": "Find the value of ? : ? ÷ 15 = 2.1 × 16",
+    "o": [
+      "514",
+      "534",
+      "524",
+      "504",
+      "494"
+    ],
+    "a": 3
+  },
+  {
+    "n": "364",
+    "subCode": "91(D)",
+    "q": "Find the value of ? : ? ÷ 8 = 9.9 × 29",
+    "o": [
+      "2297",
+      "2296.8",
+      "2297.4",
+      "2296.6",
+      "2296.2"
+    ],
+    "a": 1
+  },
+  {
+    "n": "365",
+    "subCode": "92(A)",
+    "q": "Find the value of ? : ? ÷ 25 = 6.5 × 12",
+    "o": [
+      "1950",
+      "1890",
+      "1930",
+      "1970",
+      "2010"
+    ],
+    "a": 0
+  },
+  {
+    "n": "366",
+    "subCode": "92(B)",
+    "q": "Find the value of ? : ? ÷ 15 = 1.2 × 25",
+    "o": [
+      "440",
+      "445",
+      "450",
+      "465",
+      "460"
+    ],
+    "a": 2
+  },
+  {
+    "n": "367",
+    "subCode": "92(C)",
+    "q": "Find the value of ? : ? ÷ 24 = 8.3 × 19",
+    "o": [
+      "3784.8",
+      "3785.3",
+      "3786.3",
+      "3783.3",
+      "3785.8"
+    ],
+    "a": 0
+  },
+  {
+    "n": "368",
+    "subCode": "92(D)",
+    "q": "Find the value of ? : ? ÷ 15 = 8.1 × 13",
+    "o": [
+      "1581",
+      "1578",
+      "1579",
+      "1579.5",
+      "1580.5"
+    ],
+    "a": 3
+  },
+  {
+    "n": "369",
+    "subCode": "93(A)",
+    "q": "Find the value of ? : ? ÷ 24 = 1.3 × 36",
+    "o": [
+      "1124.2",
+      "1123.2",
+      "1124.7",
+      "1123.7",
+      "1122.7"
+    ],
+    "a": 1
+  },
+  {
+    "n": "370",
+    "subCode": "93(B)",
+    "q": "Find the value of ? : ? ÷ 8 = 2.2 × 21",
+    "o": [
+      "368.1",
+      "368.6",
+      "370.1",
+      "371.1",
+      "369.6"
+    ],
+    "a": 4
+  },
+  {
+    "n": "371",
+    "subCode": "93(C)",
+    "q": "Find the value of ? : ? ÷ 25 = 5.7 × 33",
+    "o": [
+      "4702.4",
+      "4702.5",
+      "4702.2",
+      "4702.7",
+      "4702.6"
+    ],
+    "a": 1
+  },
+  {
+    "n": "372",
+    "subCode": "93(D)",
+    "q": "Find the value of ? : ? ÷ 25 = 1.9 × 13",
+    "o": [
+      "616.5",
+      "619",
+      "617.5",
+      "618",
+      "618.5"
+    ],
+    "a": 2
+  },
+  {
+    "n": "373",
+    "subCode": "94(A)",
+    "q": "Find the value of ? : √? + 16 = 12² − 96",
+    "o": [
+      "1174",
+      "924",
+      "874",
+      "974",
+      "1024"
+    ],
+    "a": 4
+  },
+  {
+    "n": "374",
+    "subCode": "94(B)",
+    "q": "Find the value of ? : √? + 23 = 10² − 56",
+    "o": [
+      "441",
+      "461",
+      "471",
+      "411",
+      "421"
+    ],
+    "a": 0
+  },
+  {
+    "n": "375",
+    "subCode": "94(C)",
+    "q": "Find the value of ? : √? + 26 = 25² − 582",
+    "o": [
+      "319",
+      "309",
+      "299",
+      "289",
+      "259"
+    ],
+    "a": 3
+  },
+  {
+    "n": "376",
+    "subCode": "94(D)",
+    "q": "Find the value of ? : √? + 8 = 16² − 237",
+    "o": [
+      "121",
+      "131",
+      "106",
+      "116",
+      "126"
+    ],
+    "a": 0
+  },
+  {
+    "n": "377",
+    "subCode": "95(A)",
+    "q": "Find the value of ? : √? + 26 = 13² − 114",
+    "o": [
+      "846",
+      "841",
+      "851",
+      "826",
+      "836"
+    ],
+    "a": 1
+  },
+  {
+    "n": "378",
+    "subCode": "95(B)",
+    "q": "Find the value of ? : √? + 11 = 13² − 151",
+    "o": [
+      "54",
+      "34",
+      "49",
+      "64",
+      "59"
+    ],
+    "a": 2
+  },
+  {
+    "n": "379",
+    "subCode": "95(C)",
+    "q": "Find the value of ? : √? + 29 = 24² − 521",
+    "o": [
+      "671",
+      "681",
+      "686",
+      "661",
+      "676"
+    ],
+    "a": 4
+  },
+  {
+    "n": "380",
+    "subCode": "95(D)",
+    "q": "Find the value of ? : √? + 12 = 12² − 93",
+    "o": [
+      "1501",
+      "1561",
+      "1461",
+      "1521",
+      "1481"
+    ],
+    "a": 3
+  },
+  {
+    "n": "381",
+    "subCode": "96(A)",
+    "q": "Find the value of ? : √? + 8 = 20² − 357",
+    "o": [
+      "1245",
+      "1265",
+      "1165",
+      "1205",
+      "1225"
+    ],
+    "a": 4
+  },
+  {
+    "n": "382",
+    "subCode": "96(B)",
+    "q": "Find the value of ? : √? + 11 = 12² − 116",
+    "o": [
+      "289",
+      "279",
+      "299",
+      "319",
+      "259"
+    ],
+    "a": 0
+  },
+  {
+    "n": "383",
+    "subCode": "96(C)",
+    "q": "Find the value of ? : √? + 15 = 11² − 67",
+    "o": [
+      "1371",
+      "1521",
+      "1471",
+      "1421",
+      "1571"
+    ],
+    "a": 1
+  },
+  {
+    "n": "384",
+    "subCode": "96(D)",
+    "q": "Find the value of ? : √? + 6 = 13² − 156",
+    "o": [
+      "43",
+      "55",
+      "47",
+      "49",
+      "45"
+    ],
+    "a": 3
+  },
+  {
+    "n": "385",
+    "subCode": "97(A)",
+    "q": "Find the value of ? : √? + 28 = 13² − 118",
+    "o": [
+      "534",
+      "519",
+      "529",
+      "544",
       "514"
     ],
     "a": 2
+  },
+  {
+    "n": "386",
+    "subCode": "97(B)",
+    "q": "Find the value of ? : √? + 14 = 13² − 132",
+    "o": [
+      "544",
+      "534",
+      "539",
+      "529",
+      "519"
+    ],
+    "a": 3
+  },
+  {
+    "n": "387",
+    "subCode": "97(C)",
+    "q": "Find the value of ? : √? + 13 = 15² − 200",
+    "o": [
+      "144",
+      "174",
+      "124",
+      "114",
+      "164"
+    ],
+    "a": 0
+  },
+  {
+    "n": "388",
+    "subCode": "97(D)",
+    "q": "Find the value of ? : √? + 30 = 15² − 183",
+    "o": [
+      "134",
+      "154",
+      "144",
+      "149",
+      "129"
+    ],
+    "a": 2
+  },
+  {
+    "n": "389",
+    "subCode": "98(A)",
+    "q": "Find the value of ? : √? + 20 = 23² − 484",
+    "o": [
+      "640",
+      "620",
+      "630",
+      "610",
+      "625"
+    ],
+    "a": 4
+  },
+  {
+    "n": "390",
+    "subCode": "98(B)",
+    "q": "Find the value of ? : √? + 8 = 8² − 42",
+    "o": [
+      "206",
+      "196",
+      "181",
+      "191",
+      "201"
+    ],
+    "a": 1
+  },
+  {
+    "n": "391",
+    "subCode": "98(C)",
+    "q": "Find the value of ? : √? + 12 = 18² − 272",
+    "o": [
+      "1640",
+      "1600",
+      "1540",
+      "1620",
+      "1560"
+    ],
+    "a": 1
+  },
+  {
+    "n": "392",
+    "subCode": "98(D)",
+    "q": "Find the value of ? : √? + 28 = 20² − 339",
+    "o": [
+      "1089",
+      "1069",
+      "1149",
+      "1129",
+      "1029"
+    ],
+    "a": 0
+  },
+  {
+    "n": "393",
+    "subCode": "99(A)",
+    "q": "Find the value of ? : 25% of ? = 50% of 1180",
+    "o": [
+      "2210",
+      "2460",
+      "2260",
+      "2410",
+      "2360"
+    ],
+    "a": 4
+  },
+  {
+    "n": "394",
+    "subCode": "99(B)",
+    "q": "Find the value of ? : 15% of ? = 12% of 180",
+    "o": [
+      "154",
+      "134",
+      "124",
+      "144",
+      "174"
+    ],
+    "a": 3
+  },
+  {
+    "n": "395",
+    "subCode": "99(C)",
+    "q": "Find the value of ? : 40% of ? = 12% of 1100",
+    "o": [
+      "315",
+      "325",
+      "330",
+      "340",
+      "335"
+    ],
+    "a": 2
+  },
+  {
+    "n": "396",
+    "subCode": "99(D)",
+    "q": "Find the value of ? : 25% of ? = 32% of 800",
+    "o": [
+      "1044",
+      "1004",
+      "1024",
+      "984",
+      "1064"
+    ],
+    "a": 2
+  },
+  {
+    "n": "397",
+    "subCode": "100(A)",
+    "q": "Find the value of ? : 60% of ? = 24% of 540",
+    "o": [
+      "206",
+      "231",
+      "226",
+      "216",
+      "211"
+    ],
+    "a": 3
+  },
+  {
+    "n": "398",
+    "subCode": "100(B)",
+    "q": "Find the value of ? : 75% of ? = 48% of 900",
+    "o": [
+      "566",
+      "576",
+      "546",
+      "606",
+      "586"
+    ],
+    "a": 1
+  },
+  {
+    "n": "399",
+    "subCode": "100(C)",
+    "q": "Find the value of ? : 60% of ? = 12% of 880",
+    "o": [
+      "176",
+      "146",
+      "166",
+      "156",
+      "186"
+    ],
+    "a": 0
+  },
+  {
+    "n": "400",
+    "subCode": "100(D)",
+    "q": "Find the value of ? : 45% of ? = 24% of 1140",
+    "o": [
+      "618",
+      "628",
+      "578",
+      "638",
+      "608"
+    ],
+    "a": 4
+  },
+  {
+    "n": "401",
+    "subCode": "101(A)",
+    "q": "Find the value of ? : 20% of ? = 50% of 780",
+    "o": [
+      "1910",
+      "2010",
+      "1950",
+      "1990",
+      "1970"
+    ],
+    "a": 2
+  },
+  {
+    "n": "402",
+    "subCode": "101(B)",
+    "q": "Find the value of ? : 60% of ? = 20% of 900",
+    "o": [
+      "290",
+      "310",
+      "320",
+      "280",
+      "300"
+    ],
+    "a": 4
+  },
+  {
+    "n": "403",
+    "subCode": "101(C)",
+    "q": "Find the value of ? : 60% of ? = 50% of 180",
+    "o": [
+      "150",
+      "165",
+      "155",
+      "135",
+      "160"
+    ],
+    "a": 0
+  },
+  {
+    "n": "404",
+    "subCode": "101(D)",
+    "q": "Find the value of ? : 25% of ? = 50% of 100",
+    "o": [
+      "210",
+      "200",
+      "180",
+      "190",
+      "170"
+    ],
+    "a": 1
+  },
+  {
+    "n": "405",
+    "subCode": "102(A)",
+    "q": "Find the value of ? : 60% of ? = 36% of 780",
+    "o": [
+      "438",
+      "478",
+      "458",
+      "468",
+      "448"
+    ],
+    "a": 3
+  },
+  {
+    "n": "406",
+    "subCode": "102(B)",
+    "q": "Find the value of ? : 40% of ? = 10% of 1200",
+    "o": [
+      "310",
+      "270",
+      "290",
+      "280",
+      "300"
+    ],
+    "a": 4
+  },
+  {
+    "n": "407",
+    "subCode": "102(C)",
+    "q": "Find the value of ? : 60% of ? = 10% of 1080",
+    "o": [
+      "210",
+      "170",
+      "150",
+      "180",
+      "160"
+    ],
+    "a": 3
+  },
+  {
+    "n": "408",
+    "subCode": "102(D)",
+    "q": "Find the value of ? : 20% of ? = 28% of 960",
+    "o": [
+      "1304",
+      "1344",
+      "1364",
+      "1324",
+      "1384"
+    ],
+    "a": 1
+  },
+  {
+    "n": "409",
+    "subCode": "103(A)",
+    "q": "Find the value of ? : 20% of ? = 12% of 820",
+    "o": [
+      "502",
+      "512",
+      "492",
+      "462",
+      "472"
+    ],
+    "a": 2
+  },
+  {
+    "n": "410",
+    "subCode": "103(B)",
+    "q": "Find the value of ? : 25% of ? = 50% of 1100",
+    "o": [
+      "2200",
+      "2220",
+      "2160",
+      "2240",
+      "2260"
+    ],
+    "a": 0
+  },
+  {
+    "n": "411",
+    "subCode": "103(C)",
+    "q": "Find the value of ? : 20% of ? = 10% of 400",
+    "o": [
+      "185",
+      "200",
+      "215",
+      "210",
+      "195"
+    ],
+    "a": 1
+  },
+  {
+    "n": "412",
+    "subCode": "103(D)",
+    "q": "Find the value of ? : 60% of ? = 15% of 100",
+    "o": [
+      "24",
+      "23",
+      "25",
+      "22",
+      "28"
+    ],
+    "a": 2
+  },
+  {
+    "n": "413",
+    "subCode": "104(A)",
+    "q": "Find the value of ? : ? − 12² = 34 × 6",
+    "o": [
+      "348",
+      "338",
+      "358",
+      "333",
+      "343"
+    ],
+    "a": 0
+  },
+  {
+    "n": "414",
+    "subCode": "104(B)",
+    "q": "Find the value of ? : ? − 17² = 6 × 15",
+    "o": [
+      "399",
+      "369",
+      "349",
+      "379",
+      "389"
+    ],
+    "a": 3
+  },
+  {
+    "n": "415",
+    "subCode": "104(C)",
+    "q": "Find the value of ? : ? − 6² = 17 × 7",
+    "o": [
+      "175",
+      "185",
+      "145",
+      "165",
+      "155"
+    ],
+    "a": 4
+  },
+  {
+    "n": "416",
+    "subCode": "104(D)",
+    "q": "Find the value of ? : ? − 12² = 16 × 5",
+    "o": [
+      "234",
+      "214",
+      "254",
+      "224",
+      "204"
+    ],
+    "a": 3
+  },
+  {
+    "n": "417",
+    "subCode": "105(A)",
+    "q": "Find the value of ? : ? − 17² = 23 × 10",
+    "o": [
+      "519",
+      "549",
+      "529",
+      "499",
+      "539"
+    ],
+    "a": 0
+  },
+  {
+    "n": "418",
+    "subCode": "105(B)",
+    "q": "Find the value of ? : ? − 10² = 5 × 8",
+    "o": [
+      "150",
+      "135",
+      "140",
+      "130",
+      "145"
+    ],
+    "a": 2
+  },
+  {
+    "n": "419",
+    "subCode": "105(C)",
+    "q": "Find the value of ? : ? − 13² = 12 × 9",
+    "o": [
+      "247",
+      "287",
+      "257",
+      "297",
+      "277"
+    ],
+    "a": 4
+  },
+  {
+    "n": "420",
+    "subCode": "105(D)",
+    "q": "Find the value of ? : ? − 4² = 17 × 5",
+    "o": [
+      "91",
+      "101",
+      "111",
+      "71",
+      "121"
+    ],
+    "a": 1
+  },
+  {
+    "n": "421",
+    "subCode": "106(A)",
+    "q": "Find the value of ? : ? − 6² = 6 × 4",
+    "o": [
+      "60",
+      "54",
+      "64",
+      "56",
+      "62"
+    ],
+    "a": 0
+  },
+  {
+    "n": "422",
+    "subCode": "106(B)",
+    "q": "Find the value of ? : ? − 17² = 5 × 11",
+    "o": [
+      "339",
+      "334",
+      "349",
+      "344",
+      "329"
+    ],
+    "a": 3
+  },
+  {
+    "n": "423",
+    "subCode": "106(C)",
+    "q": "Find the value of ? : ? − 4² = 15 × 6",
+    "o": [
+      "116",
+      "136",
+      "106",
+      "86",
+      "96"
+    ],
+    "a": 2
+  },
+  {
+    "n": "424",
+    "subCode": "106(D)",
+    "q": "Find the value of ? : ? − 3² = 20 × 3",
+    "o": [
+      "65",
+      "63",
+      "71",
+      "75",
+      "69"
+    ],
+    "a": 4
+  },
+  {
+    "n": "425",
+    "subCode": "107(A)",
+    "q": "Find the value of ? : ? − 6² = 27 × 13",
+    "o": [
+      "382",
+      "387",
+      "402",
+      "372",
+      "377"
+    ],
+    "a": 1
+  },
+  {
+    "n": "426",
+    "subCode": "107(B)",
+    "q": "Find the value of ? : ? − 9² = 16 × 14",
+    "o": [
+      "320",
+      "315",
+      "310",
+      "290",
+      "305"
+    ],
+    "a": 4
+  },
+  {
+    "n": "427",
+    "subCode": "107(C)",
+    "q": "Find the value of ? : ? − 6² = 20 × 12",
+    "o": [
+      "276",
+      "286",
+      "291",
+      "261",
+      "266"
+    ],
+    "a": 0
+  },
+  {
+    "n": "428",
+    "subCode": "107(D)",
+    "q": "Find the value of ? : ? − 17² = 5 × 4",
+    "o": [
+      "314",
+      "309",
+      "294",
+      "304",
+      "319"
+    ],
+    "a": 1
+  },
+  {
+    "n": "429",
+    "subCode": "108(A)",
+    "q": "Find the value of ? : ? − 6² = 9 × 10",
+    "o": [
+      "106",
+      "116",
+      "156",
+      "126",
+      "136"
+    ],
+    "a": 3
+  },
+  {
+    "n": "430",
+    "subCode": "108(B)",
+    "q": "Find the value of ? : ? − 8² = 29 × 10",
+    "o": [
+      "339",
+      "344",
+      "354",
+      "359",
+      "364"
+    ],
+    "a": 2
+  },
+  {
+    "n": "431",
+    "subCode": "108(C)",
+    "q": "Find the value of ? : ? − 13² = 9 × 7",
+    "o": [
+      "227",
+      "237",
+      "217",
+      "232",
+      "247"
+    ],
+    "a": 3
+  },
+  {
+    "n": "432",
+    "subCode": "108(D)",
+    "q": "Find the value of ? : ? − 12² = 31 × 12",
+    "o": [
+      "506",
+      "516",
+      "511",
+      "501",
+      "526"
+    ],
+    "a": 1
+  },
+  {
+    "n": "433",
+    "subCode": "109(A)",
+    "q": "Find the value of ? : ?² + 192 = 273",
+    "o": [
+      "9",
+      "12",
+      "11",
+      "6",
+      "7"
+    ],
+    "a": 0
+  },
+  {
+    "n": "434",
+    "subCode": "109(B)",
+    "q": "Find the value of ? : ?² + 122 = 963",
+    "o": [
+      "26",
+      "28",
+      "27",
+      "32",
+      "29"
+    ],
+    "a": 4
+  },
+  {
+    "n": "435",
+    "subCode": "109(C)",
+    "q": "Find the value of ? : ?² + 384 = 825",
+    "o": [
+      "23",
+      "22",
+      "21",
+      "18",
+      "20"
+    ],
+    "a": 2
+  },
+  {
+    "n": "436",
+    "subCode": "109(D)",
+    "q": "Find the value of ? : ?² + 452 = 573",
+    "o": [
+      "14",
+      "9",
+      "12",
+      "10",
+      "11"
+    ],
+    "a": 4
+  },
+  {
+    "n": "437",
+    "subCode": "110(A)",
+    "q": "Find the value of ? : ?² + 96 = 420",
+    "o": [
+      "18",
+      "20",
+      "19",
+      "21",
+      "17"
+    ],
+    "a": 0
+  },
+  {
+    "n": "438",
+    "subCode": "110(B)",
+    "q": "Find the value of ? : ?² + 344 = 668",
+    "o": [
+      "19",
+      "21",
+      "15",
+      "18",
+      "20"
+    ],
+    "a": 3
+  },
+  {
+    "n": "439",
+    "subCode": "110(C)",
+    "q": "Find the value of ? : ?² + 52 = 101",
+    "o": [
+      "10",
+      "7",
+      "8",
+      "9",
+      "6"
+    ],
+    "a": 1
+  },
+  {
+    "n": "440",
+    "subCode": "110(D)",
+    "q": "Find the value of ? : ?² + 268 = 493",
+    "o": [
+      "13",
+      "18",
+      "15",
+      "16",
+      "14"
+    ],
+    "a": 2
+  },
+  {
+    "n": "441",
+    "subCode": "111(A)",
+    "q": "Find the value of ? : ?² + 425 = 954",
+    "o": [
+      "22",
+      "20",
+      "21",
+      "23",
+      "26"
+    ],
+    "a": 3
+  },
+  {
+    "n": "442",
+    "subCode": "111(B)",
+    "q": "Find the value of ? : ?² + 69 = 598",
+    "o": [
+      "26",
+      "21",
+      "23",
+      "20",
+      "22"
+    ],
+    "a": 2
+  },
+  {
+    "n": "443",
+    "subCode": "111(C)",
+    "q": "Find the value of ? : ?² + 317 = 486",
+    "o": [
+      "10",
+      "14",
+      "12",
+      "16",
+      "13"
+    ],
+    "a": 4
+  },
+  {
+    "n": "444",
+    "subCode": "111(D)",
+    "q": "Find the value of ? : ?² + 358 = 1447",
+    "o": [
+      "18",
+      "33",
+      "28",
+      "48",
+      "23"
+    ],
+    "a": 1
+  },
+  {
+    "n": "445",
+    "subCode": "112(A)",
+    "q": "Find the value of ? : ?² + 373 = 1102",
+    "o": [
+      "27",
+      "28",
+      "26",
+      "25",
+      "24"
+    ],
+    "a": 0
+  },
+  {
+    "n": "446",
+    "subCode": "112(B)",
+    "q": "Find the value of ? : ?² + 251 = 612",
+    "o": [
+      "20",
+      "17",
+      "16",
+      "21",
+      "19"
+    ],
+    "a": 4
+  },
+  {
+    "n": "447",
+    "subCode": "112(C)",
+    "q": "Find the value of ? : ?² + 244 = 308",
+    "o": [
+      "9",
+      "8",
+      "7",
+      "5",
+      "11"
+    ],
+    "a": 1
+  },
+  {
+    "n": "448",
+    "subCode": "112(D)",
+    "q": "Find the value of ? : ?² + 443 = 1404",
+    "o": [
+      "36",
+      "26",
+      "16",
+      "31",
+      "41"
+    ],
+    "a": 3
+  },
+  {
+    "n": "449",
+    "subCode": "113(A)",
+    "q": "Find the value of ? : 23² − ?² = 129",
+    "o": [
+      "20",
+      "19",
+      "18",
+      "23",
+      "21"
+    ],
+    "a": 0
+  },
+  {
+    "n": "450",
+    "subCode": "113(B)",
+    "q": "Find the value of ? : 52² − ?² = 588",
+    "o": [
+      "48",
+      "50",
+      "46",
+      "52",
+      "42"
+    ],
+    "a": 2
+  },
+  {
+    "n": "451",
+    "subCode": "113(C)",
+    "q": "Find the value of ? : 54² − ?² = 707",
+    "o": [
+      "42",
+      "37",
+      "32",
+      "47",
+      "57"
+    ],
+    "a": 3
+  },
+  {
+    "n": "452",
+    "subCode": "113(D)",
+    "q": "Find the value of ? : 52² − ?² = 855",
+    "o": [
+      "43",
+      "58",
+      "53",
+      "33",
+      "38"
+    ],
+    "a": 0
+  },
+  {
+    "n": "453",
+    "subCode": "114(A)",
+    "q": "Find the value of ? : 48² − ?² = 279",
+    "o": [
+      "39",
+      "43",
+      "45",
+      "47",
+      "51"
+    ],
+    "a": 2
+  },
+  {
+    "n": "454",
+    "subCode": "114(B)",
+    "q": "Find the value of ? : 30² − ?² = 324",
+    "o": [
+      "25",
+      "27",
+      "26",
+      "23",
+      "24"
+    ],
+    "a": 4
+  },
+  {
+    "n": "455",
+    "subCode": "114(C)",
+    "q": "Find the value of ? : 19² − ?² = 165",
+    "o": [
+      "15",
+      "14",
+      "17",
+      "11",
+      "12"
+    ],
+    "a": 1
+  },
+  {
+    "n": "456",
+    "subCode": "114(D)",
+    "q": "Find the value of ? : 41² − ?² = 160",
+    "o": [
+      "39",
+      "49",
+      "44",
+      "34",
+      "29"
+    ],
+    "a": 0
+  },
+  {
+    "n": "457",
+    "subCode": "115(A)",
+    "q": "Find the value of ? : 43² − ?² = 328",
+    "o": [
+      "44",
+      "49",
+      "24",
+      "39",
+      "54"
+    ],
+    "a": 3
+  },
+  {
+    "n": "458",
+    "subCode": "115(B)",
+    "q": "Find the value of ? : 55² − ?² = 721",
+    "o": [
+      "58",
+      "48",
+      "53",
+      "33",
+      "63"
+    ],
+    "a": 1
+  },
+  {
+    "n": "459",
+    "subCode": "115(C)",
+    "q": "Find the value of ? : 14² − ?² = 52",
+    "o": [
+      "14",
+      "10",
+      "15",
+      "11",
+      "12"
+    ],
+    "a": 4
+  },
+  {
+    "n": "460",
+    "subCode": "115(D)",
+    "q": "Find the value of ? : 25² − ?² = 225",
+    "o": [
+      "21",
+      "23",
+      "20",
+      "18",
+      "17"
+    ],
+    "a": 2
+  },
+  {
+    "n": "461",
+    "subCode": "116(A)",
+    "q": "Find the value of ? : 29² − ?² = 312",
+    "o": [
+      "26",
+      "22",
+      "20",
+      "23",
+      "21"
+    ],
+    "a": 3
+  },
+  {
+    "n": "462",
+    "subCode": "116(B)",
+    "q": "Find the value of ? : 21² − ?² = 185",
+    "o": [
+      "16",
+      "17",
+      "13",
+      "14",
+      "15"
+    ],
+    "a": 0
+  },
+  {
+    "n": "463",
+    "subCode": "116(C)",
+    "q": "Find the value of ? : 14² − ?² = 171",
+    "o": [
+      "7",
+      "6",
+      "2",
+      "3",
+      "5"
+    ],
+    "a": 4
+  },
+  {
+    "n": "464",
+    "subCode": "116(D)",
+    "q": "Find the value of ? : 40² − ?² = 639",
+    "o": [
+      "29",
+      "31",
+      "33",
+      "27",
+      "37"
+    ],
+    "a": 1
+  },
+  {
+    "n": "465",
+    "subCode": "117(A)",
+    "q": "Simplify: (1.3 + 5.7)² − 2 × 1.3 × 5.7 = ?",
+    "o": [
+      "34.2",
+      "34.16",
+      "34.18",
+      "34.19",
+      "34.21"
+    ],
+    "a": 2
+  },
+  {
+    "n": "466",
+    "subCode": "117(B)",
+    "q": "Simplify: (7.6 + 2.4)² − 2 × 7.6 × 2.4 = ?",
+    "o": [
+      "63.62",
+      "63.57",
+      "63.42",
+      "63.52",
+      "63.37"
+    ],
+    "a": 3
+  },
+  {
+    "n": "467",
+    "subCode": "117(C)",
+    "q": "Simplify: (2 + 1.5)² − 2 × 2 × 1.5 = ?",
+    "o": [
+      "6.1",
+      "6.3",
+      "6.25",
+      "6.35",
+      "6.4"
+    ],
+    "a": 2
+  },
+  {
+    "n": "468",
+    "subCode": "117(D)",
+    "q": "Simplify: (7.1 + 5.3)² − 2 × 7.1 × 5.3 = ?",
+    "o": [
+      "78.5",
+      "78.9",
+      "78.7",
+      "79.1",
+      "77.9"
+    ],
+    "a": 0
+  },
+  {
+    "n": "469",
+    "subCode": "118(A)",
+    "q": "Simplify: (9.3 + 1.4)² − 2 × 9.3 × 1.4 = ?",
+    "o": [
+      "88.5",
+      "88.45",
+      "88.35",
+      "88.6",
+      "88.55"
+    ],
+    "a": 1
+  },
+  {
+    "n": "470",
+    "subCode": "118(B)",
+    "q": "Simplify: (9.1 + 9)² − 2 × 9.1 × 9 = ?",
+    "o": [
+      "163.76",
+      "163.86",
+      "163.91",
+      "163.66",
+      "163.81"
+    ],
+    "a": 4
+  },
+  {
+    "n": "471",
+    "subCode": "118(C)",
+    "q": "Simplify: (4.1 + 4.7)² − 2 × 4.1 × 4.7 = ?",
+    "o": [
+      "38.9",
+      "38.7",
+      "39.1",
+      "39.3",
+      "38.5"
+    ],
+    "a": 0
+  },
+  {
+    "n": "472",
+    "subCode": "118(D)",
+    "q": "Simplify: (3 + 9.6)² − 2 × 3 × 9.6 = ?",
+    "o": [
+      "101.11",
+      "101.01",
+      "101.16",
+      "101.06",
+      "101.26"
+    ],
+    "a": 2
+  },
+  {
+    "n": "473",
+    "subCode": "119(A)",
+    "q": "Simplify: (9.5 + 6.9)² − 2 × 9.5 × 6.9 = ?",
+    "o": [
+      "137.91",
+      "138.01",
+      "137.76",
+      "137.86",
+      "137.71"
+    ],
+    "a": 3
+  },
+  {
+    "n": "474",
+    "subCode": "119(B)",
+    "q": "Simplify: (5.8 + 2.4)² − 2 × 5.8 × 2.4 = ?",
+    "o": [
+      "39.1",
+      "39.4",
+      "39.6",
+      "39.3",
+      "39.5"
+    ],
+    "a": 1
+  },
+  {
+    "n": "475",
+    "subCode": "119(C)",
+    "q": "Simplify: (5.9 + 5.4)² − 2 × 5.9 × 5.4 = ?",
+    "o": [
+      "64.12",
+      "64.02",
+      "63.92",
+      "64.07",
+      "63.97"
+    ],
+    "a": 4
+  },
+  {
+    "n": "476",
+    "subCode": "119(D)",
+    "q": "Simplify: (6.3 + 5.3)² − 2 × 6.3 × 5.3 = ?",
+    "o": [
+      "67.76",
+      "67.78",
+      "67.77",
+      "67.8",
+      "67.81"
+    ],
+    "a": 1
+  },
+  {
+    "n": "477",
+    "subCode": "120(A)",
+    "q": "Simplify: (4.1 + 9.4)² − 2 × 4.1 × 9.4 = ?",
+    "o": [
+      "105.22",
+      "105.27",
+      "105.12",
+      "105.17",
+      "105.02"
+    ],
+    "a": 3
+  },
+  {
+    "n": "478",
+    "subCode": "120(B)",
+    "q": "Simplify: (9.4 + 6.1)² − 2 × 9.4 × 6.1 = ?",
+    "o": [
+      "125.57",
+      "125.55",
+      "125.54",
+      "125.6",
+      "125.59"
+    ],
+    "a": 0
+  },
+  {
+    "n": "479",
+    "subCode": "120(C)",
+    "q": "Simplify: (5 + 8.1)² − 2 × 5 × 8.1 = ?",
+    "o": [
+      "90.56",
+      "90.76",
+      "90.46",
+      "90.71",
+      "90.61"
+    ],
+    "a": 4
+  },
+  {
+    "n": "480",
+    "subCode": "120(D)",
+    "q": "Simplify: (7.7 + 5.3)² − 2 × 7.7 × 5.3 = ?",
+    "o": [
+      "87.39",
+      "87.35",
+      "87.38",
+      "87.37",
+      "87.4"
+    ],
+    "a": 2
+  },
+  {
+    "n": "481",
+    "subCode": "121(A)",
+    "q": "Simplify: (2.8 + 7.4)² − 2 × 2.8 × 7.4 = ?",
+    "o": [
+      "63.6",
+      "64.1",
+      "61.6",
+      "62.6",
+      "61.1"
+    ],
+    "a": 3
+  },
+  {
+    "n": "482",
+    "subCode": "121(B)",
+    "q": "Simplify: (9.8 + 3.7)² − 2 × 9.8 × 3.7 = ?",
+    "o": [
+      "109.73",
+      "109.71",
+      "109.75",
+      "109.7",
+      "109.72"
+    ],
+    "a": 0
+  },
+  {
+    "n": "483",
+    "subCode": "121(C)",
+    "q": "Simplify: (1.5 + 3.1)² − 2 × 1.5 × 3.1 = ?",
+    "o": [
+      "11.84",
+      "11.88",
+      "11.86",
+      "11.87",
+      "11.89"
+    ],
+    "a": 2
+  },
+  {
+    "n": "484",
+    "subCode": "121(D)",
+    "q": "Simplify: (8.8 + 6)² − 2 × 8.8 × 6 = ?",
+    "o": [
+      "113.34",
+      "113.39",
+      "113.59",
+      "113.49",
+      "113.44"
+    ],
+    "a": 4
+  },
+  {
+    "n": "485",
+    "subCode": "122(A)",
+    "q": "Simplify: 24² × 7 ÷ 24 + 91 = ?",
+    "o": [
+      "239",
+      "259",
+      "289",
+      "279",
+      "229"
+    ],
+    "a": 1
+  },
+  {
+    "n": "486",
+    "subCode": "122(B)",
+    "q": "Simplify: 16² × 4 ÷ 16 + 42 = ?",
+    "o": [
+      "106",
+      "96",
+      "76",
+      "86",
+      "126"
+    ],
+    "a": 0
+  },
+  {
+    "n": "487",
+    "subCode": "122(C)",
+    "q": "Simplify: 16² × 9 ÷ 16 + 77 = ?",
+    "o": [
+      "201",
+      "251",
+      "241",
+      "221",
+      "211"
+    ],
+    "a": 3
+  },
+  {
+    "n": "488",
+    "subCode": "122(D)",
+    "q": "Simplify: 45² × 4 ÷ 45 + 77 = ?",
+    "o": [
+      "287",
+      "267",
+      "257",
+      "247",
+      "237"
+    ],
+    "a": 2
+  },
+  {
+    "n": "489",
+    "subCode": "123(A)",
+    "q": "Simplify: 32² × 5 ÷ 32 + 33 = ?",
+    "o": [
+      "178",
+      "198",
+      "188",
+      "183",
+      "193"
+    ],
+    "a": 4
+  },
+  {
+    "n": "490",
+    "subCode": "123(B)",
+    "q": "Simplify: 9² × 2 ÷ 9 + 88 = ?",
+    "o": [
+      "76",
+      "106",
+      "136",
+      "86",
+      "126"
+    ],
+    "a": 1
+  },
+  {
+    "n": "491",
+    "subCode": "123(C)",
+    "q": "Simplify: 24² × 2 ÷ 24 + 27 = ?",
+    "o": [
+      "81",
+      "71",
+      "75",
+      "79",
+      "69"
+    ],
+    "a": 2
+  },
+  {
+    "n": "492",
+    "subCode": "123(D)",
+    "q": "Simplify: 48² × 4 ÷ 48 + 20 = ?",
+    "o": [
+      "227",
+      "217",
+      "202",
+      "212",
+      "207"
+    ],
+    "a": 3
+  },
+  {
+    "n": "493",
+    "subCode": "124(A)",
+    "q": "Simplify: 16² × 8 ÷ 16 + 22 = ?",
+    "o": [
+      "160",
+      "150",
+      "120",
+      "130",
+      "140"
+    ],
+    "a": 1
+  },
+  {
+    "n": "494",
+    "subCode": "124(B)",
+    "q": "Simplify: 40² × 7 ÷ 40 + 83 = ?",
+    "o": [
+      "363",
+      "373",
+      "383",
+      "353",
+      "393"
+    ],
+    "a": 0
+  },
+  {
+    "n": "495",
+    "subCode": "124(C)",
+    "q": "Simplify: 12² × 2 ÷ 12 + 56 = ?",
+    "o": [
+      "70",
+      "95",
+      "90",
+      "85",
+      "80"
+    ],
+    "a": 4
+  },
+  {
+    "n": "496",
+    "subCode": "124(D)",
+    "q": "Simplify: 48² × 8 ÷ 48 + 44 = ?",
+    "o": [
+      "443",
+      "413",
+      "423",
+      "438",
+      "428"
+    ],
+    "a": 4
+  },
+  {
+    "n": "497",
+    "subCode": "125(A)",
+    "q": "Simplify: 36² × 8 ÷ 36 + 22 = ?",
+    "o": [
+      "315",
+      "295",
+      "300",
+      "310",
+      "325"
+    ],
+    "a": 3
+  },
+  {
+    "n": "498",
+    "subCode": "125(B)",
+    "q": "Simplify: 18² × 8 ÷ 18 + 58 = ?",
+    "o": [
+      "192",
+      "202",
+      "182",
+      "222",
+      "212"
+    ],
+    "a": 1
+  },
+  {
+    "n": "499",
+    "subCode": "125(C)",
+    "q": "Simplify: 45² × 2 ÷ 45 + 68 = ?",
+    "o": [
+      "148",
+      "173",
+      "158",
+      "163",
+      "153"
+    ],
+    "a": 2
+  },
+  {
+    "n": "500",
+    "subCode": "125(D)",
+    "q": "Simplify: 15² × 6 ÷ 15 + 82 = ?",
+    "o": [
+      "172",
+      "177",
+      "167",
+      "187",
+      "157"
+    ],
+    "a": 0
   }
 ];
